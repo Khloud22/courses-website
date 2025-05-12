@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح صفحة الفاصل والغلاف الفارغ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a4c93;
+            --secondary-color: #8a5a44;
+            --accent-color: #f8c537;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f3ff;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 5px solid white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            color: var(--primary-color);
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            width: 300px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .usage-steps {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>قسم الصفحات</h1>
+            <p class="subtitle">أداة تنظيمية مهمة في المستندات والكتب الرقمية</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <img src="imgs/insertpage.png" alt="صفحة فاصل وغلاف فارغ" class="main-image" id="mainImage">
+        
+        <h2 class="section-title">عناصر الصورة الرئيسية</h2>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3 class="feature-title">صفحة فاصل</h3>
+                <p>صفحة خاصة تستخدم لفصل الأقسام الرئيسية في المستند أو الكتاب، تعطي تنظيمًا واضحًا وتسهل التنقل بين المحتويات.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="feature-title">غلاف فارغ</h3>
+                <p>صفحة غلاف بدون محتوى تستخدم كبداية لأقسام معينة أو كمساحة فارغة للتصميمات الإبداعية اللاحقة.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3 class="feature-title">صفحات متعددة</h3>
+                <p>إمكانية إدراج عدة صفحات فارغة أو فاصلة حسب الحاجة لتنظيم المحتوى بشكل احترافي ومنظم.</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">كيفية استخدام صفحات الفاصل</h2>
+        
+        <div class="usage-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>تحديد موقع الإدراج</h3>
+                    <p>حدد المكان المناسب في المستند حيث تحتاج إلى فصل المحتوى أو بدء قسم جديد.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>اختيار نوع الصفحة</h3>
+                    <p>اختر بين صفحة فاصل (تحتوي على عنوان فقط) أو صفحة غلاف فارغة (بدون أي محتوى).</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>تخصيص التصميم</h3>
+                    <p>يمكنك إضافة عناصر تصميمية مثل الخطوط، الألوان، أو الصور لجعل الصفحة أكثر جاذبية.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>إضافة المحتوى اللاحق</h3>
+                    <p>ابدأ بكتابة المحتوى الجديد بعد صفحة الفاصل لتنظيم المادة بشكل واضح ومنطقي.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">فوائد استخدام صفحات الفاصل</h2>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="feature-title">تنظيم المحتوى</h3>
+                <p>تساعد في تقسيم المستند إلى أقسام منطقية يسهل فهمها والتنقل بينها.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3 class="feature-title">تحسين القراءة</h3>
+                <p>تعطي القارئ استراحة بصرية وتسهل متابعة المحتوى الطويل.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="feature-title">مظهر احترافي</h3>
+                <p>تضفي لمسة احترافية على المستندات والكتب الرقمية والمطبوعة.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <h3>تواصل معنا للمزيد من المعلومات</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>جميع الحقوق محفوظة &copy; 2023</p>
+        </div>
+    </footer>
+
+    <script>
+        // تأثيرات JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير تحميل الصفحة
+            const elements = document.querySelectorAll('.feature-card, .step');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // تأثير عند التمرير
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const mainImage = document.getElementById('mainImage');
+                
+                // تأثير الطفو على الصورة الرئيسية
+                mainImage.style.transform = `translateY(${scrollPosition * 0.1}px)`;
+                
+                // تأثير التعتيم على العناصر عند التمرير
+                elements.forEach(el => {
+                    const elPosition = el.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if(elPosition < screenPosition) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // تهيئة العناصر للتحريك
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.5s ease';
+            });
+        });
+    </script>
+</body>
+</html>

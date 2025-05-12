@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورس أساسيات تكنولوجيا المعلومات ونظم التشغيل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 15px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--secondary-color);
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-color);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab:hover:not(.active) {
+            color: var(--primary-color);
+            background-color: #f5f5f5;
+        }
+
+        .tab-content {
+            display: none;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .icon-box i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-left: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            position: relative;
+            padding-right: 40px;
+            margin-bottom: 15px;
+            counter-increment: step-counter;
+        }
+
+        .step:before {
+            content: counter(step-counter);
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .note {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid var(--secondary-color);
+            margin: 20px 0;
+        }
+
+        .note i {
+            color: var(--secondary-color);
+            margin-left: 5px;
+        }
+
+        .image-placeholder {
+            background-color: #eee;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #999;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .course-info {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .course-meta {
+                flex-wrap: wrap;
+            }
+            
+            .tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .tab {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .tab-content {
+                padding: 15px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            p, li {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .icon-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .icon-box i {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            
+            .steps {
+                padding-right: 0;
+            }
+            
+            .step {
+                padding-right: 30px;
+            }
+            
+            .step:before {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-laptop-code"></i> أساسيات تكنولوجيا المعلومات ونظم التشغيل</h1>
+            <p>دليل المتدرب 2025 - قسم تكنولوجيا التعليم و المعلومات</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="course-info">
+            <div>
+                <h2>إدارة المجلدات والملفات في Windows 10</h2>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="intro">مقدمة</div>
+            <div class="tab" data-tab="files">الملفات والمجلدات</div>
+            <div class="tab" data-tab="explorer">مستكشف الملفات</div>
+            <div class="tab" data-tab="interface">واجهة المستخدم</div>
+            <div class="tab" data-tab="quick-access">الوصول السريع</div>
+        </div>
+
+        <div class="tab-content active" id="intro">
+            <h2><i class="fas fa-info-circle"></i> مقدمة عن إدارة الملفات في Windows 10</h2>
+            <p>ينظم نظام Windows 10 الملفات في نظام تخزين بتسلسل هيكلي للمجلدات والمواد الفرعية. لتنظيم الملفات، يمكنك استخدام تطبيق مستكشف الملفات (File Explorer) الخاص بـ Windows 10.</p>
+            
+            <div class="icon-box">
+                <i class="fas fa-folder-open"></i>
+                <div>
+                    <h3>لماذا ننظم الملفات والمجلدات؟</h3>
+                    <p>تلعب الملفات والمجلدات دورًا هامًا في تنظيم البيانات في الحاسب الآلي. قبل العمل على تطبيق مستكشف الملفات (File Explorer) يجب أن تفهم المفهوم الأساسي حول الملفات، والمجلدات، والمكتبات.</p>
+                </div>
+            </div>
+            
+            <div class="note">
+                <i class="fas fa-lightbulb"></i> <strong>ملاحظة:</strong> يمكنك فتح مستكشف الملفات (File Explorer) بالضغط على مفتاح شعار ويندوز + E في نفس الوقت.
+            </div>
+        </div>
+
+        <div class="tab-content" id="files">
+            <h2><i class="fas fa-file-alt"></i> فهم الملفات والمجلدات والمكتبات</h2>
+            
+            <div class="icon-box">
+                <i class="fas fa-file"></i>
+                <div>
+                    <h3>الملف (File)</h3>
+                    <p>هو مجموعة من البيانات ذات الصلة أو المعلومات المخزنة في حاسب محدد باسم معين. ويمكن أن يكون الملف مستندًا أو ورقة عمل أو رسمًا وملف نصيًا أو مقطع صوت أو عرضًا توضيحيًا أو مقطع فيديو أو ما إلى ذلك. يمكنك فتح الملفات، والبحث عنها، وتغييرها باستخدام تطبيق أو أكثر.</p>
+                </div>
+            </div>
+            
+            <div class="icon-box">
+                <i class="fas fa-folder"></i>
+                <div>
+                    <h3>المجلد (Folder)</h3>
+                    <p>هو حاوية يمكنك تخزين الملفات والمجلدات فيها. يطلق على أي مجلد داخل مجلد آخر مجلد فرعي. تثبت الكثير من التطبيقات الملفات التي تحتاج إليها في مجلدات فرعية داخل مجلد ملفات البرامج (Programs Files).</p>
+                </div>
+            </div>
+            
+            <div class="icon-box">
+                <i class="fas fa-book"></i>
+                <div>
+                    <h3>المكتبة (Library)</h3>
+                    <p>تتيح المكتبات إمكانية الوصول إلى الملفات وترتيبها من مختلف مواقع المجلدات بسرعة دون نقلها من موقعها الأصلي. والمكتبات الافتراضية في Windows 10 هي المستندات (Documents)، والموسيقى (Music)، والصور (Pictures)، ومقاطع الفيديو (Videos)، والصور المحفوظة (Saved Pictures).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="explorer">
+            <h2><i class="fas fa-search"></i> مستكشف الملفات (File Explorer)</h2>
+            <p>هو تطبيق إدارة الملفات الذي يستخدمه Windows 10 لاستعراض المجلدات والملفات. وهو يتيح واجهة رسومية للمستخدمين للتنقل بين الملفات المخزنة في الحاسب الآلي والوصول إليها. إذا كنت تبحث عن مستند معين على الحاسب الآلي، فاستخدم مستكشف الملفات (File Explorer) للعثور على مكانه.</p>
+            
+            <div class="steps">
+                <h3>كيف تفتح مستكشف الملفات؟</h3>
+                <div class="step">انقر فوق أيقونته الموجودة في قائمة ابدأ (Start).</div>
+                <div class="step">يتم فتح نافذة مستكشف الملفات (File Explorer) ويمكنك من خلالها استعراض كل المجلدات والملفات الموجودة على الحاسب الآلي.</div>
+                <div class="step">يمكنك أيضًا استخدام اختصار لوحة المفاتيح: مفتاح شعار ويندوز + E</div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="interface">
+            <h2><i class="fas fa-desktop"></i> واجهة مستخدم مستكشف الملفات</h2>
+            <p>يجب في البداية أن تعتاد على استخدام واجهة مستخدم مستكشف الملفات (File Explorer) حتى يسهل عليك فهم ميزاتها والتعامل معها. وكما ترى، تتألف النافذة الرئيسية لمستكشف الملفات (File Explorer) من الأجزاء التالية:</p>
+            
+            <h3>أ) الشريط (Ribbon)</h3>
+            <p>يحتوي مستكشف الملفات (File Explorer) على شريط بجزئه العلوي. ويضم الشريط أزرارًا للمهام الشائعة التي تجريها على الملفات والمجلدات.</p>
+            
+            <h3>ب) شريط البحث والتنقل (Navigation and Search Bar)</h3>
+            <p>يوجد أسفل الشريط (Ribbon) مباشرة ويتيح لك التنقل داخل هيكل المجلد بسهولة والبحث في الملفات أو المجلدات.</p>
+            
+            <h3>ج) جزء التنقل (Navigation Pane)</h3>
+            <p>يتيح لك الجزء في اليسار الوصول السهل إلى هيكل تخزين الحاسب الآلي والذي يتألف من مكتبات المستندات، والصور، وأجهزة التخزين، وحتى أجهزة الشبكة. يتميز أيضًا بخاصية الوصول السريع والتي تعرض المجلدات المستخدمة بشكل متكرر.</p>
+            
+            <h3>د) جزء المحتويات (Contents Pane)</h3>
+            <p>هي المنطقة الرئيسية على يمين جزء التنقل (Navigation Pane) التي تعرض محتويات المجلد المحدد أو موقع التخزين.</p>
+            
+            <div class="note">
+                <i class="fas fa-lightbulb"></i> <strong>ملاحظة:</strong> في Windows 10، يدمج مستكشف الملفات (File Explorer) الشريط (Ribbon) المشابه للشريط المميز في تطبيقات Microsoft Office.
+            </div>
+            
+            <h3>علامات التبويب في الشريط:</h3>
+            <ol>
+                <li><strong>علامة التبويب ملف (File):</strong> تفتح فعليًا قائمة ملف (File) التي تضم خيارات مثل إدارة نافذة مستكشف الملفات (File Explorer) أو تخصيص مستكشف الملفات.</li>
+                <li><strong>علامة التبويب الصفحة الرئيسية (Home):</strong> تضم معظم الأدوات اللازمة لتنظيم الملفات والمجلدات.</li>
+                <li><strong>علامة التبويب مشاركة (Share):</strong> تضم خيارات مثل مشاركة ملف أو مجلد أو إرساله بالبريد الإلكتروني أو طباعته أو ضغطه.</li>
+                <li><strong>علامة التبويب عرض (View):</strong> تحتوي على خيارات لتغيير طرق عرض نافذة مستكشف الملفات.</li>
+            </ol>
+        </div>
+
+        <div class="tab-content" id="quick-access">
+            <h2><i class="fas fa-bolt"></i> الوصول السريع (Quick Access)</h2>
+            <p>تمنحك قائمة الوصول السريع (Quick Access) في جزء التنقل (Navigation Pane) طريقة سريعة لفتح المجلدات المستخدمة بتكرار. يمكنك استخدام زر تثبيت بالوصول السريع (Pin to Quick Access) على علامة تبويب الصفحة الرئيسية (Home) لتثبيت أي مواقع مجلدات بقائمة الوصول السريع (Quick Access).</p>
+            
+            <div class="steps">
+                <h3>كيف تثبت مجلدًا في الوصول السريع؟</h3>
+                <div class="step">من مستكشف الملفات (File Explorer) حدد المجلد (folder) الذي تود تثبيته في قائمة الوصول السريع (Quick Access).</div>
+                <div class="step">انقر فوق علامة تبويب الصفحة الرئيسية (Home tab) الموجودة على الشريط (Ribbon).</div>
+                <div class="step">من جزء الحافظة (Clipboard Section) انقر فوق زر تثبيت بالوصول السريع (Pin to Quick Access).</div>
+                <div class="step">أدرج المجلد المحدد الآن في قائمة الوصول السريع (Quick Access).</div>
+            </div>
+            
+            <div class="steps">
+                <h3>كيف تلغي تثبيت مجلد من الوصول السريع؟</h3>
+                <div class="step">انقر بزر الفأرة اليمين فوق العنصر المطلوب إلغاء تثبيته في قائمة الوصول السريع (Quick Access).</div>
+                <div class="step">اختر إلغاء تثبيت من الوصول السريع (Unpin from Quick Access).</div>
+            </div>
+            
+            <div class="note">
+                <i class="fas fa-info-circle"></i> <strong>معلومة:</strong> يعرض جزء المحتويات (Content Pane) في مستكشف الملفات الملفات والمجلدات المخزنة في المجلد المحدد حاليًا أو جهاز التخزين. ويعرض محتويات المجلد المحدد في شكل قائمة أيقونية أو نصية.
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

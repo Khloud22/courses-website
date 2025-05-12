@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورسات أساسيات التكنولوجيا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #43aa8b;
+            --warning-color: #f8961e;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -30px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .course-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+        }
+        
+        .course-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .course-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .course-title i {
+            margin-left: 10px;
+            color: var(--primary-color);
+        }
+        
+        .course-description {
+            color: #6c757d;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .view-btn-container {
+            margin-top: auto;
+            padding-top: 15px;
+        }
+        
+        .view-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .view-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+        }
+        
+        @media (max-width: 768px) {
+            .courses-container {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 30px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-laptop-code"></i> كورسات أساسيات التكنولوجيا</h1>
+            <p class="subtitle">ابدأ رحلتك في عالم التكنولوجيا مع هذه الكورسات الأساسية</p>
+        </header>
+        
+        <div class="courses-container" id="coursesContainer">
+            <!-- سيتم إضافة الكورسات ديناميكيًا باستخدام JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // بيانات الكورسات
+            const courses = [
+                {
+                    id: 1,
+                    title: "مكونات الحاسب الالى",
+                    description:"الحاسب يتكون من المعالج (دماغ الجهاز) 💻، الذاكرة العشوائية (المساحة المؤقتة) 🧠، القرص الصلب (المخزن الدائم) 🗄️، كرت الشاشة (رسام الجهاز) 🎨، اللوحة الأم (العمود الفقري) 🏗️، مزود الطاقة (القلب النابض) ⚡، مع ملحقات التشغيل مثل الشاشة 🖥️ ولوحة المفاتيح ⌨️ والفأرة 🖱️.",
+                    icon: "fa-code",
+                    image: "imgs/مكونات-الحاسب.avif",
+                    link: "Tools/مكونات-الحاسب/index.html"
+                },
+                {
+                    id: 2,
+                    title: "شبكات الحاسب الالى",
+                    description:"شبكات الحاسب هي نظام اتصال يربط بين الأجهزة (مثل أجهزة الكمبيوتر والخوادم والطابعات) عبر وسائط نقل (كابلات أو لاسلكي) 🖇️، باستخدام بروتوكولات موحدة (مثل TCP/IP) 🌐، لتسهيل مشاركة الموارد (البيانات، البرامج، الأجهزة) ⚡ وتوفير اتصال بالإنترنت 🚀.",
+                    icon: "fa-network-wired",
+                    image: "imgs/شبكات-الحاسب.avif",
+                    link: "Tools/شبكات-الحاسب/index.html"
+                },
+                {
+                    id: 3,
+                    title: "نظرة عامة على نظام التشغيل Windows 10",
+                    description:"نظام تشغيل Windows 10 هو نظام تشغيل قوي من Microsoft 💻، يجمع بين سهولة الاستخدام 🤩 والأداء العالي ⚡، مع واجهة مستخدم حديثة (شريط المهام - قائمة ابدأ الجديدة) 🖥️، ومتجر Microsoft للبرامج 🛒، ومتصفح Edge السريع 🌐، بالإضافة لميزات الأمان المتقدمة 🔒 مثل Windows Defender، ودعم التحديثات الدورية 🆙 لتحسين الأداء.",
+                    icon: "fa-database",
+                    image: "imgs/ويندوز-10.avif",
+                    link: "Tools/win-10/index.html"
+                },
+                {
+                    id: 4,
+                    title: "تخصيص ويندوز 10 و إدارة النوافذ",
+                    description:"تخصيص ويندوز 10 يتيح لك تحويل سطح المكتب لبيئة عمل شخصية 🎨 عبر: تغيير الخلفيات 🖼️، ألوان الواجهة 🌈، شريط المهام 📊، وتنسيق قائمة ابدأ 📋، بينما تتيح إدارة النوافذ تقسيم الشاشة ذكياً 🧩 (مربع ربع/نصف/كامل) عبر السحب أو اختصارات لوحة المفاتيح 🚀 (Win + أسهم)!",
+                    icon: "fa-shield-alt",
+                    image: "imgs/تخصيص-ويندوز.avif",
+                    link: "Tools/تخصيص-ويندوز/index.html"
+                },
+                {
+                    id: 5,
+                    title: "إدارة المجلدات و الملفات و اعدادات الحاسب الالى",
+                    description:"إدارة الملفات والمجلدات في Windows 10 تمنحك تحكماً كاملاً في تنظيم بياناتك 📂 عبر",
+                    icon: "fa-robot",
+                    image: "imgs/ادارة-المجلدات.avif",
+                    link: "Tools/إدارة-المجلدات/index.html"
+                }
+            ];
+            
+            // عرض الكورسات في الصفحة
+            const coursesContainer = document.getElementById('coursesContainer');
+            
+            courses.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.innerHTML = `
+                    <div class="course-image" style="background-image: url('${course.image}')">
+                    </div>
+                    <div class="course-info">
+                        <h3 class="course-title"><i class="fas ${course.icon}"></i> ${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        <div class="view-btn-container">
+                            <a href="${course.link}" class="view-btn">عرض الكورس</a>
+                        </div>
+                    </div>
+                `;
+                
+                coursesContainer.appendChild(courseCard);
+            });
+            
+            // تأثيرات عند التحويم على البطاقات
+            const courseCards = document.querySelectorAll('.course-card');
+            courseCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px)';
+                    this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

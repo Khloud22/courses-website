@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنسيق المستندات والسمات في مايكروسوفت وورد</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* أساسيات الصفحة */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --text-light: #7f8c8d;
+    --font-main: 'Tajawal', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background-color: #f5f7fa;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* الترويسة */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-title {
+    animation: fadeInDown 1s ease-out;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 10px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* القائمة الملتصقة */
+.sticky-nav {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.sticky-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 15px 0;
+}
+
+.sticky-nav li {
+    margin: 0 15px;
+}
+
+.sticky-nav a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.sticky-nav a:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* الأقسام الرئيسية */
+.section-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 40px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--light-color);
+    padding-bottom: 15px;
+}
+
+.section-header h2 {
+    color: var(--primary-color);
+    margin-right: 15px;
+}
+
+.subsection-title {
+    margin: 25px 0 15px;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.text-content p, .text-content ol, .text-content ul {
+    margin-bottom: 15px;
+}
+
+.text-content li {
+    margin-bottom: 8px;
+    margin-right: 20px;
+}
+
+.image-content {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+    margin-top: 10px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* جدول السمات */
+.themes-table-container {
+    overflow-x: auto;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+.themes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    min-width: 800px;
+}
+
+.themes-table th, .themes-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.themes-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+
+.themes-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.theme-preview {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.theme-preview:hover {
+    transform: scale(1.1);
+}
+
+/* تعريف ألوان السمات */
+.theme-2019-1 { background: linear-gradient(135deg, #3498db, #2ecc71); }
+.theme-2019-2 { background: linear-gradient(135deg, #e74c3c, #f39c12); }
+.theme-2019-3 { background: linear-gradient(135deg, #9b59b6, #3498db); }
+.theme-2019-4 { background: linear-gradient(135deg, #1abc9c, #16a085); }
+.theme-2019-5 { background: linear-gradient(135deg, #34495e, #2c3e50); }
+.theme-2019-6 { background: linear-gradient(135deg, #e67e22, #d35400); }
+.theme-2019-7 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+.theme-2019-8 { background: linear-gradient(135deg, #2980b9, #3498db); }
+.theme-2019-9 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+.theme-2019-10 { background: linear-gradient(135deg, #f1c40f, #f39c12); }
+.theme-2019-11 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+
+.theme-2020-1 { background: linear-gradient(135deg, #00b894, #00cec9); }
+.theme-2020-2 { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
+.theme-2020-3 { background: linear-gradient(135deg, #fd79a8, #e84393); }
+.theme-2020-4 { background: linear-gradient(135deg, #fdcb6e, #e17055); }
+.theme-2020-5 { background: linear-gradient(135deg, #636e72, #2d3436); }
+.theme-2020-6 { background: linear-gradient(135deg, #a29bfe, #74b9ff); }
+.theme-2020-7 { background: linear-gradient(135deg, #55efc4, #81ecec); }
+.theme-2020-8 { background: linear-gradient(135deg, #ffeaa7, #fab1a0); }
+.theme-2020-9 { background: linear-gradient(135deg, #dfe6e9, #b2bec3); }
+.theme-2020-10 { background: linear-gradient(135deg, #ff7675, #d63031); }
+.theme-2020-11 { background: linear-gradient(135deg, #00b894, #55efc4); }
+
+/* شبكة الأمثلة */
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.example-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.example-card:hover {
+    transform: translateY(-5px);
+}
+
+.example-header {
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.theme-example-1 { background: linear-gradient(135deg, #34495e, #2c3e50); }
+.theme-example-2 { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
+.theme-example-3 { background: linear-gradient(135deg, #636e72, #2d3436); }
+
+.example-body {
+    padding: 20px;
+}
+
+.example-body p {
+    margin-bottom: 15px;
+}
+
+.theme-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.theme-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* النافذة المنبثقة */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    animation: slideDown 0.4s ease-out;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.close-modal:hover {
+    color: var(--accent-color);
+}
+
+#theme-modal-preview {
+    height: 200px;
+    border-radius: 6px;
+    margin: 20px 0;
+}
+
+#apply-theme-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto 0;
+    width: 200px;
+    text-align: center;
+}
+
+#apply-theme-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* التذييل */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color);
+}
+
+/* زر العودة للأعلى */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: var(--secondary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+#back-to-top:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* الرسوم المتحركة */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.icon-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.zoom-animation {
+    transition: transform 0.3s ease;
+}
+
+.zoom-animation:hover {
+    transform: scale(1.05);
+}
+
+/* التكيف مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    header {
+        padding: 40px 0;
+    }
+    
+    .sticky-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .sticky-nav li {
+        margin: 5px 0;
+    }
+    
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .examples-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="animated-title">تنسيق المستندات والسمات في وورد</h1>
+            <p class="subtitle">دليل شامل لاستخدام السمات وتنسيق المستندات بشكل احترافي</p>
+        </div>
+    </header>
+
+    <nav class="sticky-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#themes-section">السمات (Themes)</a></li>
+                <li><a href="#formatting-tools">أدوات التنسيق</a></li>
+                <li><a href="#examples">أمثلة تطبيقية</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="themes-section" class="section-card">
+            <div class="section-header">
+                <i class="fas fa-palette icon-animation"></i>
+                <h2>السمات (Themes) في وورد</h2>
+            </div>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>السمات (Themes) في برنامج Word هي مجموعات متكاملة من الألوان والخطوط والتأثيرات التي تعطي مستندك مظهرًا متسقًا واحترافيًا.</p>
+                    <p>كيفية تطبيق سمة على المستند:</p>
+                    <ol>
+                        <li>انتقل إلى تبويب "تصميم" (Design)</li>
+                        <li>انقر على "سمات" (Themes)</li>
+                        <li>اختر السمة التي تريدها من القائمة</li>
+                        <li>سيتم تطبيق الألوان والخطوط والتأثيرات تلقائيًا</li>
+                    </ol>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/themes.PNG" alt="قائمة السمات في وورد" class="zoom-animation">
+                    <p class="image-caption">قائمة السمات المتاحة في Microsoft Word</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">السمات المتاحة حسب السنوات</h3>
+            <div class="themes-table-container">
+                <table class="themes-table">
+                    <thead>
+                        <tr>
+                            <th colspan="11">السمات (Themes)</th>
+                        </tr>
+                        <tr>
+                            <th>2019-1</th>
+                            <th>2019-2</th>
+                            <th>2019-3</th>
+                            <th>2019-4</th>
+                            <th>2019-5</th>
+                            <th>2019-6</th>
+                            <th>2019-7</th>
+                            <th>2019-8</th>
+                            <th>2019-9</th>
+                            <th>2019-10</th>
+                            <th>2019-11</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="theme-preview theme-2019-1"></div></td>
+                            <td><div class="theme-preview theme-2019-2"></div></td>
+                            <td><div class="theme-preview theme-2019-3"></div></td>
+                            <td><div class="theme-preview theme-2019-4"></div></td>
+                            <td><div class="theme-preview theme-2019-5"></div></td>
+                            <td><div class="theme-preview theme-2019-6"></div></td>
+                            <td><div class="theme-preview theme-2019-7"></div></td>
+                            <td><div class="theme-preview theme-2019-8"></div></td>
+                            <td><div class="theme-preview theme-2019-9"></div></td>
+                            <td><div class="theme-preview theme-2019-10"></div></td>
+                            <td><div class="theme-preview theme-2019-11"></div></td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th>2020-1</th>
+                            <th>2020-2</th>
+                            <th>2020-3</th>
+                            <th>2020-4</th>
+                            <th>2020-5</th>
+                            <th>2020-6</th>
+                            <th>2020-7</th>
+                            <th>2020-8</th>
+                            <th>2020-9</th>
+                            <th>2020-10</th>
+                            <th>2020-11</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="theme-preview theme-2020-1"></div></td>
+                            <td><div class="theme-preview theme-2020-2"></div></td>
+                            <td><div class="theme-preview theme-2020-3"></div></td>
+                            <td><div class="theme-preview theme-2020-4"></div></td>
+                            <td><div class="theme-preview theme-2020-5"></div></td>
+                            <td><div class="theme-preview theme-2020-6"></div></td>
+                            <td><div class="theme-preview theme-2020-7"></div></td>
+                            <td><div class="theme-preview theme-2020-8"></div></td>
+                            <td><div class="theme-preview theme-2020-9"></div></td>
+                            <td><div class="theme-preview theme-2020-10"></div></td>
+                            <td><div class="theme-preview theme-2020-11"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="formatting-tools" class="section-card">
+            <div class="section-header">
+                <i class="fas fa-edit icon-animation"></i>
+                <h2>أدوات تنسيق المستندات</h2>
+            </div>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>يقدم Word مجموعة متنوعة من أدوات التنسيق لجعل مستنداتك أكثر جاذبية واحترافية:</p>
+                    <ul>
+                        <li><strong>تنسيق الفقرات:</strong> محاذاة، تباعد، مسافة بادئة</li>
+                        <li><strong>تنسيق الخطوط:</strong> نوع الخط، حجمه، لونه، تأثيراته</li>
+                        <li><strong>الأنماط المسبقة:</strong> عناوين، عناوين فرعية، نصوص عادية</li>
+                        <li><strong>إدراج العناصر:</strong> جداول، صور، أشكال، رسوم بيانية</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/ادوات التنسيق.PNG" alt="أدوات التنسيق في وورد" class="zoom-animation">
+                    <p class="image-caption">شريط أدوات التنسيق في Microsoft Word</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples" class="section-card">
+            <div class="section-header">
+                <i class="fas fa-file-alt icon-animation"></i>
+                <h2>أمثلة تطبيقية</h2>
+            </div>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-header theme-example-1">
+                        <h3>تقرير سنوي</h3>
+                    </div>
+                    <div class="example-body">
+                        <p>استخدام سمة احترافية مع خطوط واضحة وألوان متناسقة للتقرير السنوي للشركة.</p>
+                        <button class="theme-btn" data-theme="theme-2019-5">عرض السمة</button>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header theme-example-2">
+                        <h3>عرض تقديمي</h3>
+                    </div>
+                    <div class="example-body">
+                        <p>سمة حديثة بألوان جريئة وتأثيرات مميزة للعروض التقديمية المهمة.</p>
+                        <button class="theme-btn" data-theme="theme-2020-3">عرض السمة</button>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header theme-example-3">
+                        <h3>ورقة بحثية</h3>
+                    </div>
+                    <div class="example-body">
+                        <p>سمة أكاديمية بخطوط تقليدية وألوان محايدة للورقات البحثية والمستندات العلمية.</p>
+                        <button class="theme-btn" data-theme="theme-2020-8">عرض السمة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 تنسيق المستندات والسمات في مايكروسوفت وورد. جميع الحقوق محفوظة.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" title="العودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
+
+    <div id="theme-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-theme-title">معاينة السمة</h3>
+            <div id="theme-modal-preview"></div>
+            <p id="modal-theme-desc">هذه معاينة للون السمة المحددة وتأثيراتها الأساسية.</p>
+            <button id="apply-theme-btn">تطبيق هذه السمة</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // زر العودة للأعلى
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'flex';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // تنعيم التمرير للروابط الداخلية
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // تأثيرات عند التمرير
+    const animateOnScroll = function() {
+        const sections = document.querySelectorAll('.section-card');
+        
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (sectionTop < windowHeight - 100) {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // تعيين الخصائص الأولية للرسوم المتحركة
+    document.querySelectorAll('.section-card').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // تشغيلها مرة عند التحميل
+    
+    // تأثيرات للأيقونات
+    const icons = document.querySelectorAll('.icon-animation');
+    icons.forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+            this.style.animation = 'none';
+            this.offsetHeight; // إعادة التدفق
+            this.style.animation = null;
+        });
+    });
+    
+    // النافذة المنبثقة للسمات
+    const modal = document.getElementById('theme-modal');
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    const closeModal = document.querySelector('.close-modal');
+    const themeModalPreview = document.getElementById('theme-modal-preview');
+    const modalThemeTitle = document.getElementById('modal-theme-title');
+    const modalThemeDesc = document.getElementById('modal-theme-desc');
+    
+    themeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const themeClass = this.getAttribute('data-theme');
+            const themeName = this.textContent.replace('عرض السمة', '').trim();
+            
+            // تعيين خصائص السمة في النافذة المنبثقة
+            themeModalPreview.className = '';
+            themeModalPreview.classList.add('theme-preview', themeClass);
+            themeModalPreview.style.width = '100%';
+            themeModalPreview.style.height = '200px';
+            
+            modalThemeTitle.textContent = `معاينة سمة: ${themeName}`;
+            modalThemeDesc.textContent = getThemeDescription(themeClass);
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // وصف السمات
+    function getThemeDescription(themeClass) {
+        const descriptions = {
+            'theme-2019-1': 'سمة زرقاء وخضراء مناسبة للمستندات العامة والعروض التقديمية.',
+            'theme-2019-2': 'سمة حمراء وبرتقالية مناسبة للإعلانات والعروض الجريئة.',
+            'theme-2019-3': 'سمة بنفسجية وزرقاء مناسبة للمستندات الإبداعية والفنية.',
+            'theme-2019-5': 'سمة داكنة مناسبة للتقارير الرسمية والمستندات الاحترافية.',
+            'theme-2020-3': 'سمة وردية مناسبة للعروض التقديمية المميزة والمستندات الإبداعية.',
+            'theme-2020-8': 'سمة فاتحة مناسبة للمستندات الأكاديمية والبحوث العلمية.'
+        };
+        
+        return descriptions[themeClass] || 'هذه معاينة للون السمة المحددة وتأثيراتها الأساسية.';
+    }
+    
+    // تطبيق السمة (وهمي للعرض)
+    document.getElementById('apply-theme-btn').addEventListener('click', function() {
+        alert('تم تطبيق السمة بنجاح! (هذه وظيفة وهمية للعرض التوضيحي)');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+});
+    </script>
+</body>
+</html>

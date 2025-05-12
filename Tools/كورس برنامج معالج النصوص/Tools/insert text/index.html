@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خيارات النص في Microsoft Word</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* إعادة تعيين بعض الإعدادات الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    direction: rtl;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* تنسيق الهيدر الرئيسي */
+.main-header {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* تنسيق القائمة */
+.main-nav {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.main-nav li {
+    margin: 0 1rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #8e44ad;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav a:hover {
+    color: #9b59b6;
+}
+
+.main-nav i {
+    margin-left: 8px;
+}
+
+/* تنسيق الأقسام الرئيسية */
+.section-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 2rem 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.section-card h2 {
+    color: #8e44ad;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #9b59b6;
+    display: inline-block;
+}
+
+.section-card h2 i {
+    margin-left: 10px;
+    color: #9b59b6;
+}
+
+.content-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.image-content {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.image-content img:hover {
+    transform: scale(1.02);
+}
+
+.img-caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* تنسيق الخطوات */
+.steps {
+    margin: 1.5rem 0;
+    padding-right: 1.5rem;
+}
+
+.steps li {
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+.steps li:before {
+    content: "→";
+    position: absolute;
+    right: -1.5rem;
+    color: #9b59b6;
+}
+
+/* تنسيق مربع النصيحة */
+.tip-box {
+    background-color: #f5eef8;
+    border-right: 4px solid #9b59b6;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.tip-box i {
+    color: #9b59b6;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+.tip-box p {
+    margin: 0;
+}
+
+/* تنسيق العروض التوضيحية */
+.quick-parts-demo {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.quick-part-item {
+    background-color: #f5eef8;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    border: 1px dashed #9b59b6;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.signature-demo {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.signature-line {
+    display: inline-block;
+    text-align: right;
+    padding: 1rem 2rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.signature-details {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.wordart-demo {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.wordart-style1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transform: rotate(-5deg);
+    animation: bounce 2s infinite;
+}
+
+.wordart-style2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #3498db, #9b59b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.wordart-style3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #27ae60;
+    text-shadow: 0 0 5px #fff, 0 0 10px #27ae60;
+    animation: glow 2s infinite alternate;
+}
+
+.datetime-demo {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.auto-update-date {
+    font-size: 1.2rem;
+    color: #8e44ad;
+    font-weight: bold;
+}
+
+.dropcap-demo {
+    margin-top: 1.5rem;
+    line-height: 1.8;
+}
+
+.with-dropcap {
+    position: relative;
+    padding-right: 3rem;
+}
+
+.dropcap {
+    float: right;
+    font-size: 4rem;
+    line-height: 0.8;
+    margin-left: 0.5rem;
+    color: #9b59b6;
+    font-weight: bold;
+}
+
+.object-demo {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.embedded-object {
+    display: inline-block;
+    padding: 2rem;
+    border: 2px dashed #9b59b6;
+    border-radius: 8px;
+    background-color: #f5eef8;
+}
+
+.embedded-object i {
+    font-size: 3rem;
+    color: #27ae60;
+    margin-bottom: 1rem;
+}
+
+.textbox-demo {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.text-box-example {
+    width: 80%;
+    padding: 1.5rem;
+    background-color: #f5eef8;
+    border: 1px solid #9b59b6;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-box-example h3 {
+    color: #8e44ad;
+    margin-bottom: 0.5rem;
+}
+
+/* تنسيق الفوتر الرئيسي */
+.main-footer {
+    background-color: #8e44ad;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #f1c40f;
+}
+
+/* تنسيق نموذج الصورة */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #bbb;
+}
+
+/* الرسوم المتحركة */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #27ae60; }
+    to { text-shadow: 0 0 10px #fff, 0 0 20px #27ae60; }
+}
+
+/* التجاوب مع أحجام الشاشات */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2rem;
+    }
+    
+    .main-header p {
+        font-size: 1rem;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main-nav li {
+        margin: 0.5rem 0;
+    }
+    
+    .content-box {
+        flex-direction: column;
+    }
+    
+    .text-content, .image-content {
+        min-width: 100%;
+    }
+    
+    .wordart-demo {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section-card {
+        padding: 1.5rem;
+    }
+    
+    .steps li:before {
+        display: none;
+    }
+    
+    .quick-parts-demo {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>خيارات النص المتقدمة في Microsoft Word</h1>
+            <p>استكشاف أدوات Quick Parts وWordArt والمزيد</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#quick-parts"><i class="fas fa-cubes"></i> Quick Parts</a></li>
+                <li><a href="#signature"><i class="fas fa-signature"></i> Signature Line</a></li>
+                <li><a href="#wordart"><i class="fas fa-paint-brush"></i> WordArt</a></li>
+                <li><a href="#datetime"><i class="fas fa-clock"></i> Date & Time</a></li>
+                <li><a href="#dropcap"><i class="fas fa-text-height"></i> Drop Cap</a></li>
+                <li><a href="#object"><i class="fas fa-cube"></i> Object</a></li>
+                <li><a href="#text"><i class="fas fa-font"></i> Text</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="quick-parts" class="section-card">
+            <h2><i class="fas fa-cubes"></i> Quick Parts</h2>
+            <div class="content-box">
+                <div class="text-content">
+                    <p>أداة Quick Parts تتيح لك حفظ وإعادة استخدام المحتوى في مستندات Word.</p>
+                    <ol class="steps">
+                        <li>انتقل إلى تبويب "Insert"</li>
+                        <li>انقر على "Quick Parts"</li>
+                        <li>اختر "Building Blocks Organizer" لعرض كل القطع المتاحة</li>
+                        <li>حدد القطعة التي تريد إدراجها وانقر "Insert"</li>
+                        <li>لإنشاء قطعة جديدة، حدد النص ثم اختر "Save Selection to Quick Part Gallery"</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>يمكنك استخدام Quick Parts لحفظ توقيعاتك، رؤوس الصفحات، أو أي نص تستخدمه بشكل متكرر.</p>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/quick parts.PNG" alt="شاشة Quick Parts في الوورد" class="zoomable">
+                    <p class="img-caption">قائمة Quick Parts في Microsoft Word</p>
+                </div>
+            </div>
+            <div class="quick-parts-demo">
+                <div class="quick-part-item">عنوان المستند</div>
+                <div class="quick-part-item">توقيع</div>
+                <div class="quick-part-item">رأس الصفحة</div>
+            </div>
+        </section>
+
+        <section id="signature" class="section-card">
+            <h2><i class="fas fa-signature"></i> Signature Line</h2>
+            <div class="content-box">
+                <div class="text-content">
+                    <p>إضافة سطر توقيع يعطي مظهرًا احترافيًا للمستندات الرسمية.</p>
+                    <ol class="steps">
+                        <li>انتقل إلى تبويب "Insert"</li>
+                        <li>انقر على "Signature Line"</li>
+                        <li>اختر "Microsoft Office Signature Line"</li>
+                        <li>املأ معلومات التوقيع (الاسم، المنصب، البريد الإلكتروني)</li>
+                        <li>انقر "OK" لإدراج سطر التوقيع</li>
+                        <li>للتوقيع، انقر نقرًا مزدوجًا على سطر التوقيع</li>
+                    </ol>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/signature.PNG" alt="شاشة إضافة توقيع في الوورد" class="zoomable">
+                    <p class="img-caption">إضافة سطر توقيع في Microsoft Word</p>
+                </div>
+            </div>
+            <div class="signature-demo">
+                <div class="signature-line">
+                    <p>التوقيع: ___________________________</p>
+                    <p class="signature-details">الاسم: أحمد محمد<br>المنصب: مدير المشروع</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="wordart" class="section-card">
+            <h2><i class="fas fa-paint-brush"></i> WordArt</h2>
+            <div class="content-box">
+                <div class="text-content">
+                    <p>WordArt يسمح لك بإنشاء نصوص فنية بلمسة إبداعية.</p>
+                    <ol class="steps">
+                        <li>انتقل إلى تبويب "Insert"</li>
+                        <li>انقر على "WordArt"</li>
+                        <li>اختر نمطًا من المعرض</li>
+                        <li>اكتب النص الذي تريد تحويله إلى WordArt</li>
+                        <li>استخدم أدوات التنسيق لتعديل المظهر</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>يمكنك تغيير لون النص، إضافة ظل، انعكاس، توهج، وتحويل النص إلى أشكال مختلفة.</p>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/wordart.PNG" alt="شاشة WordArt في الوورد" class="zoomable">
+                    <p class="img-caption">خيارات WordArt في Microsoft Word</p>
+                </div>
+            </div>
+            <div class="wordart-demo">
+                <div class="wordart-style1">إبداع</div>
+                <div class="wordart-style2">إبتكار</div>
+                <div class="wordart-style3">تميز</div>
+            </div>
+        </section>
+
+        <section id="datetime" class="section-card">
+            <h2><i class="fas fa-clock"></i> Date & Time</h2>
+            <div class="content-box">
+                <div class="text-content">
+                    <p>إدراج التاريخ والوقت بشكل تلقائي يمكن أن يكون مفيدًا للمستندات الرسمية.</p>
+                    <ol class="steps">
+                        <li>انتقل إلى تبويب "Insert"</li>
+                        <li>انقر على "Date & Time"</li>
+                        <li>اختر التنسيق المفضل من القائمة</li>
+                        <li>حدد "Update automatically" لتحديث التاريخ تلقائيًا عند فتح الملف</li>
+                        <li>انقر "OK" لإدراج التاريخ</li>
+                    </ol>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/date time.PNG" alt="شاشة التاريخ والوقت في الوورد" class="zoomable">
+                    <p class="img-caption">إدراج التاريخ والوقت في Microsoft Word</p>
+                </div>
+            </div>
+            <div class="datetime-demo">
+                <div class="auto-update-date">آخر تحديث: <span id="current-date"></span></div>
+            </div>
+        </section>
+
+        <section id="dropcap" class="section-card">
+            <h2><i class="fas fa-text-height"></i> Drop Cap</h2>
+            <div class="content-box">
+                <div class="text-content">
+                    <p>Drop Cap يضيف لمسة جمالية عن طريق تكبير الحرف الأول في الفقرة.</p>
+                    <ol class="steps">
+                        <li>ضع المؤشر في بداية الفقرة</li>
+                        <li>انتقل إلى تبويب "Insert"</li>
+                        <li>انقر على "Drop Cap"</li>
+                        <li>اختر "Dropped" أو "In margin"</li>
+                        <li>للتخصيص، اختر "Drop Cap Options"</li>
+                    </ol>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/drop cap.PNG" alt="شاشة Drop Cap في الوورد" class="zoomable">
+                    <p class="img-caption">إضافة Drop Cap في Microsoft Word</p>
+                </div>
+            </div>
+            <div class="dropcap-demo">
+                <p class="with-dropcap"><span class="dropcap">ب</span>سم الله الرحمن الرحيم. الحمد لله رب العالمين، الرحمن الرحيم، مالك يوم الدين. إياك نعبد وإياك نستعين، اهدنا الصراط المستقيم، صراط الذين أنعمت عليهم غير المغضوب عليهم ولا الضالين.</p>
+            </div>
+        </section>
+
+        <section id="object" class="section-card">
+            <h2><i class="fas fa-cube"></i> Object</h2>
+            <div class="content-box">
+                <div class="text-content">
+                    <p>إدراج كائنات خارجية مثل مستندات أخرى أو جداول بيانات.</p>
+                    <ol class="steps">
+                        <li>انتقل إلى تبويب "Insert"</li>
+                        <li>انقر على "Object"</li>
+                        <li>اختر "Create New" لإنشاء كائن جديد أو "Create from File" لإدراج ملف موجود</li>
+                        <li>حدد نوع الكائن (مثل Excel Worksheet)</li>
+                        <li>انقر "OK" لإدراج الكائن</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>يمكنك ربط الكائن بالمصدر الأصلي بحيث يتم تحديثه تلقائيًا عند تغيير الملف الأصلي.</p>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/object.PNG" alt="شاشة إدراج كائن في الوورد" class="zoomable">
+                    <p class="img-caption">إدراج كائن في Microsoft Word</p>
+                </div>
+            </div>
+            <div class="object-demo">
+                <div class="embedded-object">
+                    <i class="fas fa-file-excel"></i>
+                    <p>كائن Excel المضمن</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="text" class="section-card">
+            <h2><i class="fas fa-font"></i> Text Box</h2>
+            <div class="content-box">
+                <div class="text-content">
+                    <p>إدراج مربعات نصية يمنحك تحكمًا أكبر في تنسيق النص وموضعه.</p>
+                    <ol class="steps">
+                        <li>انتقل إلى تبويب "Insert"</li>
+                        <li>انقر على "Text Box"</li>
+                        <li>اختر نموذجًا من المعرض أو اختر "Draw Text Box"</li>
+                        <li>ارسم المربع النصي في المكان المطلوب</li>
+                        <li>اكتب النص داخل المربع</li>
+                        <li>استخدم أدوات التنسيق لتعديل المظهر</li>
+                    </ol>
+                </div>
+                <div class="image-content">
+                    <img src="imgs/text box.PNG" alt="شاشة مربع النص في الوورد" class="zoomable">
+                    <p class="img-caption">إدراج مربع نصي في Microsoft Word</p>
+                </div>
+            </div>
+            <div class="textbox-demo">
+                <div class="text-box-example">
+                    <h3>ملاحظة هامة</h3>
+                    <p>هذا مثال على مربع نصي يمكنك تحريكه في أي مكان في الصفحة وتنسيقه بشكل منفصل عن النص الرئيسي.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>دليل تعليمي لخيارات النص في Microsoft Word</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- نموذج تكبير الصورة -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // تكبير الصور عند النقر عليها
+    const images = document.querySelectorAll('.zoomable');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const captionText = document.getElementById('caption');
+    
+    images.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.nextElementSibling.innerHTML;
+        });
+    });
+    
+    // إغلاق النموذج عند النقر على X
+    const span = document.querySelector('.close');
+    span.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+    
+    // إغلاق النموذج عند النقر خارج الصورة
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+    
+    // تنعيم التمرير عند النقر على روابط القائمة
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // عرض التاريخ الحالي
+    const dateElement = document.getElementById('current-date');
+    if (dateElement) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = new Date().toLocaleDateString('ar-EG', options);
+    }
+    
+    // إضافة تأثيرات عند التمرير
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.section-card');
+        const nav = document.querySelector('.main-nav');
+        
+        // تغيير لون القائمة عند التمرير
+        if (window.scrollY > 100) {
+            nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+            nav.style.background = 'rgba(255, 255, 255, 0.95)';
+        } else {
+            nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            nav.style.background = '#fff';
+        }
+        
+        // إضافة تأثيرات للعناصر عند ظهورها
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (sectionTop < windowHeight - 100) {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }
+        });
+    });
+    
+    // تهيئة العناصر للرسوم المتحركة
+    const sections = document.querySelectorAll('.section-card');
+    sections.forEach((section, index) => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        section.style.transitionDelay = `${index * 0.1}s`;
+    });
+    
+    // تشغيل الرسوم المتحركة عند التحميل
+    setTimeout(() => {
+        window.dispatchEvent(new Event('scroll'));
+    }, 500);
+});
+    </script>
+</body>
+</html>

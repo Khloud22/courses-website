@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تخصيص Windows 10 - دليل المتدرب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #0078d7;
+    --accent-color: #ffb900;
+    --light-color: #f3f3f3;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --text-light: #7f8c8d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f5f7fa;
+    direction: rtl;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+header h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: var(--light-color);
+    font-size: 1rem;
+}
+
+/* Sidebar/Navigation Styles */
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar-header h3 {
+    color: white;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    padding: 15px;
+}
+
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.sidebar-menu a:hover {
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+}
+
+.sidebar-menu i {
+    margin-left: 10px;
+}
+
+/* Menu Button */
+.menu-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 999;
+    transition: var(--transition);
+}
+
+.menu-btn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Main Content Styles */
+main {
+    padding: 30px 0;
+}
+
+.course-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.course-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--light-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.course-section h2 i {
+    margin-left: 10px;
+}
+
+.section-content {
+    padding: 0 10px;
+}
+
+/* Definition Box */
+.definition-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.definition-box h3 {
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+}
+
+.definition-box h3 i {
+    margin-left: 10px;
+}
+
+/* Customization Options */
+.customization-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.option-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.option-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+/* Steps */
+.steps {
+    margin: 20px 0;
+}
+
+.step {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.step-number {
+    background-color: var(--secondary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+.step-content {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    flex-grow: 1;
+}
+
+/* Image Box */
+.image-box {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* Sort Options */
+.sort-options {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.sort-options h4 {
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sort-options h4 i {
+    margin-left: 10px;
+}
+
+.sort-options ul {
+    padding-right: 20px;
+}
+
+.sort-options li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.sort-options i {
+    margin-left: 10px;
+    color: var(--secondary-color);
+}
+
+/* Tip Box */
+.tip-box {
+    background-color: #e3f2fd;
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.tip-box h4 {
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tip-box h4 i {
+    margin-left: 10px;
+}
+
+/* Background Options */
+.background-options {
+    margin: 30px 0;
+}
+
+.option-tabs {
+    margin: 20px 0;
+}
+
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 15px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.tab-btn i {
+    margin-left: 8px;
+}
+
+.tab-btn.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Note Box */
+.note-box {
+    background-color: #fff8e1;
+    border-left: 4px solid var(--accent-color);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.note-box h4 {
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.note-box h4 i {
+    margin-left: 10px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 5px;
+    color: var(--light-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    header p {
+        font-size: 0.9rem;
+    }
+    
+    .course-section {
+        padding: 15px;
+    }
+    
+    .customization-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .tab-buttons {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    
+    .step {
+        flex-direction: column;
+    }
+    
+    .step-number {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fab fa-windows"></i> تخصيص Windows 10</h1>
+            <p>دليل المتدرب 2025 - قسم تكنولوجيا التعليم و المعلومات</p>
+        </div>
+    </header>
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>فهرس المحتويات</h3>
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#section1"><i class="fas fa-desktop"></i> تخصيص سطح المكتب</a></li>
+            <li><a href="#section2"><i class="fas fa-icons"></i> تغيير حجم وترتيب الأيقونات</a></li>
+            <li><a href="#section3"><i class="fas fa-image"></i> تخصيص خلفية سطح المكتب</a></li>
+            <li><a href="#section4"><i class="fas fa-palette"></i> السمات</a></li>
+            <li><a href="#section5"><i class="fas fa-lock"></i> تخصيص شاشة التأمين</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <button class="menu-btn"><i class="fas fa-bars"></i> الفهرس</button>
+
+        <section id="section1" class="course-section">
+            <h2><i class="fas fa-desktop"></i> تخصيص سطح المكتب</h2>
+            <div class="section-content">
+                <p>عقب استكشاف Windows 10، قد تشعر بحماسة تجاه الألوان والتصميم الرائع المدمج بشكل افتراضي أو قد تميل إلى تخصيصه ليتناسب مع تفضيلاتك. يعرض Windows 10 خيارات رائعة لإضفاء طابع شخصي على بيئة النوافذ لديك.</p>
+                
+                <div class="definition-box">
+                    <h3><i class="fas fa-info-circle"></i> أهمية التخصيص</h3>
+                    <p>سطح مكتب Windows 10 هو المكان الذي تراه في الغالب أثناء العمل على الحاسب الآلي. ولذلك تظهر أهمية تخصيص سطح المكتب الخاص بك بالطريقة التي تقضاها.</p>
+                </div>
+                
+                <div class="customization-options">
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-expand-alt"></i>
+                        </div>
+                        <h3>تغيير حجم الأيقونات</h3>
+                        <p>Windows 10 يوفر ثلاث طرق لعرض أيقونات سطح المكتب: كبيرة، متوسطة، وصغيرة.</p>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-sort-alpha-down"></i>
+                        </div>
+                        <h3>ترتيب الأيقونات</h3>
+                        <p>يمكنك ترتيب الأيقونات يدويًا أو اختيار فرزها تلقائيًا حسب الاسم، الحجم، النوع أو تاريخ التعديل.</p>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h3>خلفية سطح المكتب</h3>
+                        <p>يمكنك تخصيص خلفية سطح المكتب باختيار صورة، لون ثابت أو عرض شرائح صور.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section2" class="course-section">
+            <h2><i class="fas fa-icons"></i> تغيير حجم وترتيب الأيقونات</h2>
+            <div class="section-content">
+                <div class="resize-icons">
+                    <h3><i class="fas fa-expand-alt"></i> تغيير حجم أيقونات سطح المكتب</h3>
+                    <p>Windows 10 ثلاث طرق لعرض أيقونات سطح المكتب: أيقونات كبيرة (Large icons)، أيقونات متوسطة (Medium icons)، أيقونات صغيرة (Small icons).</p>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p>انقر بزر الفأرة الأيمن فوق منطقة فارغة من سطح المكتب، ستظهر قائمة مختصرة.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p>أشر إلى خيار عرض (View).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p>اختر خيار طريقة العرض المرغوب فيها للأيقونات من القائمة التي تظهر.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-box">
+                        <img src="imgs/desktop-icons.avif" alt="تغيير حجم الأيقونات">
+                    </div>
+                </div>
+                
+                <div class="arrange-icons">
+                    <h3><i class="fas fa-sort-alpha-down"></i> ترتيب الأيقونات (فرز حسب)</h3>
+                    <p>ليكون لديك سطح مكتب منظم، يجب ترتيب ما عليه من أيقونات. وهذا يسهل عليك طريقة الوصول إليها.</p>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p>انقر بزر الفأرة الأيمن فوق منطقة فارغة من سطح المكتب، ستظهر قائمة مختصرة.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p>أشر على خيار فرز حسب (Sort by).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p>اختر خيار طريقة الفرز المرغوب فيها من القائمة التي تظهر.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sort-options">
+                        <h4><i class="fas fa-check-circle"></i> خيارات الفرز المتاحة:</h4>
+                        <ul>
+                            <li><i class="fas fa-font"></i> الاسم (Name)</li>
+                            <li><i class="fas fa-weight"></i> الحجم (Size)</li>
+                            <li><i class="fas fa-calendar-alt"></i> تاريخ التعديل (Date modified)</li>
+                            <li><i class="fas fa-tag"></i> نوع العنصر (Item type)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section3" class="course-section">
+            <h2><i class="fas fa-image"></i> تخصيص خلفية سطح المكتب</h2>
+            <div class="section-content">
+                <p>إن مظهر خلفية سطح المكتب له أهمية كبيرة، حيث أنك تعود في الغالب إلى سطح المكتب أثناء العمل على الحاسب الآلي. يشعرك سطح المكتب المبتهج بالحماسة.</p>
+                
+                <div class="open-settings">
+                    <h3><i class="fas fa-cog"></i> فتح إعدادات التخصيص</h3>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p>انقر فوق زر ابدأ (Start).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p>انقر فوق أيقونة الإعدادات (Settings) من قائمة ابدأ (Start).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p>انقر فوق فئة التخصيص (Personalization).</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h4><i class="fas fa-lightbulb"></i> تلميح</h4>
+                        <p>يمكنك أيضا فتح إعدادات التخصيص (Personalization Settings) بالنقر بزر الفأرة الأيمن فوق سطح المكتب واختيار التخصيص (Personalize).</p>
+                    </div>
+                </div>
+                
+                <div class="background-options">
+                    <div class="option-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="picture"><i class="fas fa-image"></i> صورة</button>
+                            <button class="tab-btn" data-tab="color"><i class="fas fa-palette"></i> لون ثابت</button>
+                            <button class="tab-btn" data-tab="slideshow"><i class="fas fa-images"></i> عرض شرائح</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="picture">
+                            <h3><i class="fas fa-image"></i> تعيين صورة كخلفية</h3>
+                            <p>يمكنك اختيار صورة من الصور الافتراضية التي يوفرها Windows 10 أو استعراض وتصفح الحاسب الآلي لتحديد مكان الصورة.</p>
+                            
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <p>انقر فوق خيار الخلفية (Background) من جزء التخصيص (Personalization) جهة اليسار.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <p>انقر فوق قائمة الخلفية (Background menu) في اليمين واختر خيار الصورة (Picture) من القائمة التي تظهر.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <p>اختر صورة من الصور المعروضة أسفل "اختر صورتك" (Choose your picture).</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <p>لاختيار صورة من الحاسب الآلي، انقر فوق الزر استعراض (Browse)، حدد الصورة وانقر فوق زر اختيار صورة (Choose Picture).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="color">
+                            <h3><i class="fas fa-palette"></i> تعيين لون ثابت كخلفية</h3>
+                            <p>إذا كنت تفضل خلفية سطح مكتب بسيطة، يمكنك اختيار لون ثابت من مجموعة متنوعة من الألوان المتاحة.</p>
+                            
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <p>انقر فوق خيار الخلفية (Background) من جزء التخصيص (Personalization) جهة اليسار.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <p>انقر فوق قائمة الخلفية (Background menu) في اليمين واختر لونًا ثابتًا من القائمة التي تظهر.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <p>اختر لونًا من شبكة ألوان الخلفية (Background colors) التي تظهر أدناه.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="slideshow">
+                            <h3><i class="fas fa-images"></i> تعيين عرض شرائح كخلفية</h3>
+                            <p>إذا كنت تود تغيير صورة خلفية سطح المكتب تلقائيًا بمرور فترة محددة من الوقت، يمكنك اختيار خيار عرض شرائح (Slideshow) لخلفية سطح المكتب.</p>
+                            
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <p>انقر فوق خيار الخلفية (Background) من جزء التخصيص (Personalization) جهة اليسار.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <p>انقر فوق قائمة الخلفية (Background menu) في اليمين واختر عرض الشرائح (Slideshow) من القائمة التي تظهر.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <p>انقر فوق زر استعراض (Browse) لتحديد مكان مجلد الصور.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <p>حدد مكان مجلد الصور وانقر فوق زر اختيار هذا المجلد (Choose this folder).</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <p>اضبط مربع تغيير الصورة كل (Change picture every) لتحديد الفترة الزمنية لتغيير الصور.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> تلميح</h4>
+                                <p>يمكنك تعيين خيار تبديل (Shuffle) على تشغيل (ON) لعرض الصور في عرض شرائح بطريقة عشوائية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section4" class="course-section">
+            <h2><i class="fas fa-palette"></i> السمات</h2>
+            <div class="section-content">
+                <p>يتيح لك خيار السمات (Themes) في إعدادات التخصيص (Personalization) تغيير مظهر عناصر واجهة المستخدم الخاصة بالنوافذ مرة واحدة. تشبه السمة (Theme) حزمة التخصيص التي تحتوي على خلفيات سطح المكتب، وألوان، وشاشات توقف، وحتى أصوات للنظام.</p>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <p>انقر فوق خيار السمات (Themes) من جزء التخصيص جهة اليسار.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <p>انقر فوق رابط إعدادات السمة (Theme settings) أسفل خيار السمات (Themes) جهة اليمين.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <p>اختر سمة تفضلها من السمات المتاحة.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h4><i class="fas fa-lightbulb"></i> تلميح</h4>
+                    <p>يتيح لك الرابط "الحصول على سمات أكثر عبر Microsoft" تنزيل سمات إضافية من موقع ويب Microsoft.</p>
+                </div>
+                
+                <div class="image-box">
+                    <img src="imgs/Windows- themes.jpg" alt="سمات Windows 10">
+                </div>
+            </div>
+        </section>
+
+        <section id="section5" class="course-section">
+            <h2><i class="fas fa-lock"></i> تخصيص شاشة التأمين</h2>
+            <div class="section-content">
+                <p>يمكنك تخصيص شاشة التأمين (Lock Screen) في Windows 10 بعدة خيارات متعددة.</p>
+                
+                <div class="customization-options">
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h3>تغيير الصورة</h3>
+                        <p>اختيار صورة معينة أو عرض شرائح للصور على شاشة التأمين.</p>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>الإشعارات</h3>
+                        <p>تحديد التطبيقات التي تظهر إشعاراتها على شاشة التأمين.</p>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3>معلومات الحالة</h3>
+                        <p>اختيار التطبيقات التي تعرض معلومات سريعة على شاشة التأمين.</p>
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <h4><i class="fas fa-exclamation-circle"></i> ملاحظة</h4>
+                    <p>لقد تعرفت على ميزة شاشة التأمين (Lock Screen) الجديدة في Windows 10 في الجلسة السابقة.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Sidebar toggle functionality
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.querySelector('.close-btn');
+    
+    menuBtn.addEventListener('click', function() {
+        sidebar.classList.add('active');
+    });
+    
+    closeBtn.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+    });
+    
+    // Tab functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            this.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close sidebar if open
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+    
+    // Highlight current section in sidebar
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.course-section');
+        const scrollPosition = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.backgroundColor = 'var(--light-color)';
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.color = 'var(--secondary-color)';
+            } else {
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.backgroundColor = '';
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.color = '';
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>

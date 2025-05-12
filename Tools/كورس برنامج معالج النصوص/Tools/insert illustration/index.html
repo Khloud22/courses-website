@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح الأشكال الذكية ثلاثية الأبعاد</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #ff6b6b;
+            --accent-color: #6bffb4;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 5px solid white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            color: var(--primary-color);
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            width: 300px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+    height: 265px;
+    display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>الأشكال الذكية ثلاثية الأبعاد</h1>
+            <p class="subtitle">استكشف عالم الرسومات التوضيحية المذهلة والمؤثرات البصرية الجذابة</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <img src="imgs/illustration2.png" alt="" class="main-image" id="mainImage">
+        
+        <h2 class="section-title">عناصر الصورة الرئيسية</h2>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shapes"></i>
+                </div>
+                <h3 class="feature-title">أشكال ثلاثية الأبعاد</h3>
+                <p>تظهر الصورة أشكالاً هندسية ثلاثية الأبعاد مع تأثيرات الإضاءة والظل التي تعطي إحساساً بالعمق والبعد الثالث.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="feature-title">نقاط الإيضاح</h3>
+                <p>تحتوي الأشكال على نقاط إيضاح توضح الأجزاء المهمة وتساعد في شرح المفاهيم المعقدة بطريقة بصرية مبسطة.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3 class="feature-title">ألوان جذابة</h3>
+                <p>استخدام ألوان متباينة ومتناسقة يعزز من جمالية التصميم ويجذب الانتباه إلى العناصر الرئيسية في الصورة.</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">أمثلة على الرسومات التوضيحية</h2>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="imgs/3D pyramid shape.png" alt="شكل ثلاثي الأبعاد 1">
+                <div class="gallery-caption">شكل هرمي ثلاثي الأبعاد</div>
+            </div>
+            <div class="gallery-item">
+                <img src="imgs/multicolored pie chart.png" alt="شكل ثلاثي الأبعاد 2">
+                <div class="gallery-caption">مخطط دائري متعدد الألوان</div>
+            </div>
+            <div class="gallery-item">
+                <img src="imgs/Overlapping shapes with focal points.png" alt="شكل ثلاثي الأبعاد 3">
+                <div class="gallery-caption">أشكال متداخلة مع نقاط إيضاح</div>
+            </div>
+            <div class="gallery-item">
+                <img src="imgs/3D flowchart.png" alt="شكل ثلاثي الأبعاد 4">
+                <div class="gallery-caption">مخطط انسيابي ثلاثي الأبعاد</div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2 class="section-title">فوائد استخدام الأشكال الذكية</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="feature-title">تبسيط المفاهيم</h3>
+                    <p>تحويل الأفكار المعقدة إلى رسومات بصرية يسهل فهمها واستيعابها.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">عرض البيانات</h3>
+                    <p>تمثيل البيانات والمعلومات الإحصائية بطريقة جذابة وسهلة القراءة.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="feature-title">جذب الانتباه</h3>
+                    <p>الأشكال ثلاثية الأبعاد الملونة تلفت انتباه المشاهد وتزيد من تركيزه.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <h3>تواصل معنا للمزيد من المعلومات</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>جميع الحقوق محفوظة &copy; 2023</p>
+        </div>
+    </footer>
+
+    <script>
+        // تأثيرات JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير تحميل الصفحة
+            const elements = document.querySelectorAll('.feature-card, .gallery-item');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // تأثير عند التمرير
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const mainImage = document.getElementById('mainImage');
+                
+                // تأثير الطفو على الصورة الرئيسية
+                mainImage.style.transform = `translateY(${scrollPosition * 0.1}px)`;
+                
+                // تأثير التعتيم على العناصر عند التمرير
+                elements.forEach(el => {
+                    const elPosition = el.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if(elPosition < screenPosition) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // تهيئة العناصر للتحريك
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.5s ease';
+            });
+        });
+    </script>
+</body>
+</html>

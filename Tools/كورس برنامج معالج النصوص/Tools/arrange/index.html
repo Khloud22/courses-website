@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح أدوات الترتيب والتنسيق</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A6FA5;
+            --secondary-color: #3A5A78;
+            --accent-color: #FF7E5F;
+            --light-color: #F8F9FA;
+            --dark-color: #2E2E3A;
+            --success-color: #4CC9F0;
+            --warning-color: #F8961E;
+            --info-color: #6BBF59;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #F5F7FA;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border-bottom: 5px solid var(--primary-color);
+        }
+        
+        .header h1 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+        
+        .header p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+        
+        .tool-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .tool-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #eee;
+        }
+        
+        .tool-header i {
+            font-size: 1.8rem;
+            margin-left: 15px;
+            color: var(--accent-color);
+        }
+        
+        .tool-header h2 {
+            color: var(--primary-color);
+        }
+        
+        .tool-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .tool-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: var(--transition);
+        }
+        
+        .tool-card:hover {
+            transform: scale(1.03);
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tool-card h3 i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .tool-card p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .visual-example {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            position: relative;
+        }
+        
+        .shape {
+            width: 80px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            font-weight: bold;
+            color: white;
+            border-radius: 6px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .shape:hover {
+            transform: scale(1.1);
+            z-index: 2;
+        }
+        
+        .shape-1 {
+            background-color: var(--primary-color);
+            z-index: 1;
+        }
+        
+        .shape-2 {
+            background-color: var(--accent-color);
+            z-index: 2;
+        }
+        
+        .shape-3 {
+            background-color: var(--info-color);
+            z-index: 3;
+        }
+        
+        .text-example {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px dashed #ccc;
+            border-radius: 6px;
+            background-color: rgba(248, 249, 250, 0.5);
+        }
+        
+        .highlight {
+            background-color: rgba(74, 111, 165, 0.1);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .tool-content {
+                flex-direction: column;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .tool-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-layer-group"></i> أدوات ترتيب وتنسيق العناصر</h1>
+            <p>شرح مفصل لأدوات التحكم في موضع العناصر وترتيبها في المستند</p>
+        </div>
+        
+        <!-- قسم الموضع -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <i class="fas fa-arrows-alt"></i>
+                <h2>الموضع (Position)</h2>
+            </div>
+            <div class="tool-content">
+                <div class="tool-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> الموضع النسبي</h3>
+                    <p>يحدد موقع العنصر بالنسبة لموقعه الطبيعي في المستند. يمكن تحريك العنصر من موقعه الأصلي باستخدام خصائص <span class="highlight">top</span>, <span class="highlight">right</span>, <span class="highlight">bottom</span>, <span class="highlight">left</span>.</p>
+                    <div class="visual-example">
+                        <div class="shape shape-1" style="position: relative; left: 20px;">نسبي</div>
+                        <div class="shape shape-2">عادي</div>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3><i class="fas fa-thumbtack"></i> الموضع المطلق</h3>
+                    <p>يحدد موقع العنصر بالنسبة لأقرب عنصر أب يحتوي على موضع محدد. يخرج العنصر من التدفق الطبيعي للصفحة.</p>
+                    <div class="visual-example" style="position: relative; height: 100px;">
+                        <div class="shape shape-1">أب</div>
+                        <div class="shape shape-2" style="position: absolute; top: 40px; left: 30px;">مطلق</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم التفاف النص -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <i class="fas fa-text-width"></i>
+                <h2>التفاف النص (Text Wrap)</h2>
+            </div>
+            <div class="tool-content">
+                <div class="tool-card">
+                    <h3><i class="fas fa-water"></i> التفاف حول العنصر</h3>
+                    <p>يتدفق النص حول العناصر العائمة مثل الصور أو الجداول. يمكن التحكم فيه باستخدام خاصية <span class="highlight">float</span>.</p>
+                    <div class="visual-example">
+                        <div style="float: left; margin: 0 15px 15px 0; width: 60px; height: 60px; background-color: var(--accent-color); display: flex; align-items: center; justify-content: center; color: white; border-radius: 6px;">صورة</div>
+                        <p class="text-example">هذا مثال على كيفية التفاف النص حول العناصر العائمة في المستند. النص سيتدفق حول الصورة أو العنصر العائم تلقائيًا.</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3><i class="fas fa-ban"></i> منع التفاف النص</h3>
+                    <p>يمنع تدفق النص حول العنصر باستخدام خاصية <span class="highlight">clear</span> لتحديد الجانب الذي يجب منع التفاف النص حوله.</p>
+                    <div class="visual-example">
+                        <div style="float: left; margin: 0 15px 15px 0; width: 60px; height: 60px; background-color: var(--accent-color); display: flex; align-items: center; justify-content: center; color: white; border-radius: 6px;">صورة</div>
+                        <p class="text-example" style="clear: left;">هذا النص لن يلتف حول الصورة بسبب تطبيق خاصية clear: left التي تمنع التفاف النص على الجانب الأيسر.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم مستويات العناصر -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <i class="fas fa-layer-group"></i>
+                <h2>مستويات العناصر (Z-Index)</h2>
+            </div>
+            <div class="tool-content">
+                <div class="tool-card">
+                    <h3><i class="fas fa-arrow-up"></i> إحضار مستوى للأمام</h3>
+                    <p>يجلب العنصر إلى المقدمة فوق العناصر الأخرى باستخدام زيادة قيمة <span class="highlight">z-index</span>. كلما زادت القيمة، ظهر العنصر أكثر في المقدمة.</p>
+                    <div class="visual-example" style="height: 120px; position: relative;">
+                        <div class="shape shape-1" style="position: absolute; top: 20px; left: 20px;">z:1</div>
+                        <div class="shape shape-2" style="position: absolute; top: 40px; left: 40px; z-index: 3;">z:3</div>
+                        <div class="shape shape-3" style="position: absolute; top: 60px; left: 60px; z-index: 2;">z:2</div>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3><i class="fas fa-arrow-down"></i> نقل مستوى للخلف</h3>
+                    <p>يرسل العنصر إلى الخلف خلف العناصر الأخرى باستخدام تقليل قيمة <span class="highlight">z-index</span>. القيم السالبة تضع العنصر خلف العناصر العادية.</p>
+                    <div class="visual-example" style="height: 120px; position: relative;">
+                        <div class="shape shape-1" style="position: absolute; top: 20px; left: 20px; z-index: 1;">z:1</div>
+                        <div class="shape shape-2" style="position: absolute; top: 40px; left: 40px; z-index: -1;">z:-1</div>
+                        <div class="shape shape-3" style="position: absolute; top: 60px; left: 60px; z-index: 0;">z:0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم المحاذاة -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <i class="fas fa-align-center"></i>
+                <h2>المحاذاة (Alignment)</h2>
+            </div>
+            <div class="tool-content">
+                <div class="tool-card">
+                    <h3><i class="fas fa-align-left"></i> محاذاة النص</h3>
+                    <p>تحديد اتجاه محاذاة النص (يمين، وسط، يسار، مبرر) باستخدام خاصية <span class="highlight">text-align</span>.</p>
+                    <div class="visual-example">
+                        <p class="text-example" style="text-align: right;">نص بمحاذاة لليمين</p>
+                        <p class="text-example" style="text-align: center;">نص ممركز</p>
+                        <p class="text-example" style="text-align: left;">نص بمحاذاة لليسار</p>
+                        <p class="text-example" style="text-align: justify;">نص مبرر على الجانبين. هذا النص سيمتد لملء العرض الكامل للعنصر.</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3><i class="fas fa-object-group"></i> محاذاة العناصر</h3>
+                    <p>محاذاة العناصر داخل حاوية باستخدام خاصية <span class="highlight">display: flex</span> وخصائص المحاذاة المرتبطة بها.</p>
+                    <div class="visual-example">
+                        <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                            <div class="shape shape-1" style="width: 50px; height: 50px;">1</div>
+                            <div class="shape shape-2" style="width: 50px; height: 50px;">2</div>
+                            <div class="shape shape-3" style="width: 50px; height: 50px;">3</div>
+                        </div>
+                        <div style="display: flex; justify-content: center; margin: 10px 0;">
+                            <div class="shape shape-1" style="width: 50px; height: 50px;">1</div>
+                            <div class="shape shape-2" style="width: 50px; height: 50px;">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم التجميع والاستدارة -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <i class="fas fa-object-ungroup"></i>
+                <h2>التجميع والاستدارة</h2>
+            </div>
+            <div class="tool-content">
+                <div class="tool-card">
+                    <h3><i class="fas fa-link"></i> تجميع العناصر</h3>
+                    <p>ربط عدة عناصر معًا لمعاملتها كوحدة واحدة. يمكن تطبيق التحويلات والحركات على المجموعة ككل.</p>
+                    <div class="visual-example" style="position: relative; height: 100px;">
+                        <div style="position: absolute; top: 20px; left: 20px; transform: rotate(-10deg);">
+                            <div class="shape shape-1" style="width: 60px; height: 40px;">1</div>
+                            <div class="shape shape-2" style="width: 60px; height: 40px; margin-top: -10px;">2</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3><i class="fas fa-sync-alt"></i> استدارة العناصر</h3>
+                    <p>تدوير العنصر بزاوية محددة باستخدام خاصية <span class="highlight">transform: rotate()</span>. يمكن تحديد الزاوية بالدرجات أو الراديان.</p>
+                    <div class="visual-example">
+                        <div style="display: flex; justify-content: space-around;">
+                            <div class="shape shape-1" style="transform: rotate(15deg);">15°</div>
+                            <div class="shape shape-2" style="transform: rotate(45deg);">45°</div>
+                            <div class="shape shape-3" style="transform: rotate(-30deg);">-30°</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثيرات عند التحويم على العناصر
+            const toolCards = document.querySelectorAll('.tool-card');
+            
+            toolCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.03)';
+                    this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+            
+            // تأثيرات على الأشكال التوضيحية
+            const shapes = document.querySelectorAll('.shape');
+            
+            shapes.forEach(shape => {
+                shape.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+                });
+                
+                shape.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

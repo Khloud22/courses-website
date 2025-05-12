@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التحول الرقمى قسم تكنو</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: '', sans-serif;
+    }
+
+    body {
+      background-color: #1c2a4d;
+      color: #ffffff;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 10px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1000px;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      width: 50px;
+      border-radius: 2em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffc107;
+    }
+
+    .landing {
+      height: 77vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .landing h1 {
+      font-size: 5rem;
+      animation: bounce 2s infinite;
+      color: #ffc107;
+      text-shadow: 2px 2px #00000088;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px 20px;
+      flex-wrap: wrap;
+      background-color: #263a6b;
+    }
+
+    .feature {
+      text-align: center;
+      margin: 20px;
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: scale(1.05);
+    }
+
+    .feature img {
+      width: 80px;
+    }
+
+    .card-slider {
+      background-color: #1c2a4d;
+      padding: 50px 20px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #263a6b;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      width: 40em;      ;
+      margin: 0 auto;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      display: none;
+    }
+
+    .card.active {
+      display: block;
+      animation: fadeSlide 0.6s ease forwards;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card h4 {
+      margin-bottom: 10px;
+      color: #ffc107;
+    }
+
+    .card button {
+      background-color: #ffc107;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #1c2a4d;
+    }
+
+    .nav-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .nav-buttons button {
+      background-color: #ffc107;
+      border: none;
+      color: #1c2a4d;
+      padding: 10px;
+      border-radius: 50%;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #263a6b;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      text-align: right;
+    }
+
+    .footer-section {
+      margin: 10px;
+    }
+
+    .footer-section a {
+      display: block;
+      color: #fff;
+      margin: 5px 0;
+      text-decoration: none;
+    }
+
+    .footer-logo img {
+      width: 50px;
+      border-radius: 2em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <img src="imgs/logo.jpg" alt="Logo" class="logo">
+    <ul>
+      <li><a href="#landing">الرئيسية</a></li>
+      <li><a href="#features">الخدمات</a></li>
+      <li><a href="#cards">المزيد</a></li>
+    </ul>
+  </nav>
+
+  <section class="landing" id="landing">
+    <h1>التحول الرقمى </h1>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature">
+      <img src="imgs/online-course.png" alt="كورس">
+      <h3>كورسات متنوعة</h3>
+    </div>
+    <div class="feature">
+      <img src="imgs/analysis.png" alt="تدريب">
+      <h3>تدريب عملي</h3>
+    </div>
+    <div class="feature">
+      <img src="imgs/certificate.png" alt="شهادة">
+      <h3>شهادة معتمدة</h3>
+    </div>
+  </section>
+
+  <section class="card-slider" id="cards">
+    <div class="card active"><img src="imgs/اساسيات-تكنولجيا .jpg" alt="Card 1"><h4>اساسيات تكنولجيا المعلومات و نظم التشغيل</h4><a href="Tools/أساسيات-تكنولوجيا/index.html"><button>عرض</button></a></div>
+    <div class="card"><img src="imgs/التحول-الرقمى.jpg" alt="Card 2"><h4>التحول الرقمى</h4><button>عرض</button></div>
+    <div class="card"><img src="imgs/العروض-التقديمية.webp" alt="Card 3"><h4>العروض التقديمية</h4><button>عرض</button></div>
+    <div class="card"><img src="imgs/معالجه-النصوص.jpg" alt="Card 4"><h4>برامج معالجه النصوص</h4> <a href="Tools/كورس برنامج معالج النصوص/index.html"><button>عرض</button></a></div>
+    <div class="card"><img src="imgs/تطبيقات-الهاتف.jpg" alt="Card 5"><h4>تطبيقات الهاتف المحمول</h4><button>عرض</button></div>
+    <div class="card"><img src="imgs/شبكات-الحاسب.jpg" alt="Card 6"><h4>شبكات الحاسب</h4><button>عرض</button></div>
+    <div class="card"><img src="imgs/قواعد-البيانات.jpg" alt="Card 7"><h4>قواعد البيانات</h4><button>عرض</button></div>
+    <div class="card"><img src="imgs/معالجه-جداول.jpg" alt="Card 8"><h4>معالجه جداول البيانات</h4><button>عرض</button></div>
+    <div class="nav-buttons">
+      <button onclick="showCard(-1)">❮</button>
+      <button onclick="showCard(1)">❯</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-section">
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">الشروط والأحكام</a>
+      <a href="#">عن الموقع</a>
+    </div>
+    <div class="footer-section">
+      <a href="#">دعم فني</a>
+      <a href="#">تواصل معنا</a>
+    </div>
+    <div class="footer-logo">
+      <img src="imgs/logo.jpg" alt="Footer Logo">
+    </div>
+  </footer>
+
+  <script>
+    let cardIndex = 0;
+    const cards = document.querySelectorAll('.card');
+
+    function showCard(direction) {
+      cards[cardIndex].classList.remove('active');
+      cardIndex += direction;
+      if (cardIndex < 0) cardIndex = cards.length - 1;
+      if (cardIndex >= cards.length) cardIndex = 0;
+      cards[cardIndex].classList.add('active');
+    }
+  </script>
+  <script>
+    VANTA.NET({
+      el: "#landing",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0xad9ba3,
+      backgroundColor: 0x282558,
+      points: 11.00,
+      maxDistance: 18.00,
+      spacing: 17.00
+    })
+  </script>
+</body>
+
+</html>

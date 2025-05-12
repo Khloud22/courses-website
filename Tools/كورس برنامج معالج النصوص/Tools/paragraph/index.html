@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الفقرة - مسافة بادئة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --warning-color: #f8961e;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #6c757d;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .card-title i {
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-info {
+            flex: 1;
+        }
+        
+        .setting-info h3 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .setting-info p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .setting-value {
+            background-color: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .paragraph-preview {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 30px;
+            border-right: 5px solid var(--primary-color);
+        }
+        
+        .paragraph-preview h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .paragraph-preview h2 i {
+            margin-left: 10px;
+        }
+        
+        .paragraph-example {
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .indent-visual {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .indent-bar {
+            height: 40px;
+            background-color: var(--primary-color);
+            margin: 0 10px;
+            border-radius: 4px;
+        }
+        
+        .indent-label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .setting-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .setting-value {
+                margin-top: 10px;
+                align-self: flex-end;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-indent"></i> إعدادات الفقرة - مسافة بادئة</h1>
+            <p>تخصيص المسافات البادئة للفقرات في مستندك</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-ruler-horizontal"></i>
+                <h2>إعدادات المسافة البادئة</h2>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>المسافة البادئة قبل الفقرة</h3>
+                    <p>تحدد المسافة من حافة الصفحة إلى بداية النص في السطر الأول من الفقرة</p>
+                </div>
+                <div class="setting-value">0 نقطة</div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>المسافة البادئة بعد الفقرة</h3>
+                    <p>تحدد المسافة من نهاية الفقرة إلى بداية الفقرة التالية</p>
+                </div>
+                <div class="setting-value">8 نقطة</div>
+            </div>
+        </div>
+        
+        <div class="indent-visual">
+            <div class="indent-label">قبل الفقرة: 0</div>
+            <div class="indent-bar" style="width: 0px;"></div>
+            <div class="paragraph-example">فقرة</div>
+            <div class="indent-bar" style="width: 8px; background-color: var(--success-color);"></div>
+            <div class="indent-label">بعد الفقرة: 8</div>
+        </div>
+        
+        <div class="paragraph-preview">
+            <h2><i class="fas fa-eye"></i> معاينة الفقرة</h2>
+            <div class="paragraph-example">
+                هذا مثال على فقرة مع إعدادات المسافة البادئة المحددة. لاحظ أن السطر الأول يبدأ مباشرة من الحافة بدون مسافة بادئة، بينما توجد مسافة 8 نقطة بعد نهاية الفقرة قبل بداية الفقرة التالية. هذه الإعدادات مفيدة لتحسين تنسيق المستندات وجعلها أكثر قابلية للقراءة.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // يمكن إضافة تفاعلية هنا مثل تغيير القيم
+        document.addEventListener('DOMContentLoaded', function() {
+            // مثال على تفاعل يمكن إضافته
+            const settingItems = document.querySelectorAll('.setting-item');
+            
+            settingItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.backgroundColor = '#f0f4f8';
+                    setTimeout(() => {
+                        this.style.backgroundColor = 'transparent';
+                    }, 300);
+                });
+            });
+            
+            // يمكن إضافة إمكانية تعديل القيم
+            console.log('الصفحة جاهزة! يمكنك إضافة المزيد من التفاعلية هنا.');
+        });
+    </script>
+</body>
+</html>

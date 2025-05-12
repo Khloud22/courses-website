@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أساسيات تكنولوجيا المعلومات ونظم التشغيل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --text-light: #7f8c8d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f5f7fa;
+    direction: rtl;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    /* color: var(--primary-color); */
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+header h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: var(--light-color);
+    font-size: 1rem;
+}
+
+/* Sidebar/Navigation Styles */
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar-header h3 {
+    color: white;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    padding: 15px;
+}
+
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.sidebar-menu a:hover {
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+}
+
+.sidebar-menu i {
+    margin-left: 10px;
+}
+
+/* Menu Button */
+.menu-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 999;
+    transition: var(--transition);
+}
+
+.menu-btn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Main Content Styles */
+main {
+    padding: 30px 0;
+}
+
+.course-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.course-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--light-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.course-section h2 i {
+    margin-left: 10px;
+}
+
+/* Definition Box */
+.definition-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.definition-box h3 {
+    color: var(--secondary-color);
+}
+
+.definition-box h3 i {
+    margin-left: 10px;
+}
+
+.computer-process {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.process-step {
+    text-align: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin: 0 10px;
+    min-width: 100px;
+}
+
+.process-step i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.process-arrow {
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+/* Features Box */
+.features-box {
+    margin: 30px 0;
+}
+
+.features-box h3 {
+    color: var(--secondary-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feature-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.feature-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Components Grid */
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.component-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.component-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.card-header.hardware {
+    background-color: var(--primary-color);
+}
+
+.card-header.software {
+    background-color: var(--secondary-color);
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.show-examples {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    padding: 5px 0;
+    font-family: inherit;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.show-examples i {
+    margin-right: 5px;
+    transition: var(--transition);
+}
+
+.show-examples.active i {
+    transform: rotate(180deg);
+}
+
+.examples {
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+    padding-left: 20px;
+}
+
+.examples.active {
+    max-height: 500px;
+    margin-top: 10px;
+}
+
+.examples p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.examples i {
+    margin-left: 8px;
+    color: var(--secondary-color);
+}
+
+/* Computer Types */
+.computer-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.type-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.type-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.type-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.micro-computers {
+    margin: 30px 0;
+}
+
+.micro-list {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.micro-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.micro-list li:last-child {
+    border-bottom: none;
+}
+
+.micro-list i {
+    margin-left: 10px;
+    color: var(--secondary-color);
+}
+
+/* Usage Tabs */
+.usage-tabs {
+    margin: 30px 0;
+}
+
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 15px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.tab-btn i {
+    margin-left: 8px;
+}
+
+.tab-btn.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+}
+
+.tab-content h3 i {
+    margin-left: 10px;
+}
+
+.tab-content ul {
+    padding-right: 20px;
+}
+
+.tab-content li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tab-content i {
+    margin-left: 10px;
+    color: var(--secondary-color);
+}
+
+/* IO Devices */
+.io-devices {
+    margin: 30px 0;
+}
+
+.io-section {
+    margin-bottom: 30px;
+}
+
+.io-section h3 {
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.io-section h3 i {
+    margin-left: 10px;
+}
+
+.device-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.device-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.device-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.device-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.device-card h4 {
+    margin-bottom: 10px;
+}
+
+/* System Unit */
+.system-unit {
+    margin: 30px 0;
+}
+
+.unit-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.unit-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.cpu-parts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.cpu-part {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.cpu-part h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+}
+
+.cpu-part h4 i {
+    margin-left: 10px;
+}
+
+/* Memory Section */
+.memory-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.memory-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.memory-card {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.memory-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.memory-icon.ram {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--secondary-color);
+}
+
+.memory-icon.rom {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+}
+
+.memory-card h4 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.memory-card ul {
+    padding-right: 20px;
+}
+
+.memory-card li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.memory-card li::before {
+    content: "•";
+    color: var(--secondary-color);
+    position: absolute;
+    right: -15px;
+}
+
+.memory-units {
+    margin-top: 30px;
+}
+
+.memory-units h4 {
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+}
+
+.memory-units h4 i {
+    margin-left: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: right;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Storage Devices */
+.storage-devices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.storage-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.storage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.storage-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.storage-card h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.storage-types {
+    margin-top: 15px;
+}
+
+.storage-types p {
+    display: flex;
+    align-items: center;
+}
+
+.storage-types i {
+    margin-left: 10px;
+    color: var(--secondary-color);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 5px;
+    color: var(--light-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    header p {
+        font-size: 0.9rem;
+    }
+    
+    .course-section {
+        padding: 15px;
+    }
+    
+    .features-grid, .components-grid, .computer-types, .device-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-step {
+        margin: 10px 0;
+    }
+    
+    .process-arrow {
+        display: none;
+    }
+    
+    .tab-buttons {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    
+    .cpu-parts {
+        grid-template-columns: 1fr;
+    }
+    
+    .memory-types {
+        grid-template-columns: 1fr;
+    }
+    
+    .storage-devices {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-laptop-code"></i>مكونات الحاسب الالى</h1>
+            <p>دليل المتدرب 2025 - قسم تكنولوجيا التعليم والمعلومات</p>
+        </div>
+    </header>
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>فهرس المحتويات</h3>
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#section1"><i class="fas fa-desktop"></i> مفاهيم عامة حول الحاسب الآلي</a></li>
+            <li><a href="#section2"><i class="fas fa-microchip"></i> مكونات الحاسب الآلي</a></li>
+            <li><a href="#section3"><i class="fas fa-server"></i> أنواع الحاسبات الآلية</a></li>
+            <li><a href="#section4"><i class="fas fa-globe"></i> استخدامات الحاسبات في الحياة اليومية</a></li>
+            <li><a href="#section5"><i class="fas fa-keyboard"></i> أجهزة الإدخال والإخراج</a></li>
+            <li><a href="#section6"><i class="fas fa-memory"></i> وحدة النظام والذاكرة</a></li>
+            <li><a href="#section7"><i class="fas fa-hdd"></i> أجهزة التخزين</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <button class="menu-btn"><i class="fas fa-bars"></i> الفهرس</button>
+
+        <section id="section1" class="course-section">
+            <h2><i class="fas fa-desktop"></i> مفاهيم عامة حول الحاسب الآلي</h2>
+            <div class="section-content">
+                <p>تلعب الحاسبات الآلية دورًا مترامي الأهمية في حياتنا اليومية، حيث تؤثر على شتى مجالات النشاط البشري وتحدث العديد من التغييرات في قطاع الصناعة والحكومة والتعليم والطب والبحث العلمي والفنون والرسم وحتى الترفيه والألعاب.</p>
+                
+                <div class="definition-box">
+                    <h3><i class="fas fa-question-circle"></i> ما الحاسب الآلي؟</h3>
+                    <p>الحاسب الآلي هو جهاز إلكتروني يقبل المدخلات (البيانات والمعلومات) ويعالجها، ثم ينتج مخرجات على النحو المطلوب.</p>
+                    <div class="computer-process">
+                        <div class="process-step">
+                            <i class="fas fa-keyboard"></i>
+                            <p>إدخال</p>
+                        </div>
+                        <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="process-step">
+                            <i class="fas fa-microchip"></i>
+                            <p>معالجة</p>
+                        </div>
+                        <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="process-step">
+                            <i class="fas fa-print"></i>
+                            <p>إخراج</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-box">
+                    <h3><i class="fas fa-star"></i> مميزات الحاسب الآلي</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <h4>السرعة</h4>
+                            <p>تنفذ الحاسبات الآلية المهام في أقل من جزء من مليون من الثانية.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>الدقة</h4>
+                            <p>تنفذ الحاسبات الآلية المهام بدون أخطاء البشر.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-redo"></i>
+                            <h4>الانتباه</h4>
+                            <p>تنفذ الحاسبات الآلية المهام وتكررها آلاف المرات دون ملل أو تغيب.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-database"></i>
+                            <h4>سعة تخزينية ضخمة</h4>
+                            <p>تسهل الحاسبات الآلية تخزين كمية هائلة من البيانات في أجهزة مدمجة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section2" class="course-section">
+            <h2><i class="fas fa-microchip"></i> مكونات الحاسب الآلي</h2>
+            <div class="section-content">
+                <p>يتكون نظام الحاسب الآلي من مكونين أساسيين هما المكونات المادية والمكونات البرمجية.</p>
+                
+                <div class="components-grid">
+                    <div class="component-card">
+                        <div class="card-header hardware">
+                            <i class="fas fa-tools"></i>
+                            <h3>المكونات المادية (Hardware)</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>تتكون من جميع المعدات المادية التي تراها مع نظام الحاسب الآلي، مثل لوحة المفاتيح، الفأرة، الشاشة، المعالج الصغير، الذاكرة، والأقراص الثابتة.</p>
+                            <button class="show-examples">عرض الأمثلة <i class="fas fa-chevron-down"></i></button>
+                            <div class="examples">
+                                <p><i class="fas fa-keyboard"></i> لوحة المفاتيح</p>
+                                <p><i class="fas fa-mouse"></i> الفأرة</p>
+                                <p><i class="fas fa-desktop"></i> الشاشة</p>
+                                <p><i class="fas fa-microchip"></i> المعالج</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-card">
+                        <div class="card-header software">
+                            <i class="fas fa-code"></i>
+                            <h3>المكونات البرمجية (Software)</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>هي مجموعة من التعليمات (البرامج) التي تخبر الحاسب الآلي بما يجب القيام به، حيث توجه عمليات الحاسب الآلي وتتحكم فيها حتى يتم إنجاز المهمة المطلوبة.</p>
+                            <button class="show-examples">عرض الأمثلة <i class="fas fa-chevron-down"></i></button>
+                            <div class="examples">
+                                <p><i class="fab fa-windows"></i> نظام التشغيل</p>
+                                <p><i class="fas fa-file-word"></i> برامج معالجة النصوص</p>
+                                <p><i class="fas fa-calculator"></i> البرامج التطبيقية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section3" class="course-section">
+            <h2><i class="fas fa-server"></i> أنواع الحاسبات الآلية</h2>
+            <div class="section-content">
+                <p>بناء على سرعة الحاسب الآلي وحجمه، يتم تصنيف أنظمة الحاسب الآلي عادة إلى ثلاثة أنواع:</p>
+                
+                <div class="computer-types">
+                    <div class="type-card">
+                        <div class="type-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>الحاسبات الآلية العمالقة</h3>
+                        <p>حاسب لديه تكوين أجهزة معقد مع قدرة حسابية عالية المستوى، ويستخدم لأغراض علمية وهندسية مثل التنبؤ بالطقس والأبحاث الطبية.</p>
+                    </div>
+                    
+                    <div class="type-card">
+                        <div class="type-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>الحاسبات الآلية المركزية</h3>
+                        <p>حاسب مركزي كبير به المزيد من الذاكرة ومساحة التخزين وقوة المعالجة، تستخدمه المؤسسات الكبيرة لأداء الوظائف على نطاق واسع.</p>
+                    </div>
+                    
+                    <div class="type-card">
+                        <div class="type-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>الحاسبات الآلية الدقيقة</h3>
+                        <p>صغير الحجم ويعد من أكثر أنواع الحاسبات الآلية استخدامًا، وأسعاره معقولة، ويشمل الحاسبات الشخصية والمحمولة واللوحية والهواتف الذكية.</p>
+                    </div>
+                </div>
+                
+                <div class="micro-computers">
+                    <h3><i class="fas fa-laptop"></i> تصنيف الحاسبات الآلية الدقيقة</h3>
+                    <ul class="micro-list">
+                        <li><i class="fas fa-desktop"></i> الحاسب الآلي المكتبي أو الحاسب الشخصي</li>
+                        <li><i class="fas fa-laptop"></i> الحاسبات الآلية المحمولة أو الحاسب الآلي المفكرة</li>
+                        <li><i class="fas fa-tablet-alt"></i> الحاسبات الآلية اللوحية والهواتف الذكية</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="section4" class="course-section">
+            <h2><i class="fas fa-globe"></i> استخدامات الحاسبات في الحياة اليومية</h2>
+            <div class="section-content">
+                <p>لقد دخلت الحاسبات الآلية في جميع مجالات حياتنا تقريبًا وتعتبر مفيدة إلى حد كبير في مختلف المجالات.</p>
+                
+                <div class="usage-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="education"><i class="fas fa-graduation-cap"></i> التعليم</button>
+                        <button class="tab-btn" data-tab="government"><i class="fas fa-landmark"></i> الخدمات الحكومية</button>
+                        <button class="tab-btn" data-tab="banking"><i class="fas fa-university"></i> الخدمات المصرفية</button>
+                        <button class="tab-btn" data-tab="medical"><i class="fas fa-hospital"></i> الخدمات الطبية</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="education">
+                        <h3><i class="fas fa-graduation-cap"></i> استخدام الحاسبات في التعليم</h3>
+                        <ul>
+                            <li><i class="fas fa-chalkboard-teacher"></i> استخدام المعلمين للحاسبات في تعليم المتدربين لتسهيل استيعاب المفاهيم</li>
+                            <li><i class="fas fa-tasks"></i> نظام إدارة التعلم (LMS) لإدارة عمليات التدريس والتعلم</li>
+                            <li><i class="fas fa-book-open"></i> المكتبات الإلكترونية ونظام إدارة المكتبة القائم على الحاسب الآلي</li>
+                            <li><i class="fas fa-video"></i> استخدام الرسومات والصوت والفيديو لجعل التعلم أكثر إثارة وتفاعلاً</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-content" id="government">
+                        <h3><i class="fas fa-landmark"></i> استخدام الحاسبات في الخدمات الحكومية</h3>
+                        <ul>
+                            <li><i class="fas fa-passport"></i> نظام أبشر لتسهيل الخدمات الحكومية عبر الإنترنت</li>
+                            <li><i class="fas fa-id-card"></i> خدمات إدارة التراخيص الحكومية</li>
+                            <li><i class="fas fa-money-bill-wave"></i> الدفع الإلكتروني لمختلف الرسوم الحكومية</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-content" id="banking">
+                        <h3><i class="fas fa-university"></i> استخدام الحاسبات في الخدمات المصرفية</h3>
+                        <ul>
+                            <li><i class="fas fa-user-tie"></i> تتبع معلومات العملاء وحساباتهم</li>
+                            <li><i class="fas fa-money-check-alt"></i> أجهزة الصراف الآلي في تسجيل المعاملات المصرفية</li>
+                            <li><i class="fas fa-mobile-alt"></i> الخدمات المصرفية عبر الإنترنت</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-content" id="medical">
+                        <h3><i class="fas fa-hospital"></i> استخدام الحاسبات في الخدمات الطبية</h3>
+                        <ul>
+                            <li><i class="fas fa-stethoscope"></i> التشخيص الطبي</li>
+                            <li><i class="fas fa-prescription-bottle-alt"></i> الوصفة الطبية والعلاج</li>
+                            <li><i class="fas fa-procedures"></i> العمليات الجراحية</li>
+                            <li><i class="fas fa-heartbeat"></i> الرصد والتحليل الطبي</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section5" class="course-section">
+            <h2><i class="fas fa-keyboard"></i> أجهزة الإدخال والإخراج</h2>
+            <div class="section-content">
+                <p>أجهزة الإدخال تترجم الأرقام والحروف والأوامر التي نفهمها في شكل يمكن للحاسبات الآلية معالجتها، بينما أجهزة الإخراج تعطينا مخرجات من الحاسب الآلي.</p>
+                
+                <div class="io-devices">
+                    <div class="io-section">
+                        <h3><i class="fas fa-sign-in-alt"></i> أجهزة الإدخال</h3>
+                        <div class="device-grid">
+                            <div class="device-card">
+                                <div class="device-icon">
+                                    <i class="fas fa-keyboard"></i>
+                                </div>
+                                <h4>لوحة المفاتيح</h4>
+                                <p>جهاز إدخال يستخدم لإدخال الحروف والأرقام والرموز الخاصة.</p>
+                            </div>
+                            <div class="device-card">
+                                <div class="device-icon">
+                                    <i class="fas fa-mouse"></i>
+                                </div>
+                                <h4>الفأرة</h4>
+                                <p>جهاز توجيه صغير يتحكم في حركة المؤشر على شاشة العرض.</p>
+                            </div>
+                            <div class="device-card">
+                                <div class="device-icon">
+                                    <i class="fas fa-scanner"></i>
+                                </div>
+                                <h4>الماسح الضوئي</h4>
+                                <p>يستخدم لمسح المعلومات مثل الصور والمستندات وترجمتها إلى صورة رقمية.</p>
+                            </div>
+                            <div class="device-card">
+                                <div class="device-icon">
+                                    <i class="fas fa-microphone"></i>
+                                </div>
+                                <h4>الميكروفون</h4>
+                                <p>يحول الإشارات الصوتية إلى نموذج يمكن معالجته بواسطة الحاسب الآلي.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="io-section">
+                        <h3><i class="fas fa-sign-out-alt"></i> أجهزة الإخراج</h3>
+                        <div class="device-grid">
+                            <div class="device-card">
+                                <div class="device-icon">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <h4>الشاشة</h4>
+                                <p>تحول المعلومات التي تمت معالجتها بواسطة الحاسب الآلي إلى صور مرئية.</p>
+                            </div>
+                            <div class="device-card">
+                                <div class="device-icon">
+                                    <i class="fas fa-print"></i>
+                                </div>
+                                <h4>الطابعة</h4>
+                                <p>تمكنك من نقل المعلومات التي تتم معالجتها بواسطة الحاسب الآلي إلى الورق.</p>
+                            </div>
+                            <div class="device-card">
+                                <div class="device-icon">
+                                    <i class="fas fa-headphones"></i>
+                                </div>
+                                <h4>مكبرات الصوت</h4>
+                                <p>أجهزة إخراج الصوت التي تعمل على إخراج الصوت من الحاسب الآلي.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section6" class="course-section">
+            <h2><i class="fas fa-memory"></i> وحدة النظام والذاكرة</h2>
+            <div class="section-content">
+                <p>وحدة النظام هي حاوية تضم معظم المكونات الإلكترونية التي تشكل نظام الحاسب الآلي، ولها ثلاثة مكونات مهمة هي: اللوحة الأم، ووحدة المعالجة المركزية (CPU)، والذاكرة.</p>
+                
+                <div class="system-unit">
+                    <div class="unit-card">
+                        <div class="unit-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>وحدة المعالجة المركزية (CPU)</h3>
+                        <p>هي رقاقة إلكترونية تنفذ تعليمات برنامج الحاسب الآلي، وتنفذ العمليات الحسابية والمنطقية.</p>
+                        <div class="cpu-parts">
+                            <div class="cpu-part">
+                                <h4><i class="fas fa-cogs"></i> وحدة التحكم (CU)</h4>
+                                <p>تتحكم في باقي نظام الحاسب الآلي لتنفيذ تعليمات محددة.</p>
+                            </div>
+                            <div class="cpu-part">
+                                <h4><i class="fas fa-calculator"></i> وحدة الحساب والمنطق (ALU)</h4>
+                                <p>تنفذ العمليات الحسابية والمنطقية.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-section">
+                        <h3><i class="fas fa-memory"></i> الذاكرة الرئيسية</h3>
+                        <p>ذاكرة الحاسب الآلي هي مساحة التخزين حيث تتم معالجة البيانات وتخزينها.</p>
+                        
+                        <div class="memory-types">
+                            <div class="memory-card">
+                                <div class="memory-icon ram">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <h4>ذاكرة الوصول العشوائي (RAM)</h4>
+                                <ul>
+                                    <li>تحمل البرامج التعليمات والبيانات التي تتطلبها وحدة المعالجة المركزية حالياً</li>
+                                    <li>ذاكرة متطايرة تفقد محتواها عند إيقاف التشغيل</li>
+                                    <li>يمكن إضافة ذاكرة إضافية</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="memory-card">
+                                <div class="memory-icon rom">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <h4>ذاكرة القراءة فقط (ROM)</h4>
+                                <ul>
+                                    <li>ذاكرة دائمة تحتوي على برامج مدمجة من الشركة المصنعة</li>
+                                    <li>لا تضيع البيانات عند إيقاف التشغيل</li>
+                                    <li>لا يمكن حذف المعلومات أو تعديلها</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-units">
+                            <h4><i class="fas fa-ruler-combined"></i> وحدات قياس الذاكرة</h4>
+                            <table>
+                                <tr>
+                                    <th>الوحدة</th>
+                                    <th>الوصف</th>
+                                </tr>
+                                <tr>
+                                    <td>بث (رقم ثنائي)</td>
+                                    <td>1 أو 0</td>
+                                </tr>
+                                <tr>
+                                    <td>بايت</td>
+                                    <td>8 بت = 1 بايت</td>
+                                </tr>
+                                <tr>
+                                    <td>كيلوبايت</td>
+                                    <td>1024 بايت = 1 كيلوبايت</td>
+                                </tr>
+                                <tr>
+                                    <td>ميجابايت</td>
+                                    <td>1024 كيلوبايت = 1 ميجابايت</td>
+                                </tr>
+                                <tr>
+                                    <td>جيجابايت</td>
+                                    <td>1024 ميجابايت = 1 جيجابايت</td>
+                                </tr>
+                                <tr>
+                                    <td>تيرابايت</td>
+                                    <td>1024 جيجابايت = 1 تيرابايت</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section7" class="course-section">
+            <h2><i class="fas fa-hdd"></i> أجهزة التخزين</h2>
+            <div class="section-content">
+                <p>أجهزة التخزين الثانوية تمكن الحاسبات الآلية من تخزين المعلومات لفترة طويلة حتى بعد إيقاف تشغيل الحاسب الآلي.</p>
+                
+                <div class="storage-devices">
+                    <div class="storage-card">
+                        <div class="storage-icon">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <h3>القرص الصلب (Hard Disk)</h3>
+                        <p>جهاز التخزين الثانوي الرئيسي في نظام الحاسب الآلي، يخزن البرامج وملفات البيانات بشكل دائم.</p>
+                        <div class="storage-types">
+                            <p><i class="fas fa-desktop"></i> قرص صلب داخلي (مثبت داخل وحدة النظام)</p>
+                            <p><i class="fas fa-external-link-alt"></i> قرص صلب خارجي (محمول)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="storage-card">
+                        <div class="storage-icon">
+                            <i class="fas fa-compact-disc"></i>
+                        </div>
+                        <h3>القرص المضغوط (CD)</h3>
+                        <p>أحد وسائط التخزين الثانوي الأكثر استخدامًا على أساس التنسيق البصري.</p>
+                        <div class="storage-types">
+                            <p><i class="fas fa-compact-disc"></i> قرص مضغوط قابل للتسجيل (CD-R)</p>
+                            <p><i class="fas fa-compact-disc"></i> قرص مضغوط ذو ذاكرة قراءة فقط (CD-ROM)</p>
+                            <p><i class="fas fa-compact-disc"></i> قرص مضغوط قابل لإعادة الكتابة (CD-RW)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="storage-card">
+                        <div class="storage-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>قرص الفيديو الرقمي (DVD)</h3>
+                        <p>تشبه الأقراص المضغوطة ولكن لديها سعة تخزين عالية تتراوح من 4.7 جيجابايت إلى 17 جيجابايت.</p>
+                    </div>
+                    
+                    <div class="storage-card">
+                        <div class="storage-icon">
+                            <i class="fas fa-usb"></i>
+                        </div>
+                        <h3>محركات أقراص الذاكرة الوميضة (Flash Drive)</h3>
+                        <p>أجهزة تخزين قابلة للإزالة وإعادة الكتابة تسمح بنسخ البيانات ونقلها ومحوها عدة مرات.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Sidebar toggle functionality
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.querySelector('.close-btn');
+    
+    menuBtn.addEventListener('click', function() {
+        sidebar.classList.add('active');
+    });
+    
+    closeBtn.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+    });
+    
+    // Show examples functionality
+    const showExampleBtns = document.querySelectorAll('.show-examples');
+    
+    showExampleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const examples = this.nextElementSibling;
+            examples.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    });
+    
+    // Tab functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            this.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close sidebar if open
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+    
+    // Highlight current section in sidebar
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.course-section');
+        const scrollPosition = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.backgroundColor = 'var(--light-color)';
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.color = 'var(--secondary-color)';
+            } else {
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.backgroundColor = '';
+                document.querySelector(`.sidebar-menu a[href="#${sectionId}"]`).style.color = '';
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>
