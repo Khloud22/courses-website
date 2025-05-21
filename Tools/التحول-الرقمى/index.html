@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحول الرقمي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: fadeInDown 1s ease;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .author {
+            margin-top: 1rem;
+            font-style: italic;
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transition: height 0.3s ease;
+        }
+        
+        .section:hover::after {
+            height: 8px;
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .section p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .section ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .section li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .section li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: 0.5em;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            margin: 2rem 0;
+        }
+        
+        .highlight h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .image-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .image-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-card .caption {
+            padding: 1rem;
+            background-color: white;
+        }
+        
+        .image-card .caption h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .stat-card h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Floating animation for important elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--secondary-color);
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="floating">التحول الرقمي</h1>
+            <p>رحلة التحول من العالم التقليدي إلى العالم الرقمي في التعليم والمؤسسات</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <section class="section">
+                <h2>مقدمة عن التحول الرقمي</h2>
+                <p>التحول الرقمي هو عملية الانتقال من الأساليب التقليدية إلى استخدام التقنيات الرقمية في جميع جوانب الحياة والمؤسسات. يشمل هذا التحول استخدام أنظمة الحاسوب، البرمجيات، الشبكات، والذكاء الاصطناعي لتحسين العمليات وزيادة الكفاءة.</p>
+                
+                <div class="highlight">
+                    <h3>أهمية التحول الرقمي</h3>
+                    <p>يعد التحول الرقمي ضرورة حتمية في عصرنا الحالي لمواكبة التطور التكنولوجي وتحسين جودة الخدمات في التعليم والصحة والقطاعات الحكومية والخاصة.</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>مكونات التحول الرقمي</h2>
+                <ul>
+                    <li><strong>الأجهزة (Hardware):</strong> المكونات الفعلية لجهاز الحاسوب مثل وحدة الجهاز، الفأرة، لوحة المفاتيح، الشاشة.</li>
+                    <li><strong>البرمجيات (Software):</strong> التعليمات التي تجعل الحاسوب يعمل مثل أنظمة التشغيل والتطبيقات.</li>
+                    <li><strong>أنظمة التشغيل:</strong> مثل Windows, Linux, MacOS التي تمثل وسيط بين المستخدم وعتاد الحاسوب.</li>
+                    <li><strong>الشبكات:</strong> مثل LAN (شبكة محلية)، WAN (شبكة واسعة)، والإنترنت.</li>
+                    <li><strong>التخزين السحابي:</strong> مثل Google Drive, Dropbox, OneDrive الذي يوفر مساحات تخزين عبر الإنترنت.</li>
+                    <li><strong>إنترنت الأشياء (IoT):</strong> تقنيات تمكن الأجهزة من الاتصال بالإنترنت وتبادل البيانات.</li>
+                </ul>
+                
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="الأجهزة الرقمية">
+                        <div class="caption">
+                            <h4>مكونات الحاسوب</h4>
+                            <p>الأجهزة المادية التي تشكل النظام الرقمي</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="البرمجيات">
+                        <div class="caption">
+                            <h4>أنظمة التشغيل</h4>
+                            <p>الوسيط بين المستخدم والعتاد الصلب</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="التخزين السحابي">
+                        <div class="caption">
+                            <h4>التخزين السحابي</h4>
+                            <p>حلول تخزين البيانات عبر الإنترنت</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>أنظمة التشغيل والواجهات</h2>
+                <p>تستخدم أنظمة التشغيل الحديثة نوعين رئيسيين من الواجهات:</p>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <i class="fas fa-desktop"></i>
+                        <h3>GUI</h3>
+                        <p>واجهة المستخدم الرسومية</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-terminal"></i>
+                        <h3>CLI</h3>
+                        <p>واجهة سطر الأوامر</p>
+                    </div>
+                </div>
+                
+                <p>أول نظام تشغيل استخدم واجهة مستخدم رسومية كان <span class="tooltip">Windows<span class="tooltiptext">أول نظام استخدم واجهة رسومية سهلة للمستخدمين</span></span>، بينما أنظمة مثل Linux تعتمد أكثر على واجهة سطر الأوامر مع إمكانية إضافة واجهات رسومية.</p>
+            </section>
+            
+            <section class="section">
+                <h2>التطبيقات العملية للتحول الرقمي</h2>
+                <ul>
+                    <li><strong>في التعليم:</strong> استخدام أنظمة إدارة التعلم LMS مثل المدرسة الذكية.</li>
+                    <li><strong>في الطب:</strong> استخدام الحاسبات الآلية في جراحة القلب المفتوح.</li>
+                    <li><strong>في البنوك:</strong> استخدام الحاسب المركزي لمعالجة بيانات الملايين من العملاء.</li>
+                    <li><strong>في التجارة:</strong> التجارة الإلكترونية التي تشير إلى عمليات البيع والشراء عبر الإنترنت.</li>
+                    <li><strong>في الاتصالات:</strong> تقنيات مثل ADSL و ISDN لنقل البيانات عبر خطوط الهاتف.</li>
+                </ul>
+                
+                <div class="highlight">
+                    <h3>الحوسبة السحابية</h3>
+                    <p>تشير إلى المصادر والأنظمة الحاسوبية تحت الطلب عبر الشبكة والتي تستطيع توفير عدد من الخدمات الحاسوبية المتكاملة دون التقييد بالموارد المحلية بهدف التيسير على المستخدم.</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>أمن المعلومات الرقمية</h2>
+                <p>مع التحول الرقمي تظهر تحديات أمنية جديدة مثل:</p>
+                <ul>
+                    <li><strong>الفيروسات:</strong> برامج ضارة تنتقل بين الملفات وتسبب الأضرار.</li>
+                    <li><strong>برامج التجسس (Spyware):</strong> تحاول الحصول على أسماء المستخدمين وكلمات المرور.</li>
+                    <li><strong>التصيد (Phishing):</strong> محاولات خداع المستخدمين لسرقة بياناتهم.</li>
+                    <li><strong>الديدان:</strong> برامج ضارة مستقلة تنتشر بنفسها دون الحاجة لبرنامج مضيف.</li>
+                </ul>
+                
+                <p>لحماية البيانات يجب استخدام برامج مضادة للفيروسات، جدران الحماية، وتوعية المستخدمين بالمخاطر الأمنية.</p>
+            </section>
+            
+            <section class="section">
+                <h2>مستقبل التحول الرقمي</h2>
+                <p>يشمل المستقبل الرقمي تقنيات متقدمة مثل:</p>
+                <ul>
+                    <li><strong>الذكاء الاصطناعي:</strong> محاكاة الحاسب للبيانات التي يمكن محاكاتها مادياً.</li>
+                    <li><strong>الواقع الافتراضي (VR):</strong> محاكاة الحاسب للبيئات الافتراضية.</li>
+                    <li><strong>إنترنت الأشياء (IoT):</strong> ربط الأجهزة اليومية بالإنترنت للتحكم الذكي.</li>
+                    <li><strong>البلوك تشين:</strong> تقنية السجلات الموزعة لتعزيز الأمان والشفافية.</li>
+                </ul>
+                
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="imgs/الذكاء الاصطناعى.webp" alt="الذكاء الاصطناعي">
+                        <div class="caption">
+                            <h4>الذكاء الاصطناعي</h4>
+                            <p>مستقبل التفاعل بين الإنسان والآلة</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="الواقع الافتراضي">
+                        <div class="caption">
+                            <h4>الواقع الافتراضي</h4>
+                            <p>تجارب غامرة في عوالم رقمية</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="إنترنت الأشياء">
+                        <div class="caption">
+                            <h4>إنترنت الأشياء</h4>
+                            <p>ربط الأجهزة الذكية بشبكة واحدة</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <a href="../../index.html" id="fixedBackBtn" title="العودة للصفحة الرئيسية" style="position: fixed; bottom: 20px; left: 20px; z-index: 99; border: none; outline: none; background-color: #ffc107; color: #1c2a4d; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; text-decoration: none;">
+  ←
+</a>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Add animation to sections when they come into view
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add floating animation to important elements on hover
+        const floatingElements = document.querySelectorAll('.floating');
+        floatingElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.animation = 'floating 3s ease-in-out infinite';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.animation = '';
+            });
+        });
+        // تأثيرات عند التحويم (اختياري)
+  const backBtn = document.getElementById('backButton');
+  
+  backBtn.addEventListener('mouseover', function() {
+    this.style.backgroundColor = '#ffc107';
+    this.style.color = '#1c2a4d';
+    this.style.transform = 'scale(1.1)';
+  });
+  
+  backBtn.addEventListener('mouseout', function() {
+    this.style.backgroundColor = '#1c2a4d';
+    this.style.color = '#ffc107';
+    this.style.transform = 'scale(1)';
+  });
+    </script>
+</body>
+</html>

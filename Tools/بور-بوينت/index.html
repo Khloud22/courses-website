@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل تدريب PowerPoint - الوحدة المركزية لتكنولوجيا المعلومات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #4fc3f7;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --text-color: #333;
+    --text-light: #6c757d;
+    --font-primary: 'Tajawal', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    direction: rtl;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    font-weight: 500;
+    padding: 10px 0;
+    position: relative;
+}
+
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: 0;
+    right: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+    right: auto;
+    left: 0;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 150px 0 100px;
+    margin-top: 70px;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Sections */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title:after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to left, var(--primary-color), transparent);
+    margin-right: 20px;
+}
+
+.section-title i {
+    color: var(--primary-color);
+}
+
+.content-box {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.content-box .text-content {
+    flex: 1;
+}
+
+.content-box .image-content {
+    flex: 1;
+}
+
+.content-box .image-content img {
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.content-box .image-content img:hover {
+    transform: scale(1.03);
+}
+
+/* Subsections */
+.subsection {
+    margin-bottom: 50px;
+}
+
+.subsection h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.subsection h3 i {
+    color: var(--primary-color);
+}
+
+/* Importance Grid */
+.importance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.importance-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.importance-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.importance-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Steps Timeline */
+.steps-timeline {
+    position: relative;
+    padding-right: 50px;
+}
+
+.steps-timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 20px;
+    height: 100%;
+    width: 2px;
+    background: var(--primary-color);
+}
+
+.step {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.step-content {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+}
+
+/* Method Cards */
+.method-card {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.method-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.method-content h4 {
+    color: var(--primary-color);
+}
+
+/* Interface Grid */
+.interface-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.interface-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.interface-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.interface-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Slide Types */
+.slide-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.type-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-right: 4px solid var(--primary-color);
+}
+
+.type-card h4 {
+    color: var(--primary-color);
+}
+
+/* Content Options */
+.content-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.option-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.option-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Media Options */
+.media-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.media-card {
+    display: flex;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.media-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Animation Options */
+.animation-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.anim-card {
+    display: flex;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.anim-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Activities */
+.activities-section {
+    background: #f8f9fa;
+    padding: 80px 0;
+}
+
+.activity-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.activity-slide {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.smartart-preview {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.smartart-item {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    min-width: 100px;
+}
+
+/* Footer */
+footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.footer-logo i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.footer-links h4, .footer-contact h4 {
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links ul li a:hover {
+    color: var(--accent-color);
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .content-box {
+        flex-direction: column;
+    }
+    
+    .hero-content, .hero-image {
+        text-align: center;
+    }
+    
+    .hero-image {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav ul.active {
+        right: 0;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .subsection h3 {
+        font-size: 1.3rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <h1>قسم تكنولوجيا التعليم للتدريب على تكنولوجيا المعلومات</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#intro">مقدمة</a></li>
+                    <li><a href="#basics">أساسيات</a></li>
+                    <li><a href="#creation">إنشاء العرض</a></li>
+                    <li><a href="#design">التصميم</a></li>
+                    <li><a href="#animation">الرسوم المتحركة</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>دليل تدريب PowerPoint الاحترافي</h2>
+                    <p>تعلم كيفية إنشاء عروض تقديمية احترافية خطوة بخطوة</p>
+                    <a href="#intro" class="btn">ابدأ التعلم</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="intro" class="section intro-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> مقدمة عن PowerPoint</h2>
+                <div class="content-box">
+                    <div class="text-content">
+                        <p>PowerPoint هو برنامج عرض تم إنشاؤه بواسطة روبرت جاسكينز ودنيس أوسنت في شركة برمجيات تدعي أصبح أحد مكونات مجموعة Office Offices، لمساعدة الناس على إنتاج عروض الجناية والمهنية؛ ثم أصبح أحد مكونات مجموعة Microsoft Office.</p>
+                    </div>
+                    <div class="image-content">
+                        <img src="imgs/powerpoint مقدمة.jpg" alt="مقدمة PowerPoint">
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-star"></i> أهمية العرض التقديمي</h3>
+                    <div class="importance-grid">
+                        <div class="importance-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>بيع أو تسويق سلعة أو منتج أو خدمة</p>
+                        </div>
+                        <div class="importance-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>طرح المشاكل والحلول</p>
+                        </div>
+                        <div class="importance-card">
+                            <i class="fas fa-flask"></i>
+                            <p>عرض البحث العلمي والمناقشات</p>
+                        </div>
+                        <div class="importance-card">
+                            <i class="fas fa-users"></i>
+                            <p>تقديم كلمة في مؤتمر أو ندوة</p>
+                        </div>
+                        <div class="importance-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <p>تقديم مشروع</p>
+                        </div>
+                        <div class="importance-card">
+                            <i class="fas fa-info-circle"></i>
+                            <p>عرض معلومات</p>
+                        </div>
+                        <div class="importance-card">
+                            <i class="fas fa-hands-helping"></i>
+                            <p>ندوات الوعي المجتمعي</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-list-ol"></i> إعداد العرض التقديمي</h3>
+                    <div class="steps-timeline">
+                        <div class="step">
+                            <div class="step-icon"><i class="fas fa-pen-fancy"></i></div>
+                            <div class="step-content">
+                                <h4>التخطيط للعرض التقديمي</h4>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon"><i class="fas fa-users"></i></div>
+                            <div class="step-content">
+                                <h4>تحليل الجمهور</h4>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="step-content">
+                                <h4>تحديد الموضوع</h4>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon"><i class="fas fa-bullseye"></i></div>
+                            <div class="step-content">
+                                <h4>تحديد هدف العرض التقديمي</h4>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                            <div class="step-content">
+                                <h4>إعداد محتوى العرض التقديمي</h4>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon"><i class="fas fa-sliders-h"></i></div>
+                            <div class="step-content">
+                                <h4>تصميم الشرائح العرض التقديمي</h4>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon"><i class="fas fa-microphone"></i></div>
+                            <div class="step-content">
+                                <h4>ممارسة تقديم العرض التقديمي</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="basics" class="section basics-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-laptop"></i> بدء تشغيل PowerPoint</h2>
+                
+                <div class="content-box">
+                    <div class="text-content">
+                        <h3>طرق إنشاء ملف العرض التقديمي</h3>
+                        <div class="method-card">
+                            <div class="method-icon"><i class="fas fa-windows"></i></div>
+                            <div class="method-content">
+                                <h4>الطريقة الأولى</h4>
+                                <p>اضغط على مفتاح ويندوز ثم اكتب PowerPoint ثم اختار من قائمة البدء</p>
+                            </div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-icon"><i class="fas fa-desktop"></i></div>
+                            <div class="method-content">
+                                <h4>الطريقة الثانية</h4>
+                                <p>انقر بزر الماوس الأيمن على سطح المكتب ثم اضغط على New ثم اختر Microsoft PowerPoint</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <img src="imgs/بدء-التشغيل.png" alt="بدء تشغيل PowerPoint">
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-window-maximize"></i> نافذة PowerPoint (عرض عادي)</h3>
+                    <div class="interface-grid">
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-tools"></i></div>
+                            <h4>شريط أدوات الوصول السريع</h4>
+                            <p>يحتوي على مجموعة من الخيارات الهامة ويحتوي افتراضيا على ثلاثة خيارات (حفظ أو التراجع أو إعادة)</p>
+                        </div>
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-heading"></i></div>
+                            <h4>شريط العنوان</h4>
+                            <p>يحتوي على عنوان العرض التقديمي المفتوح</p>
+                        </div>
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-window-minimize"></i></div>
+                            <h4>أزرار التحكم</h4>
+                            <p>أزرار تصغير، تكبير، استعادة وإغلاق</p>
+                        </div>
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-bars"></i></div>
+                            <h4>الشريط (Ribbon)</h4>
+                            <p>يتكون من عدة علامات تبويب ومجموعات وأوامر</p>
+                        </div>
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-sliders-h"></i></div>
+                            <h4>الشريحة</h4>
+                            <p>صفحة حيث يمكنك إضافة الكائنات الخاصة بك</p>
+                        </div>
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-sticky-note"></i></div>
+                            <h4>جزء الملاحظات</h4>
+                            <p>مساحة لإضافة ملاحظات مقدم العرض</p>
+                        </div>
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-images"></i></div>
+                            <h4>الشرائح</h4>
+                            <p>يحتوي على الشرائح الخاصة بالعرض التقديمي</p>
+                        </div>
+                        <div class="interface-card">
+                            <div class="interface-icon"><i class="fas fa-info-circle"></i></div>
+                            <h4>شريط الحالة</h4>
+                            <p>شريط موجود في أسفل إطار البرنامج يعرض الحالة الخاصة بالخيارات المحددة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="creation" class="section creation-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-plus-circle"></i> إنشاء عرض تقديمي من البداية</h2>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-sliders-h"></i> إضافة شريحة جديدة</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <p>من تبويب الشريط الرئيسي اختر شريحة جديدة ثم حدد تخطيط الشريحة المناسبة</p>
+                            <div class="slide-types">
+                                <div class="type-card">
+                                    <h4>شريحة عنوان</h4>
+                                    <p>يحتوي على العنوان الرئيسي والعنوان الفرعي</p>
+                                </div>
+                                <div class="type-card">
+                                    <h4>عنوان ومحتوى</h4>
+                                    <p>يحتوي على العنوان الرئيسي ومكان للنص، المخطط، الجدول، الصورة، الفصلصة، SmartArt</p>
+                                </div>
+                                <div class="type-card">
+                                    <h4>عنوان المقطع</h4>
+                                    <p>يحتوي على عناوين القسم والقسم الفرعي</p>
+                                </div>
+                                <div class="type-card">
+                                    <h4>محتويل</h4>
+                                    <p>يحتوي على عنوان الشريحة والثنين من أماكن المحتوى</p>
+                                </div>
+                                <div class="type-card">
+                                    <h4>مقارنة</h4>
+                                    <p>يحتوي على عنوان الشريحة ومكانين للمحتوى بالإضافة إلى عنصرين نائبين للنص لإجراء مقارنة</p>
+                                </div>
+                                <div class="type-card">
+                                    <h4>عنوان فقط</h4>
+                                    <p>يحتوي على العنوان فقط</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/انواع الشرائح.png" alt="أنواع الشرائح">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-edit"></i> إضافة محتوى إلى الشرائح</h3>
+                    <div class="content-options">
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-font"></i></div>
+                            <h4>إضافة نص/فقرة</h4>
+                            <p>انقر فوق مربع النص حيث تريد إضافة النص والفقرة</p>
+                        </div>
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-table"></i></div>
+                            <h4>إضافة جدول</h4>
+                            <p>اختر جدول من التبويب إدراج ثم حدد عدد الأعمدة والصفوف</p>
+                        </div>
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-chart-bar"></i></div>
+                            <h4>إضافة مخططات</h4>
+                            <p>اختر مخطط من علامة التبويب إدراج ثم حدد نوع المخطط المراد ادراجه</p>
+                        </div>
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-image"></i></div>
+                            <h4>إدراج صورة</h4>
+                            <p>اختر صور من علامة التبويب إدراج ثم انتقل إلى الصورة التي تريد إدراجها</p>
+                        </div>
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-project-diagram"></i></div>
+                            <h4>إدراج SmartArt</h4>
+                            <p>اختر SmartArt من علامة التبويب إدراج ثم حدد الشكل المطلوب</p>
+                        </div>
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-shapes"></i></div>
+                            <h4>إدراج الأشكال</h4>
+                            <p>اختر أشكال من تبويب إدراج ثم اختر الشكل الذي تريده ثم قم برسمه</p>
+                        </div>
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-camera"></i></div>
+                            <h4>إدراج لقطة شاشة</h4>
+                            <p>اختر لقطة شاشة تيويب إدراج ثم اضغط على لقطة الشاشة ثم حدد المنطقة</p>
+                        </div>
+                        <div class="option-card">
+                            <div class="option-icon"><i class="fas fa-file-alt"></i></div>
+                            <h4>إدراج كائنات مختلفة</h4>
+                            <p>يمكنك إدراج كائنات مختلفة مثل مصنف Excel ومستند Word والمعادلة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-music"></i> الصوت والفيديو</h3>
+                    <div class="media-options">
+                        <div class="media-card">
+                            <div class="media-icon"><i class="fas fa-volume-up"></i></div>
+                            <div class="media-content">
+                                <h4>إدراج الصوت</h4>
+                                <p>اختر الوسائط من تيويب إدراج ثم اضغط على صوت ثم اختر اضافة صوت من على الكمبيوتر او تسجيل الصوت</p>
+                            </div>
+                        </div>
+                        <div class="media-card">
+                            <div class="media-icon"><i class="fas fa-video"></i></div>
+                            <div class="media-content">
+                                <h4>إدراج فيديو</h4>
+                                <p>اختر الوسائط من تبويب إدراج ثم اضغط على فيديو ثم اختر اضافة صوت من على الكمبيوتر او من على الانترنت</p>
+                            </div>
+                        </div>
+                        <div class="media-card">
+                            <div class="media-icon"><i class="fas fa-cut"></i></div>
+                            <div class="media-content">
+                                <h4>توقيت التشذيب على قصاصات الوسائط</h4>
+                                <p>اضغط على الفيديو ثم اختر اقتطاع الفيديو من تيوب خيارات التشغيل ثم اسحب المنزلق الأخضر إلى نقطة البداية التي تريدها</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="design" class="section design-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-paint-brush"></i> التصميم</h2>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-palette"></i> ما هو التصميم؟</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <p>التصميم هو مجموعة من الخطوط والألوان والأثار الخاصة المعدة مسبقا والتي تكمل بعضها البعض. يمكنك العثور عليه تيويب التصميم.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/التصميم.png" alt="خيارات التصميم">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-fill-drip"></i> تنسيق الخلفية</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <p>اختر تنسيق الخلفية من تبويب تصميم. يمكن تطبيق الخلفية على الشريحة المحددة فقط أو تطبيقها على كافة الشرائح عن طريق الضغط على الأمر (تطبيق على الكل.)</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/الخلفية.avif" alt="خيارات الخلفية">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-lightbulb"></i> أفكار التصميم</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <p>تقوم ميزة أفكار التصميم في Microsoft PowerPoint بفحص محتوى الشريحة المحددة وتقدم لك مجموعة متنوعة من خيارات التصميم استنادا إلى ما تجده. اختر افكار تصميم من تبويب تصميم ثم حدد التصميم الذى تريده.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/افكار-التصميم.webp" alt="أفكار التصميم">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-sliders-h"></i> تخطيطات</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <p>يحدد التخطيط كيفية إضافة المحتوى إلى الشريحة. يمكنك تغيير تخطيط الشريحة إذا كنت بحاجة إلى ذلك. حدد الشريحة التي تريد تغيير تخطيطها ثم حدد التخطيط الذي تريد تغييره إليه من ايقونة تخطيط الموجودة في تبويب الشريط الرئيسي.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/تخطيط-الشرائح.png" alt="تخطيطات الشرائح">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-sliders-h"></i> الشريحة الرئيسية</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <h4>ما هي الشريحة الرئيسية؟</h4>
+                            <p>عرض الشريحة الرئيسية هي ميزة في PowerPoint تسمح لك بتعديل لون الخلفية ونمط الخط وإضافة أي نص أو صور متكررة (مثل الشعارات) ثم سيقثر هذا التعديل على كل شريحة في العرض التقديمي.</p>
+                            <h4>عرض الشريحة الرئيسية</h4>
+                            <p>اختر الشريحة الرئيسية نت تبويب عرض. بعد ذلك؛ ستظهر علامة تيويب يسمى الشكل الرئيسي للشريحة على الشريط؛ اضغط عليه للتحكم في الشريحة الرئيسية. بعد الانتهاء من التعديل في الشريحة الرئيسية لا تنسى الضغط على إغلاق عرض الشريحة الرئيسي.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/الشريحة-الرئيسية.webp" alt="الشريحة الرئيسية">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="animation" class="section animation-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-film"></i> الرسوم المتحركة</h2>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-magic"></i> تطبيق الرسوم المتحركة</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <p>الحركة تأثير مرئي يحدث عند الانتقال من كائن إلى كائن في نفس الشريحة أثناء عرض تقديمي. هناك العديد من الخيارات للتحكم في تأثيرات حركة الكائن في PowerPoint. يمكنك تعيين سرعة واتجاه الرسوم المتحركة.</p>
+                            <h4>تطبيق الرسوم المتحركة على محتوى الشريحة</h4>
+                            <p>حدد الكائن ثم اختر إضافة حركة من تبويب حركات ثم حدد مجموعة الحركات التي تريد تطبيقها على الشكل. يتم تشغيل معاينة للرسوم المتحركة، وتظهر الارقام على الكائنات لإظهار ترتيب الرسوم المتحركة.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/الانيميشن.jpg" alt="الرسوم المتحركة">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-sliders-h"></i> خيارات الرسوم المتحركة</h3>
+                    <div class="animation-options">
+                        <div class="anim-card">
+                            <div class="anim-icon"><i class="fas fa-route"></i></div>
+                            <div class="anim-content">
+                                <h4>إضافة مسار إلى الحركة</h4>
+                                <p>حدد رقم الحركة ثم اختر المسار الذي تريده للحركة من خلال أمر إضافة حركة الموجود في تيويب حركات.</p>
+                            </div>
+                        </div>
+                        <div class="anim-card">
+                            <div class="anim-icon"><i class="fas fa-sort"></i></div>
+                            <div class="anim-content">
+                                <h4>إعادة ترتيب الرسوم المتحركة</h4>
+                                <p>يتم إعادة ترتيب الحركات من خلال اختيارات أمر إعادة ترتيب الحركة الموجود فى تبويب حركات.</p>
+                            </div>
+                        </div>
+                        <div class="anim-card">
+                            <div class="anim-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="anim-content">
+                                <h4>تغيير الحركة</h4>
+                                <p>حدد رقم الحركة ثم قم بالضغط على الحركة الجديدة التي تريدها.</p>
+                            </div>
+                        </div>
+                        <div class="anim-card">
+                            <div class="anim-icon"><i class="fas fa-trash"></i></div>
+                            <div class="anim-content">
+                                <h4>حذف الرسوم المتحركة</h4>
+                                <p>حدد رقم الحركة ثم اختر حذف من تيوب حركات.</p>
+                            </div>
+                        </div>
+                        <div class="anim-card">
+                            <div class="anim-icon"><i class="fas fa-clock"></i></div>
+                            <div class="anim-content">
+                                <h4>استخدام توقيت للحركات</h4>
+                                <p>الحركة نافذ المفعول إما يدويا بعد النقر بالماوس أو تلقائيا بعد وقت معين تم تحديده.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3><i class="fas fa-sliders-h"></i> الانتقال بين الشرائح</h3>
+                    <div class="content-box">
+                        <div class="text-content">
+                            <p>انتقال الشريحة هو التأثير المرئي الذي يحدث عند الانتقال من شريحة إلى شريحة أثناء عرض تقديمي. هناك العديد من الخيارات للتحكم في تأثيرات حركة انتقال الشريحة في PowerPoint.</p>
+                            <h4>تطبيق الانتقال بين الشرائح</h4>
+                            <p>اختر حركة الانتقال التي تريدها من اختيار نقل إلى هذه الشريحة الموجود في تبويب انتقالات. يمكنك التحكم في مدة الحركة الانتقالية عن طريق تعيين خيار المدة.</p>
+                            <h4>الانتقال إلى التوقيت</h4>
+                            <p>يمكنك تعيين انتقالات الشرائح إلى التقدم إما يدويا بالنقر فوق الملوس أو تلقائيا عن طريق تعيين وقت.</p>
+                            <h4>إزالة الانتقال</h4>
+                            <p>اضغط على (بلا) في تيويب الانتقالات.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="imgs/انتقال-الشرائح.png" alt="انتقالات الشرائح">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <a href="../../index.html" id="fixedBackBtn" title="العودة للصفحة الرئيسية" style="position: fixed; bottom: 20px; left: 20px; z-index: 99; border: none; outline: none; background-color: #ffc107; color: #1c2a4d; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; text-decoration: none;">
+  ←
+</a>
+
+    <script>
+        // Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav ul');
+    
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        menuToggle.querySelector('i').classList.toggle('fa-times');
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                }
+            }
+        });
+    });
+    
+    // Animation on scroll
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.content-box, .importance-card, .step, .method-card, .interface-card, .type-card, .option-card, .media-card, .anim-card, .activity-card');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // Set initial state for animation
+    document.querySelectorAll('.content-box, .importance-card, .step, .method-card, .interface-card, .type-card, .option-card, .media-card, .anim-card, .activity-card').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    // Run once on page load
+    animateOnScroll();
+    
+    // Run on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Hero image animation
+    const heroImage = document.querySelector('.hero-image img');
+    if (heroImage) {
+        heroImage.style.animation = 'float 3s ease-in-out infinite';
+    }
+    
+    // SmartArt animation in activity
+    const smartartItems = document.querySelectorAll('.smartart-item');
+    if (smartartItems.length > 0) {
+        smartartItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+            item.style.animation = 'fadeInUp 0.5s ease forwards';
+        });
+    }
+    
+    // Add animation keyframes dynamically
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+// تأثيرات عند التحويم (اختياري)
+  const backBtn = document.getElementById('backButton');
+  
+  backBtn.addEventListener('mouseover', function() {
+    this.style.backgroundColor = '#ffc107';
+    this.style.color = '#1c2a4d';
+    this.style.transform = 'scale(1.1)';
+  });
+  
+  backBtn.addEventListener('mouseout', function() {
+    this.style.backgroundColor = '#1c2a4d';
+    this.style.color = '#ffc107';
+    this.style.transform = 'scale(1)';
+  });
+    </script>
+</body>
+</html>

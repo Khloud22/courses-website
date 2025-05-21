@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل تدريب Excel - الوحدة المركزية للتدريب على تكنولوجيا المعلومات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        @font-face {
+            font-family: 'Tajawal';
+            src: url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-left: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('imgs/دليل-تدريب.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-right: 10px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .chapter {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .chapter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .chapter-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .chapter-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .content-block {
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-title {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-title i {
+            margin-left: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .content-text {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .image-container {
+            margin: 1.5rem 0;
+            text-align: center;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .steps {
+            margin: 1rem 0;
+            padding-right: 20px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--secondary-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        table th, table td {
+            padding: 12px 15px;
+            text-align: right;
+            border: 1px solid #ddd;
+        }
+        
+        table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .note {
+            background-color: #e3f2fd;
+            border-right: 4px solid var(--secondary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .note-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .warning {
+            background-color: #fff8e1;
+            border-right: 4px solid var(--warning-color);
+        }
+        
+        .warning .note-title {
+            color: var(--warning-color);
+        }
+        
+        .success {
+            background-color: #e8f5e9;
+            border-right: 4px solid var(--success-color);
+        }
+        
+        .success .note-title {
+            color: var(--success-color);
+        }
+        
+        .error {
+            background-color: #ffebee;
+            border-right: 4px solid var(--accent-color);
+        }
+        
+        .error .note-title {
+            color: var(--accent-color);
+        }
+        
+        /* Functions Section */
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .function-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .function-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .function-title i {
+            margin-left: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .function-syntax {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .function-example {
+            margin-top: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-right: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-left: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px 0;
+            }
+            
+            .hero {
+                height: 350px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .chapter-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .chapter-icon {
+                margin-top: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .btn-outline {
+                margin-right: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .chapter-title {
+                font-size: 1.3rem;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>قسم تكنولوجيا التعليم للتدريب على تكنولوجيا المعلومات</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#intro">مقدمة</a></li>
+                    <li><a href="#excel-file">ملف Excel</a></li>
+                    <li><a href="#selection">الاختيار</a></li>
+                    <li><a href="#worksheet">ورقة العمل</a></li>
+                    <li><a href="#protection">الحماية</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>دليل تدريب Microsoft Excel</h2>
+            <p>تعلم أساسيات وأساليب متقدمة في استخدام جداول البيانات لتحليل البيانات واتخاذ القرارات</p>
+            <div>
+                <a href="#intro" class="btn btn-outline">ابدأ التعلم</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction Section -->
+        <section id="intro" class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">1. مقدمة</h2>
+                <div class="chapter-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-question-circle"></i>
+                    1.1 ما هو Excel؟
+                </h3>
+                <div class="content-text">
+                    <p>Excel هو برنامج جداول بيانات مضمن في مجموعة Microsoft Office، Excel هو برنامج يستخدم لإنشاء جداول البيانات والقوائم والميزانيات والمخططات والجداول وكذلك ترتيب القيم في صفوف وأعمدة يمكن معالجتها رياضياً باستخدام كل من العمليات الحسابية الأساسية والمعقدة والمعادلات.</p>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-star"></i>
+                    1.2 أهمية جدول البيانات
+                </h3>
+                <div class="content-text">
+                    <p>جدول البيانات هو أداة تحليل قوية لكميات كبيرة من البيانات؛ كما يتم استخدامه لتتظيم وتخزين البيانات في شكل جدولي.</p>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-cog"></i>
+                    1.3 إعداد الجدول
+                </h3>
+                <div class="content-text">
+                    <p>قم بإعداد عناوين الأعمدة / الصفوف والبيانات والمعادلات التي سيتم تطبيقها على البيانات.</p>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-play"></i>
+                    1.4 بدء تشغيل Excel
+                </h3>
+                <div class="content-text">
+                    <p>هناك طريقتان لإنشاء ملف Excel:</p>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">ضغط على مفتاح ويندوز (ويندوز 10 ثم اختر Excel).</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن على سطح المكتب ثم اضغط على New ثم اختر Microsoft Excel Worksheet من القائمة المنسدلة.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/انشاء-ملف-من-قائمة-ابدا.png" alt="إنشاء ملف Excel من قائمة البدء">
+                    <div class="image-caption">الشكل 1: إنشاء ملف Excel من قائمة البدء</div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Excel File Section -->
+        <section id="excel-file" class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">2. ملف Excel</h2>
+                <div class="chapter-icon">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-desktop"></i>
+                    2.1 واجهة Excel
+                </h3>
+                <div class="content-text">
+                    <p>واجهة Excel تتكون من عدة أجزاء رئيسية:</p>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <strong>شريط أدوات الوصول السريع:</strong> يحتوي على مجموعة من الخيارات الهامة ويحتوي افتراضياً على ثلاثة خيارات (حفظ أو التراجع أو إعادة) ويمكن تخصيص هذه الأوامر من قبل المستخدم وإضافة الأوامر أو إزالتها.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <strong>شريط العنوان:</strong> يحتوي على عنوان الملف (المصنف) المفتوح، وعندما نفتح مصنفاً جديداً، فإن Excel يعطيه اسماً افتراضياً (المصنف 1) وعندما يتم تخزين المصنف باسم جديد يظهر هذا الاسم الجديد في منتصف شريط العنوان.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <strong>أزرار التحكم:</strong> تسعى أزرار التصغير والتكبير والاستعادة والإغلاق أزرار التحكم أيضاً. أزرار التحكم تظهر في الزاوية اليسرى العليا من إطار التطبيق.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <strong>الشريط:</strong> يتكون من علامات تبويب ومجموعات وأوامر.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <strong>مربع الاسم:</strong> هو شريط يظهر في الزاوية اليسرى من شريط المعادلات وعادة ما يتضمن اسم الخلية التي يعمل عليها أو الخلية الفعالة التي تحتوي على المؤشر.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <strong>شريط المعادلات:</strong> هو الشريط في أعلى ورقة العمل حيث تظهر البيانات أو المعادلات الموجودة بالخلية النشطة. يمكن أيضاً استخدام شريط المعادلات لتحرير البيانات أو المعادلة في الخلية النشطة.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <strong>ورقة العمل:</strong> تتكون ورقة العمل من أعمدة وصفوف. الأعمدة يتم تعريفها بالحروف (A, B, C... إلخ)، بينما يتم تعريف الصفوف بالأرقام (1, 2, 3... إلخ)، عند التقاطع بين الأعمدة والصفوف ما يسمى بالخلايا التي هي أساس ورقة العمل. كل خلية لها الاسم الخاص بها ويتم تعريفه بواسطة رقم الصف وحرف العمود مثل A1, B2, C3. الخلية هي المكان الذي يمكنك من إدخال قيم أو دالة في ورقة العمل.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">8</div>
+                            <div class="step-content">
+                                <strong>شريط الحالة:</strong> شريط موجود في أسفل إطار البرنامج: يعرض الحالة الخاصة بالشيء المحدد وهي تشبه شريط الحالة في برنامج Microsoft Word.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/واجهة-ملف Excel.png" alt="واجهة ملف Excel">
+                    <div class="image-caption">الشكل 3: واجهة ملف Excel</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-folder-open"></i>
+                    2.2 فتح ملف Excel موجود
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">ابدأ تشغيل برنامج Excel</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اضغط على أمر ملف ثم استعرض</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">الملفات الموجودة على جهاز الكمبيوتر ثم انتقل إلى موقع الملف المراد فتحه</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">واختر الملف ثم اضغط على فتح.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/فتح-ملف-كوجود.png" alt="فتح ملف Excel موجود">
+                    <div class="image-caption">الشكل 4: فتح ملف Excel موجود</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-file"></i>
+                    2.3 إنشاء ملف Excel باستخدام قالب
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اختر جديد من قائمة ملف</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختر القالب الذي تريده</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/انشاء-ملف-بقالب.png" alt="إنشاء ملف Excel باستخدام قالب">
+                    <div class="image-caption">الشكل 5: إنشاء ملف Excel باستخدام قالب</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-plus"></i>
+                    2.4 فتح ملف Excel جديد
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اختر جديد من قائمة ملف</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختر عرض تقديمي فارغ</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/فتح-ملف-جديد.png" alt="فتح ملف Excel جديد">
+                    <div class="image-caption">الشكل 6: فتح ملف Excel جديد</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-times"></i>
+                    2.5 إغلاق ملف Excel مفتوح
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اضغط على X في الزاوية العلوية اليسرى من إطار ملف Excel لإغلاق الملف</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">أو من علامة التبويب ملف، ثم حدد إغلاق</div>
+                        </div>
+                    </div>
+                    <div class="note">
+                        <p>إذا لم تقم بحفظ العرض التقديمي، فسيطالبك Excel بالحفظ. انقر فوق نعم لحفظ المصنف والتغييرات أو انقر فوق لا لتحايل التغييرات وإغلاق الملف.</p>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/اغلاق-ملف-مفتوح.png" alt="إغلاق ملف Excel مفتوح">
+                    <div class="image-caption">الشكل 7: إغلاق ملف Excel مفتوح</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-exchange-alt"></i>
+                    2.6 التبديل بين الملفات المفتوحة
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">من تبويب عرض اختر (تبديل النوافذ)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم حدد النافذة التي تريد التبديل إليها</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/التبديل-بين-الملفات-المفتوحة.png" alt="التبديل بين الملفات المفتوحة">
+                    <div class="image-caption">الشكل 8: التبديل بين الملفات المفتوحة</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-save"></i>
+                    2.7 حفظ ملف Excel
+                </h3>
+                <div class="content-text">
+                    <p>لحفظ ملف Excel كنوع ملف آخر مثل (PDF أو ملف نصي):</p>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">من قائمة ملف اختر حفظ باسم</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم حدد نوع الملف الذي تريد حفظه من خيار حفظ كنوع</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">ثم اضغط على حفظ</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/حفظ-ملف-اكسل-كنوع-اخر.png" alt="حفظ ملف Excel كنوع ملف آخر">
+                    <div class="image-caption">الشكل 9: حفظ ملف Excel كنوع ملف آخر</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-arrows-alt"></i>
+                    2.8 التنقل في جدول بيانات
+                </h3>
+                <div class="content-text">
+                    <p>مع الحجم الكبير من البيانات وخلايا ورقة العمل، فإنه ليس من السهل التحرك في ورقة العمل. هناك نوعان من الأدوات التي يمكن استخدامها للتنقل داخل ورقة العمل وهما الماوس ولوحة المفاتيح.</p>
+                    
+                    <h4>الماوس:</h4>
+                    <p>هو أداة فعالة للحركة في منطقة صغيرة، فإن المؤشر هنا يتحول إلى أداة والضغط مرة واحدة مع الزر الأيسر يعني أنك قد اخترت الخلية المحددة. قد يتحول المؤشر إلى أشكال مختلفة اعتماداً على العمل الذي تقوم به في ورقة العمل.</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الشكل</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-mouse-pointer"></i></td>
+                                <td>هذا الشكل هو لتحديد الخلايا من خلال ورقة العمل.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-i-cursor"></i></td>
+                                <td>يظهر هذا الشكل إلى موضع المؤشر عند تعديل مدخلات خلية.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-plus"></i></td>
+                                <td>هذا الشكل هو أداة التعبئة لتحديد سلسلة أو صيغة نسخ.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-arrows-alt-v"></i></td>
+                                <td>هذا الشكل لتحديد الصفوف / الأعمدة.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-arrows-alt-h"></i></td>
+                                <td>يظهر هذا الشكل على حدود رؤوس الأعمدة أو ارتفاعات الصفوف لتوسيع عرض العمود أو ارتفاع الصف.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h4>لوحة المفاتيح:</h4>
+                    <p>يمكن استخدامها للتنقل بين الخلايا باستخدام الأسهم وبعض الأزرار على لوحة المفاتيح.</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>اختصارات لوحة المفاتيح</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tab or →</td>
+                                <td>نقل خلية واحدة إلى اليمين</td>
+                            </tr>
+                            <tr>
+                                <td>Shift + Tab or ←</td>
+                                <td>نقل خلية واحدة إلى اليسار</td>
+                            </tr>
+                            <tr>
+                                <td>↑</td>
+                                <td>نقل خلية واحدة لأعلى</td>
+                            </tr>
+                            <tr>
+                                <td>↓</td>
+                                <td>نقل خلية واحدة لأسفل</td>
+                            </tr>
+                            <tr>
+                                <td>Ctrl + →</td>
+                                <td>الانتقال إلى آخر خلية مشغولة في الصف</td>
+                            </tr>
+                            <tr>
+                                <td>Ctrl + ←</td>
+                                <td>الانتقال إلى أول خلية مشغولة في صف واحد</td>
+                            </tr>
+                            <tr>
+                                <td>Ctrl + ↓</td>
+                                <td>الانتقال إلى آخر خلية مشغولة في العمود</td>
+                            </tr>
+                            <tr>
+                                <td>Ctrl + ↑</td>
+                                <td>الانتقال إلى أول خلية مشغولة في عمود</td>
+                            </tr>
+                            <tr>
+                                <td>Ctrl + End</td>
+                                <td>الانتقال إلى آخر خلية مشغولة في ورقة العمل</td>
+                            </tr>
+                            <tr>
+                                <td>Ctrl + Home</td>
+                                <td>الانتقال إلى الخلية الأولى في ورقة العمل (A1)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selection Section -->
+        <section id="selection" class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">3. الاختيار</h2>
+                <div class="chapter-icon">
+                    <i class="fas fa-mouse-pointer"></i>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-columns"></i>
+                    3.1 أعمدة / صفوف
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">حدد العمود بأكمله عن طريق تحديد حرف العمود</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">حدد الصف بأكمله بتحديد رقم الصف</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">لتحديد صفوف أو أعمدة غير متجاورة، اضغط على Ctrl وحمد أرقام / حروف الصف أو العمود</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/اختيار-الاعمدة-الصفوف.png" alt="اختيار الأعمدة / الصفوف">
+                    <div class="image-caption">الشكل 10: اختيار الأعمدة / الصفوف</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-file-alt"></i>
+                    3.2 أوراق العمل
+                </h3>
+                <div class="content-text">
+                    <h4>تحديد جدول أو قائمة أو ورقة عمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">لتحديد قائمة أو جدول، حدد خلية في القائمة أو الجدول واضغط على Ctrl + A</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">لتحديد ورقة العمل بأكملها، انقر فوق الزر تحديد الكل في الزاوية العلوية اليسرى</div>
+                        </div>
+                    </div>
+                    
+                    <h4>تحديد أوراق متعددة:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">لتحديد ورقتين متجاورتين أو أكثر: انقر فوق علامة التبويب للورقة الأولى، ثم اضغط باستمرار على SHIFT وانقر على علامة التبويب للورقة الأخيرة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">لتحديد ورقتين غير متجاورتين أو أكثر: انقر فوق علامة التبويب للورقة الأولى، ثم اضغط باستمرار على CTRL وانقر على علامات التبويب للأوراق الأخرى</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">لتحديد كافة الأوراق في مصنف: انقر بزر الماوس الأيمن فوق علامة تبويب ورقة، ثم انقر فوق الخيار تحديد كافة الأوراق</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/تحديد-كافة-الاوراق.png" alt="تحديد جميع الأوراق">
+                    <div class="image-caption">الشكل 12: تحديد جميع الأوراق</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-square"></i>
+                    3.3 خلايا
+                </h3>
+                <div class="content-text">
+                    <h4>تحديد خلية واحدة أو أكثر:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">انقر على الخلية لتحديدها</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">لتحديد نطاق، حدد خلية، ثم مع الضغط على زر الماوس الأيسر، اسحب إلى الخلايا الأخرى</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">لتحديد الخلايا غير المجاورة، اضغط على Ctrl وحدد الخلايا</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/تحديد-خلية-واحدة.png" alt="تحديد خلية واحدة أو أكثر">
+                    <div class="image-caption">الشكل 13: تحديد خلية واحدة أو أكثر</div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="imgs/تحديد-خلايا-غير-مجاورة.png" alt="تحديد الخلايا غير المجاورة">
+                    <div class="image-caption">الشكل 14: تحديد الخلايا غير المجاورة</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Worksheet Section -->
+        <section id="worksheet" class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">4. ورقة عمل</h2>
+                <div class="chapter-icon">
+                    <i class="fas fa-table"></i>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-plus-circle"></i>
+                    4.1 إضافة / إزالة ورقة العمل
+                </h3>
+                <div class="content-text">
+                    <h4>إضافة ورقة عمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اضغط على علامة الزائد بأسفل الملف</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">أو النقر بزر الماوس الأيمن على اسم ورقة العمل ثم اختر إدراج</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/اضافة-ورقة-عمل.png" alt="إضافة ورقة عمل">
+                        <div class="image-caption">الشكل 15: إضافة ورقة عمل</div>
+                    </div>
+                    
+                    <h4>حذف ورقة العمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن على اسم ورقة العمل</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختار حذف</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/حذف-ورقة.png" alt="حذف ورقة العمل">
+                        <div class="image-caption">الشكل 16: حذف ورقة العمل</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-tag"></i>
+                    4.2 إعادة تسمية / تلوين ورقة عمل علامة التبويب
+                </h3>
+                <div class="content-text">
+                    <h4>إعادة تسمية ورقة العمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن على اسم ورقة العمل</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختار إعادة تسمية</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">اكتب الاسم الجديد ثم اضغط Enter</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/اعادة-تسمية.png" alt="إعادة تسمية ورقة العمل">
+                        <div class="image-caption">الشكل 17: إعادة تسمية ورقة العمل</div>
+                    </div>
+                    
+                    <h4>تلوين علامة التبويب ورقة العمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن على اسم ورقة العمل</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختار (لون علامة التبويب)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">ثم حدد اللون الذي تريده</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/تلوين-علامة-التبويب.png" alt="تلوين علامة تبويب ورقة العمل">
+                        <div class="image-caption">الشكل 18: تلوين علامة تبويب ورقة العمل</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-copy"></i>
+                    4.3 نسخ / نقل ورقة العمل
+                </h3>
+                <div class="content-text">
+                    <h4>نسخ ورقة العمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اضغط على CTRL واسحب علامة تبويب ورقة العمل إلى الموقع الذي تريده</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">أو انقر بزر الماوس الأيمن فوق علامة تبويب ورقة العمل واختر (نقل أو نسخ)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">ثم حدد خانة (إنشاء نسخة)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">ثم حدد المكان الذي تريد وضع النسخة به ثم اضغط موافق</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/نسخ-ورقة-العمل.png" alt="نسخ ورقة العمل">
+                        <div class="image-caption">الشكل 19: نسخ ورقة العمل</div>
+                    </div>
+                    
+                    <h4>نقل ورقة العمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اضغط على علامة تبويب ورقة العمل ثم اسحبها إلى الموقع الذي تريده</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">أو انقر بزر الماوس الأيمن فوق علامة التبويب ورقة العمل واختر نقل أو نسخ</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">ثم حدد المكان الذي تريد وضع النسخة به ثم اضغط موافق</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/نقل-ورقة-العمل.png" alt="نقل ورقة العمل">
+                        <div class="image-caption">الشكل 20: نقل ورقة العمل</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-columns"></i>
+                    4.4 إدراج / إزالة العمود أو الصف
+                </h3>
+                <div class="content-text">
+                    <h4>إدراج عمود / صف:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن على حرف العمود / رقم الصف الذي يلي العمود او الصف الذي تريد إدراجه</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختار إدراج</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/ادراج-عمود-صف.png" alt="إدراج العمود / الصف">
+                        <div class="image-caption">الشكل 21: إدراج العمود / الصف</div>
+                    </div>
+                    
+                    <h4>إزالة العمود / الصف:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن على العمود او الصف الذي تريد إزالته</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختر حذف</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-ruler"></i>
+                    4.5 تعديل عرض العمود / ارتفاع الصف
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن على اسم العمود او رقم الصف</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اختر عرض العمود او ارتفاع الصف</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">ثم حدد القيمة التي تريدها ثم اضغط موافق</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/تعديل-عرض-ارتفاع.png" alt="تعديل عرض العمود / ارتفاع الصف">
+                        <div class="image-caption">الشكل 23: تعديل عرض العمود / ارتفاع الصف</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-check-square"></i>
+                    4.6 حدد ورقة عمل واحدة أو أكثر
+                </h3>
+                <div class="content-text">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">حدد ورقة عمل واحدة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ثم اضغط على زر CTRL لتحديد أوراق العمل الأخرى</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-snowflake"></i>
+                    4.7 تجميد / إلغاء تجميد الأعمدة والصفوف
+                </h3>
+                <div class="content-text">
+                    <p>التجميد هو الحفاظ على مساحة من ورقة العمل مرئية أثناء التمرير إلى أعمدة وصفوف أخرى من ورقة العمل.</p>
+                    
+                    <h4>تجميد الأعمدة والصفوف:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">حدد الخلية أسفل الصفوف وإلى يسار الأعمدة التي تريد الاحتفاظ بها مرئية عند التمرير</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">ومن تبويب عرض اختر تجميد أجزاء</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/التجميد.png" alt="التجميد">
+                        <div class="image-caption">الشكل 24: التجميد</div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/نتيجة-التجميد.png" alt="نتيجة التجميد">
+                        <div class="image-caption">الشكل 25: نتيجة التجميد</div>
+                    </div>
+                    
+                    <h4>إلغاء تجميد الأعمدة والصفوف:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">من تبويب عرض اختر إلغاء تجميد الأجزاء</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/الغاء-التجميد.png" alt="إلغاء التجميد">
+                        <div class="image-caption">الشكل 26: إلغاء التجميد</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-eye-slash"></i>
+                    4.8 إخفاء / إظهار الأعمدة والصفوف
+                </h3>
+                <div class="content-text">
+                    <h4>إخفاء الأعمدة:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">حدد عموداً واحداً أو أكثر تريد إخفاءه</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن فوق الأعمدة المحددة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">اختر إخفاء</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/اخفاء-الاعمدة.png" alt="إخفاء الأعمدة">
+                        <div class="image-caption">الشكل 27: إخفاء الأعمدة</div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/نتيجة-الاخفاء.png" alt="نتيجة إخفاء عمود">
+                        <div class="image-caption">الشكل 28: نتيجة إخفاء عمود</div>
+                    </div>
+                    
+                    <h4>إظهار الأعمدة المخفية:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">حدد الأعمدة المحيطة للأعمدة المخفية</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">انقر بزر الماوس الأيمن فوق الأعمدة المحددة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">ثم اختر إلغاء إظهار</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/اظهار-اعمدة-مخفية.png" alt="إظهار الأعمدة المخفية">
+                        <div class="image-caption">الشكل 29: إظهار الأعمدة المخفية</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protection Section -->
+        <section id="protection" class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">5. حماية ملف Excel</h2>
+                <div class="chapter-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-shield-alt"></i>
+                    5.1 حماية / إلغاء حماية ورقة العمل
+                </h3>
+                <div class="content-text">
+                    <h4>حماية ورقة العمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اختر (حماية الورقة) من علامة التبويب مراجعة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">في مربع كلمة المرور اكتب كلمة المرور</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">قم بتأكيدها في مربع تأكيد كلمة المرور</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/حماية-ورقة-العمل.png" alt="حماية ورقة العمل">
+                        <div class="image-caption">الشكل 30: حماية ورقة العمل</div>
+                    </div>
+                    
+                    <h4>إلغاء حماية ورقة العمل:</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اختر إلغاء حماية ورقة من علامة التبويب مراجعة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">اكتب كلمة المرور وانقر فوق موافق</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/الغاء-الحماية.png" alt="إلغاء حماية ورقة العمل">
+                        <div class="image-caption">الشكل 31: إلغاء حماية ورقة العمل</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h3 class="content-title">
+                    <i class="fas fa-lock"></i>
+                    5.2 حماية المصنف
+                </h3>
+                <div class="content-text">
+                    <p>حماية الملف يمنع المستخدم من إنشاء تخطيط، ماكرو، نقل، نسخ أوراق العمل، إضافة، حذف، إعادة تسمية، أو التكبير والتصغير.</p>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">اختر حماية مصنف من علامة التبويب مراجعة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">سيظهر مربع الحوار يطلب كلمة مرور</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">اكتب كلمة المرور وانقر فوق موافق</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">ثم أعد كتابتها في مربع التأكيد</div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/حماية-المصنف.png" alt="حماية المصنف">
+                        <div class="image-caption">الشكل 32: حماية المصنف</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">تحميل الدليل الكامل</h2>
+                <div class="chapter-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+            </div>
+            
+            <div class="content-text" style="text-align: center;">
+                <p>يمكنك تحميل النسخة الكاملة من دليل تدريب Excel بصيغة PDF للرجوع إليها في أي وقت.</p>
+                <a href="imgs/معالجة-جداول-البياتات.pdf" class="btn" style="margin-top: 20px;">
+                    <i class="fas fa-file-pdf"></i> تحميل الدليل الكامل
+                </a>
+            </div>
+        </section>
+    </main>
+<a href="../../index.html" id="fixedBackBtn" title="العودة للصفحة الرئيسية" style="position: fixed; bottom: 20px; left: 20px; z-index: 99; border: none; outline: none; background-color: #ffc107; color: #1c2a4d; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; text-decoration: none;">
+  ←
+</a>
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    nav.classList.remove('show');
+                }
+            });
+        });
+        
+        // Responsive Adjustments
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                mobileMenuBtn.style.display = 'block';
+                nav.classList.add('mobile-nav');
+            } else {
+                mobileMenuBtn.style.display = 'none';
+                nav.classList.remove('mobile-nav');
+                nav.classList.remove('show');
+            }
+        }
+        
+        window.addEventListener('resize', checkScreenSize);
+        checkScreenSize();
+        
+        // Animation on Scroll
+        const animateOnScroll = () => {
+            const chapters = document.querySelectorAll('.chapter');
+            
+            chapters.forEach(chapter => {
+                const chapterPosition = chapter.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (chapterPosition < screenPosition) {
+                    chapter.style.opacity = '1';
+                    chapter.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.chapter').forEach(chapter => {
+            chapter.style.opacity = '0';
+            chapter.style.transform = 'translateY(20px)';
+            chapter.style.transition = 'all 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on page load
+        // تأثيرات عند التحويم (اختياري)
+  const backBtn = document.getElementById('backButton');
+  
+  backBtn.addEventListener('mouseover', function() {
+    this.style.backgroundColor = '#ffc107';
+    this.style.color = '#1c2a4d';
+    this.style.transform = 'scale(1.1)';
+  });
+  
+  backBtn.addEventListener('mouseout', function() {
+    this.style.backgroundColor = '#1c2a4d';
+    this.style.color = '#ffc107';
+    this.style.transform = 'scale(1)';
+  });
+    </script>
+</body>
+</html>

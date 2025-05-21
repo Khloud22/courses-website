@@ -117,11 +117,14 @@
       border-radius: 15px;
       padding: 20px;
       text-align: center;
-      width: 40em;      ;
+      width: 80%;
+      max-width: 600px;
       margin: 0 auto;
       transition: opacity 0.5s ease, transform 0.5s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       display: none;
+      height: auto;
+      min-height: 400px;
     }
 
     .card.active {
@@ -142,6 +145,8 @@
 
     .card img {
       width: 100%;
+      height: 336px;
+      object-fit: cover;
       border-radius: 10px;
       margin-bottom: 15px;
     }
@@ -214,6 +219,47 @@
       nav ul {
         gap: 10px;
       }
+      
+      .card {
+        width: 90%;
+        min-height: 350px;
+      }
+      
+      .card img {
+        height: 150px;
+      }
+      
+      .landing h1 {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 95%;
+        min-height: 300px;
+        padding: 15px;
+      }
+      
+      .card img {
+        height: 120px;
+      }
+      
+      .card h4 {
+        font-size: 1.1rem;
+      }
+      
+      .landing h1 {
+        font-size: 2.5rem;
+      }
+      
+      nav {
+        padding: 10px 15px;
+      }
+      
+      nav .logo {
+        width: 40px;
+      }
     }
   </style>
 </head>
@@ -249,13 +295,13 @@
 
   <section class="card-slider" id="cards">
     <div class="card active"><img src="imgs/اساسيات-تكنولجيا .jpg" alt="Card 1"><h4>اساسيات تكنولجيا المعلومات و نظم التشغيل</h4><a href="Tools/أساسيات-تكنولوجيا/index.html"><button>عرض</button></a></div>
-    <div class="card"><img src="imgs/التحول-الرقمى.jpg" alt="Card 2"><h4>التحول الرقمى</h4><button>عرض</button></div>
-    <div class="card"><img src="imgs/العروض-التقديمية.webp" alt="Card 3"><h4>العروض التقديمية</h4><button>عرض</button></div>
+    <div class="card"><img src="imgs/التحول-الرقمى.jpg" alt="Card 2"><h4>التحول الرقمى</h4><a href="Tools/التحول-الرقمى/index.html"><button>عرض</button></a></div>
+    <div class="card"><img src="imgs/العروض-التقديمية.webp" alt="Card 3"><h4>العروض التقديمية</h4> <a href="Tools/بور-بوينت/index.html"><button>عرض</button></a></div>
     <div class="card"><img src="imgs/معالجه-النصوص.jpg" alt="Card 4"><h4>برامج معالجه النصوص</h4> <a href="Tools/كورس برنامج معالج النصوص/index.html"><button>عرض</button></a></div>
-    <div class="card"><img src="imgs/تطبيقات-الهاتف.jpg" alt="Card 5"><h4>تطبيقات الهاتف المحمول</h4><button>عرض</button></div>
-    <div class="card"><img src="imgs/شبكات-الحاسب.jpg" alt="Card 6"><h4>شبكات الحاسب</h4><button>عرض</button></div>
-    <div class="card"><img src="imgs/قواعد-البيانات.jpg" alt="Card 7"><h4>قواعد البيانات</h4><button>عرض</button></div>
-    <div class="card"><img src="imgs/معالجه-جداول.jpg" alt="Card 8"><h4>معالجه جداول البيانات</h4><button>عرض</button></div>
+    <div class="card"><img src="imgs/تطبيقات-الهاتف.jpg" alt="Card 5"><h4>تطبيقات الهاتف المحمول</h4><a href="Tools/تطبيقات-الهاتف/index.html"><button>عرض</button></a></div>
+    <div class="card"><img src="imgs/شبكات-الحاسب.jpg" alt="Card 6"><h4>شبكات الحاسب</h4><a href="Tools/شبكات-الحاسب/index.html"><button>عرض</button></a></div>
+    <div class="card"><img src="imgs/قواعد-البيانات.jpg" alt="Card 7"><h4>قواعد البيانات</h4><a href="Tools/قواعد-البيانات/index.html"><button>عرض</button></a></div>
+    <div class="card"><img src="imgs/معالجه-جداول.jpg" alt="Card 8"><h4>معالجه جداول البيانات</h4><a href="Tools/معالجة-جداول-البيانات/index.html"><button>عرض</button></a></div>
     <div class="nav-buttons">
       <button onclick="showCard(-1)">❮</button>
       <button onclick="showCard(1)">❯</button>
@@ -307,5 +353,4 @@
     })
   </script>
 </body>
-
 </html>

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل شبكات الحاسوب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 8s infinite linear;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .chapter {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .chapter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chapter h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .chapter h2 i {
+            margin-left: 10px;
+        }
+        
+        .chapter h3 {
+            color: var(--dark-color);
+            margin: 20px 0 10px;
+        }
+        
+        .chapter p, .chapter ul {
+            margin-bottom: 15px;
+        }
+        
+        .chapter ul {
+            padding-right: 20px;
+        }
+        
+        .chapter li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .chapter li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: -1em;
+        }
+        
+        .sidebar h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--light-color);
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .sidebar a:hover, .sidebar a.active {
+            background-color: var(--primary-color);
+            color: white;
+            padding-right: 15px;
+        }
+        
+        .sidebar a i {
+            margin-left: 8px;
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-container figcaption {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .highlight {
+            background-color: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-right: 4px solid var(--secondary-color);
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .highlight h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .icon-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .icon-box i {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        .protocol-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .protocol-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .protocol-card h4 i {
+            margin-left: 10px;
+        }
+        
+        .animation-container {
+            position: relative;
+            height: 200px;
+            margin: 30px 0;
+            background: #f5f7fa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .network-node {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: float 3s infinite ease-in-out;
+        }
+        
+        .network-node i {
+            font-size: 1.5rem;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .network-line {
+            position: absolute;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Network topology icons */
+        .topology-icons {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .topology-icon {
+            text-align: center;
+            margin: 10px;
+            width: 120px;
+        }
+        
+        .topology-icon div {
+            width: 80px;
+            height: 80px;
+            background: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            color: var(--primary-color);
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* IoT cards */
+        .iot-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .iot-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .iot-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .iot-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .iot-card h4 i {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-network-wired"></i> دليل شبكات الحاسوب</h1>
+            <p>قسم تكنولوجيا التعليم للتدريب على تكنولوجيا المعلومات</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <aside class="sidebar">
+                <h3><i class="fas fa-list"></i> محتويات الكورس</h3>
+                <ul>
+                    <li><a href="#intro" class="active"><i class="fas fa-info-circle"></i> مقدمة في شبكات الحاسب</a></li>
+                    <li><a href="#benefits"><i class="fas fa-star"></i> فوائد الشبكات</a></li>
+                    <li><a href="#speeds"><i class="fas fa-tachometer-alt"></i> سرعات الاتصال</a></li>
+                    <li><a href="#components"><i class="fas fa-cogs"></i> مكونات الشبكات الأساسية</a></li>
+                    <li><a href="#network-types"><i class="fas fa-project-diagram"></i> أنواع الشبكات من حيث الحجم</a></li>
+                    <li><a href="#topologies"><i class="fas fa-sitemap"></i> تصاميم الشبكات (Topologies)</a></li>
+                    <li><a href="#devices"><i class="fas fa-server"></i> أجهزة توصيل الشبكة</a></li>
+                    <li><a href="#addresses"><i class="fas fa-address-card"></i> عناوين الشبكة</a></li>
+                    <li><a href="#client-server"><i class="fas fa-users"></i> شبكات الخادم والعميل</a></li>
+                    <li><a href="#internet"><i class="fas fa-globe"></i> شبكة الإنترنت</a></li>
+                    <li><a href="#protocols"><i class="fas fa-exchange-alt"></i> بروتوكولات الشبكات</a></li>
+                    <li><a href="#iot"><i class="fas fa-lightbulb"></i> إنترنت الأشياء</a></li>
+                </ul>
+            </aside>
+            
+            <main class="content">
+                <section id="intro" class="chapter">
+                    <h2><i class="fas fa-info-circle"></i> مقدمة في شبكات الحاسب</h2>
+                    <p>شبكات الحاسب هي توصيل جهازين أو أكثر ببعضهما عبر وسط ناقل لتبادل المعلومات والمشاركة في مصادرهما المادية والبرمجية. ولتحقيق ذلك يجب توفر متطلبات مادية وبرمجية وإعداد مصادر الشبكة.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/رسم-لشبكة-حاسوب.png" alt="شبكات الحاسوب">
+                        <figcaption>رسم توضيحي لشبكة حاسوب</figcaption>
+                    </div>
+                    
+                    <p>قد تكون الشبكة بسيطة بحيث تربط بين جهازي كمبيوتر اثنين فقط باستخدام كابل واحد، أو قد تكون معقدة جدا بحيث تصل بين مئات الأجهزة المتصلة بأجهزة تتحكم في تدفق المعلومات.</p>
+                </section>
+                
+                <section id="benefits" class="chapter">
+                    <h2><i class="fas fa-star"></i> فوائد الشبكات</h2>
+                    <p>من فوائد اتصال أجهزة الكمبيوتر عبر الشبكة:</p>
+                    
+                    <div class="icon-box">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <div>
+                            <h3>انخفاض التكلفة</h3>
+                            <p>حيث يمكن مشاركة الموارد بين المستخدمين مثل الطابعة والمساحات التخزينية بين عدة مستخدمين مما يوفر تكلفة شراء موارد خاصة بكل مستخدم</p>
+                        </div>
+                    </div>
+                    
+                    <div class="icon-box">
+                        <i class="fas fa-bolt"></i>
+                        <div>
+                            <h3>السرعة في الوصول للمعلومات المطلوبة</h3>
+                            <p>يمكن استدعاء البيانات الخاصة بالعملاء من خوادم المؤسسة أو تبادل الرسائل الالكترونية بين الإدارات المتباعدة في ثواني معدودة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="icon-box">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h3>الدقة في المعلومات المتوفرة</h3>
+                            <p>ضمان أن جميع المستخدمين يعملون على نفس النسخة من البيانات</p>
+                        </div>
+                    </div>
+                    
+                    <div class="icon-box">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h3>التحكم في تداول المعلومات</h3>
+                            <p>إمكانية تحديد من يمكنه الوصول إلى أي معلومات</p>
+                        </div>
+                    </div>
+                    
+                    <div class="icon-box">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <h3>ترابط عمل المؤسسة بأقسامها و فروعها المختلفة</h3>
+                            <p>تسهيل التعاون بين الأقسام المختلفة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="icon-box">
+                        <i class="fas fa-copy"></i>
+                        <div>
+                            <h3>تضمن وجود نسخ احتياطية للسجلات و الملفات</h3>
+                            <p>حماية البيانات من الفقدان</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="speeds" class="chapter">
+                    <h2><i class="fas fa-tachometer-alt"></i> سرعات الاتصال</h2>
+                    <p>تعتبر البت (bit) الوحدة الأصغر على الإطلاق المستخدمة داخل الكمبيوتر لتكوين رقم ثنائي ويوجد عدة وحدات لقياس سرعة الشبكة:</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>الوحدة</th>
+                                <th>التعريف</th>
+                            </tr>
+                            <tr>
+                                <td>كيلو بت في الثانية (Kbps)</td>
+                                <td>تعني نقل 1000 بت في الثانية</td>
+                            </tr>
+                            <tr>
+                                <td>ميجا بت في الثانية (Mbps)</td>
+                                <td>تعني نقل 1000 كيلو بت في الثانية</td>
+                            </tr>
+                            <tr>
+                                <td>جيجا بت في الثانية (Gbps)</td>
+                                <td>تعني نقل 1000 ميجا بت في الثانية</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="animation-container" id="speedAnimation">
+                        <!-- Animation will be added by JavaScript -->
+                    </div>
+                </section>
+                
+                <section id="components" class="chapter">
+                    <h2><i class="fas fa-cogs"></i> مكونات الشبكات الأساسية</h2>
+                    <p>تتكون شبكة الحاسب من عدة أجزاء لكل جزء وظيفته الخاصة في النظام الشبكي وهذه الأجزاء هي:</p>
+                    
+                    <h3>متطلبات مادية (Physical Components)</h3>
+                    <ul>
+                        <li>اجهزة حاسب آلي</li>
+                        <li>بطاقة شبكة في كل جهاز</li>
+                        <li>وسط ناقل (Communication Medium)</li>
+                        <li>اجهزة توصيل (Switches)</li>
+                    </ul>
+                    
+                    <h3>متطلبات منطقية أو برمجية (Logical Components)</h3>
+                    <ul>
+                        <li>أنظمة تشغيل الشبكات</li>
+                        <li>خصائص النظام مثل (اسم الجهاز، عنوان IP)</li>
+                        <li>تعريفات كروت وأجهزة التوصيل و إعداداتها</li>
+                        <li>البرمجيات المرسلة والمستقبلة للبيانات (التطبيقات والخدمات و البروتوكولات)</li>
+                        <li>البرمجيات الخاصة بأمان وحماية الشبكة</li>
+                        <li>البرمجيات الداعمة لمراقبة وصيانة الشبكة</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="imgs/المكونات-الأساسية-للشبكة.jpg" alt="مكونات الشبكة">
+                        <figcaption>المكونات الأساسية للشبكة</figcaption>
+                    </div>
+                    
+                    <h3>بطاقة الشبكة (Network Interface Card)</h3>
+                    <p>هي بطاقة تثبت بالحاسب لتهيئته للاتصال بالشبكة، وتوجد البطاقة إما داخلية تثبت على اللوحة الأم داخل الحاسب أو خارجية. ولا يمكن لأجهزة الحاسب الاتصال بالأجهزة الأخرى إلا عن طريق هذا الكارت.</p>
+                    
+                    <div class="highlight">
+                        <h4>وظائف بطاقة الشبكة:</h4>
+                        <ul>
+                            <li>تحضير البيانات لبنها على الشبكة</li>
+                            <li>إرسال واستقبال البيانات على الشبكة</li>
+                            <li>التحكم بتدفق البيانات بين الحاسب و وسط الإرسال</li>
+                            <li>ترجمة الإشارات الكهربية من الوسط الناقل الخاص بالشبكة إلى بيانات يفهمها الحاسب</li>
+                            <li>عند إرسال بيانات فإنه يترجم بيانات الحاسب الرقمية إلى إشارات (كهربائية أو ضوئية) يستطيع الوسط الناقل حملها</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>الوسط الناقل (Communication Medium)</h3>
+                    <p>الوسط الناقل هو الوسيلة التي تتم بواسطتها تبادل البيانات بين الأجهزة وبعضها وتتنوع الكابلات بأنواعها المختلفة بما فيها الوسائط اللاسلكية (Wireless Medium).</p>
+                    
+                    <h4>أنواع كابلات الشبكات:</h4>
+                    <ul>
+                        <li>الكابلات النحاسية (Twisted Pair)</li>
+                        <li>الكابل المحوري (Coaxial Cable)</li>
+                        <li>كابلات الألياف الضوئية (Fiber Optics Cable)</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="imgs/أنواع-كابلات-الشبكات.jpg" alt="أنواع الكابلات">
+                        <figcaption>أنواع كابلات الشبكات</figcaption>
+                    </div>
+                    
+                    <h4>كابلات الألياف الضوئية</h4>
+                    <p>هي ألياف مصنوعة من الزجاج النقي، تكون طويلة ورفيعة وتحم ل المعلومات على هيئة إشارات ضوئية وال يتعدى سمكها سمك الشعرة، وتستخدم في نقل الإشارات داخل الكابلات البصرية. يجمع العديد من هذه الألياف في حزم التي تربط بين القارات وحتى الكابلات البحرية لمسافات بعيدة مثل بين المباني أو المواقع.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/الكابلات-البحرية.jpg" alt="الكابلات البحرية">
+                        <figcaption>الكابلات البحرية تحت الماء</figcaption>
+                    </div>
+                    
+                    <h3>الاتصالات اللاسلكية</h3>
+                    <p>ويتم نقل البيانات في هذه الحالة عبر الموجات الكهرو مغناطيسية مثل موجات الراديو. وتتميز مثل هذه الشبكات بالمرونة حيث لا تحتاج أجهزة الحاسب إلى وصلة ثابتة للاتصال بالشبكة وكذلك تتميز بسهولة التركيب حيث لا تتطلب مد كابلات بين أطراف الشبكة.</p>
+                </section>
+                
+                <section id="network-types" class="chapter">
+                    <h2><i class="fas fa-project-diagram"></i> أنواع الشبكات من حيث الحجم</h2>
+                    <p>تتنوع أجهزة الشبكة من حيث الحجم إلى عدة أنواع مثل:</p>
+                    
+                    <div class="topology-icons">
+                        <div class="topology-icon">
+                            <div><i class="fas fa-home"></i></div>
+                            <h4>الشبكة المحلية (LAN)</h4>
+                        </div>
+                        <div class="topology-icon">
+                            <div><i class="fas fa-globe"></i></div>
+                            <h4>الشبكة الواسعة (WAN)</h4>
+                        </div>
+                        <div class="topology-icon">
+                            <div><i class="fas fa-user"></i></div>
+                            <h4>الشبكة الشخصية (PAN)</h4>
+                        </div>
+                    </div>
+                    
+                    <h3>الشبكات المحلية (LAN)</h3>
+                    <p>هي التي تربط مجموعة من أجهزة الحاسب في مساحة جغرافية صغيرة مثل غرفة، مبنى أو مؤسسة تحتوي على أكثر من مبنى.</p>
+                    
+                    <h3>الشبكات الواسعة (WAN)</h3>
+                    <p>هي ربط بين اكثر من شبكة محلية موجودة في اماكن جغرافية متباعدة مثل الشبكات التي تربط بين أفرع الشركات في مدن أو دول مختلفة. وقد تمتد الشبكات الواسعة إلى مدن أو دول أو حتى قارات وتستخدم عادة خطوط الهاتف أو الأقمار الصناعية.</p>
+                    
+                    <h3>الشبكات الشخصية (PAN)</h3>
+                    <p>هي الشبكات المستخدمة لتوصيل الأجهزة القريبة من المستخدم (ويضمن هذا أجهزة الهاتف) ويمكن استخدام هذه الشبكات لتكوين اتصال بين حاسبات بعضها ببعض أو للاتصال بمستوى شبكة أعلى ويمكن استخدامها لنقل الملفات والصور الرقمية والموسيقى.</p>
+                </section>
+                
+                <section id="topologies" class="chapter">
+                    <h2><i class="fas fa-sitemap"></i> تصاميم الشبكات (Topologies)</h2>
+                    
+                    <h3>البنية الخطية (Bus Topology)</h3>
+                    <p>في هذا التصميم يتم توصيل أجهزة الحاسب في صف علي طول كابل واحد حيث يقوم هذا الكابل بتوصيل كل جهاز حاسب بالذي يليه.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/البنية-الخطية.png" alt="البنية الخطية">
+                        <figcaption>تصميم البنية الخطية للشبكات</figcaption>
+                    </div>
+                    
+                    <h4>عيوب البنية الخطية</h4>
+                    <ul>
+                        <li>إذا قام أكثر من جهاز بارسال بيانات في نفس الوقت؛ فسيحدث ما يُسمى بالتصادم؛ لذلك يجب علي كل جهاز حاسب انتظار دوره في إرسال البيانات.</li>
+                        <li>كلما زاد عدد الأجهزة كلما زاد الوقت الذي يستغرقه كل جهاز لإرسال بياناته، وبالتالي زاد بطئ الشبكة.</li>
+                        <li>إذا حدث قطع في الكابل توقفت الشبكة بأكملها.</li>
+                    </ul>
+                    
+                    <h3>البنية الحلقية (Ring Topology)</h3>
+                    <p>في هذا التصميم يتم ربط أجهزة الشبكة بحلقة أو دائرة وتنتقل الإشارات علي مدار الحلقة في اتجاه واحد وتمر من خلال كل جهاز علي الشبكة، ويقوم كل جهاز علي الشبكة بعمل دور مكرر الإشارة حيث يقوم كل جهاز تمر من خلاله الإشارة بتقويتها وإرسالها للذي يليه.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/البنية-الحلقية.jpg" alt="البنية الحلقية">
+                        <figcaption>تصميم البنية الحلقية للشبكات</figcaption>
+                    </div>
+                    
+                    <h4>مميزات وعيوب البنية الحلقية</h4>
+                    <ul>
+                        <li>أهم عيوبها هو اذا توقف احد الأجهزة عن العمل تتوقف الشبكة ككل.</li>
+                        <li>أهم مميزاتها هو تحسن أداء الشبكة مع وجود عدد كبير من الأجهزة.</li>
+                    </ul>
+                    
+                    <h3>البنية النجمية (Star Topology)</h3>
+                    <p>يحتوي التصميم النجمي علي نقطة اتصال مركزية وتكون في العادة جهاز مثل المجمع (Hub) أو المحول (Switch) أو الموجه (Router) ويتم توصيل كل جهاز بالنقطة المركزية وتعتبر البنية النجمية الأكثر استخداما من بين التصميمات المختلفة للشبكات.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/البنية-النجمية.jpg" alt="البنية النجمية">
+                        <figcaption>تصميم البنية النجمية للشبكات</figcaption>
+                    </div>
+                    
+                    <h4>مميزات البنية النجمية:</h4>
+                    <ul>
+                        <li>تسمح بفصل الأجهزة أو بتغيير أماكنها دون التأثير على باقي الشبكة</li>
+                        <li>سهولة اكتشاف الأخطاء وإصلاحها</li>
+                    </ul>
+                </section>
+                
+                <section id="devices" class="chapter">
+                    <h2><i class="fas fa-server"></i> أجهزة توصيل الشبكة</h2>
+                    
+                    <p>هناك العديد من أجهزة التوصيل المستخدمة في الشبكات المحلية (LAN) مثل:</p>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-redo"></i> المكرر (Repeater)</h4>
+                        <p>لتعزيز الإشارة المرسلة، تتعرض الإشارة أثناء عملية الإرسال للتشويش والتشويه ولذلك يستخدم جهاز Repeater لتعزيز الإشارة عبر الشبكة بحيث تكون قوية عند استقبالها.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-hubspot"></i> المجمع (Hub)</h4>
+                        <p>يقوم بدور نقطة وصل مركزية بين أجهزة الشبكة حيث يربط أجهزة الشبكة ببعضها.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-random"></i> الموزع (Switch)</h4>
+                        <p>وهو الأكثر استخداما من المجمع لربط أجهزة الشبكة لأنه يمرر الرسالة الي المنفذ الذي يوجد فيه الجهاز المرسل إليه. بينما المجمع يمرر الرسالة الي جميع المنافذ. لذلك الموزع أسرع في نقل البيانات ويقلل من تصادمها و يتميز أيضا بأنه يرسل ويستقبل في نفس الوقت.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-route"></i> الموجه (Router)</h4>
+                        <p>يستخدم لربط عدة شبكات متباعدة عن بعضها لتحديد أفضل المسارات التي يجب إرسال البيانات عليها.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-wifi"></i> نقطة الوصول (Access Point)</h4>
+                        <p>جهاز يوفر الوصول اللاسلكي إلى الشبكة للأجهزة القريبة.</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="imgs/أجهزة-توصيل.png" alt="أجهزة الشبكة">
+                        <figcaption>أجهزة توصيل الشبكة المختلفة</figcaption>
+                    </div>
+                </section>
+                
+                <section id="addresses" class="chapter">
+                    <h2><i class="fas fa-address-card"></i> عناوين الشبكة</h2>
+                    <p>لتبادل المعلومات بين أجهزة الحاسب، تحتاج هذه الأجهزة إلى عناوين يمكن من خلال توجيه الرسائل عليها.</p>
+                    
+                    <h3>عنوان IP</h3>
+                    <p>العنوان المنطقي IP address هو عنوان رقمي يتم اسناده لكل جهاز متصل بالشبكة إما بشكل يدوي (عنوان ثابت لكل جهاز) أو بواسطة خادم مخصص لهذا الغرض (DHCP server).</p>
+                    
+                    <p>يتكون عنوان IP من أربع خانات يحتوي كل منها على ارقام تتراوح بين 0 و 255 (حيث كل خانة تتكون من 8 بت = 1 بايت) ويمثل عنوان IP داخل الحاسب بالأرقام الثنائية (1 و 0).</p>
+                    
+                    <div class="highlight">
+                        <h4>مثال على عنوان IP:</h4>
+                        <p>145.10.34.3</p>
+                        <p>في الشكل الثنائي: 10010001 00001010 00100010 00000011</p>
+                    </div>
+                    
+                    <p>ويقسم عنوان IP إلى جزئين: جزء يعبر عن رقم الشبكة الفرعية وجزء آخر يعبر رقم الجهاز داخل الشبكة ولتحديد أي الخانات خاصة بأي الجزئين يستخدم رقم آخر يسمى قناع الشبكة الفرعية (Subnet Mask).</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/توضيح-لعناوين IP-.jpg" alt="عنوان IP">
+                        <figcaption>توضيح لعناوين IP</figcaption>
+                    </div>
+                    
+                    <h3>فئات عناوين IP</h3>
+                    <p>تقسم عناوين ال IP إلى عدة فئات تبعا لعدد الخانات الخاصة برقم الشبكة:</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>الفئة</th>
+                                <th>الشكل</th>
+                                <th>قناع الشبكة</th>
+                            </tr>
+                            <tr>
+                                <td>Class A</td>
+                                <td>Network.Host.Host.Host</td>
+                                <td>255.0.0.0</td>
+                            </tr>
+                            <tr>
+                                <td>Class B</td>
+                                <td>Network.Network.Host.Host</td>
+                                <td>255.255.0.0</td>
+                            </tr>
+                            <tr>
+                                <td>Class C</td>
+                                <td>Network.Network.Network.Host</td>
+                                <td>255.255.255.0</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="highlight">
+                        <h4>ملاحظات هامة:</h4>
+                        <ul>
+                            <li>لا يمكن أن تكون كل أرقام الأجهزة في عنوان ال IP أصفار أو واحد كأرقام ثنائية.</li>
+                            <li>عندما يكون رقم الجهاز صفرا فيعتبر عنوان IP يعبر عن عنوان الشبكة (network address).</li>
+                            <li>عندما يكون رقم الجهاز كله واحدات ثنائية فيعتبر عنوان IP يعبر عن عنوان البث (broadcast address).</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="client-server" class="chapter">
+                    <h2><i class="fas fa-users"></i> شبكات الخادم والعميل (Client-Server)</h2>
+                    <p>شبكات الخادم والعميل تتكون من جهاز حاسب ذو إمكانيات متقدمة يقدم خدمات للعملاء عن طريق الشبكة يسمى الخادم. الخادم عبارة عن جهاز يصنع خصيصا لغرض إدارة الشبكة وتقديم خدمات الشبكة.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/شبكات-الخادم-العميل.png" alt="نموذج خادم-عميل">
+                        <figcaption>نموذج خادم-عميل في الشبكات</figcaption>
+                    </div>
+                    
+                    <h3>مميزات شبكة الخادم/العميل على شبكة الند للند</h3>
+                    <ul>
+                        <li>حماية البيانات من الفقد أو التلف</li>
+                        <li>دعم عدد غير محدود من المستخدمين</li>
+                        <li>النسخ الاحتياطي وفقا لجدول زمني محدد</li>
+                        <li>سهولة الوصول للمعلومات والموارد نظرا لتركيزها في الأجهزة الرئيسة في الشبكة</li>
+                        <li>درجة عالية من الأمن والسرية في هذا النوع من الشبكات</li>
+                    </ul>
+                    
+                    <h3>شبكات الند للند (Peer-to-Peer)</h3>
+                    <p>يقصد بها أن كل جهاز في الشبكة يستطيع تزويد غيره بالمعلومات وفي نفس الوقت يطلب المعلومات من الأجهزة الأخرى المتصلة بالشبكة، فلا يتميز جهاز عن الآخر من ناحية الصلاحيات والحقوق ولا تحتوي على خادم.</p>
+                    
+                    <div class="highlight">
+                        <h4>مميزات شبكات الند للند:</h4>
+                        <ul>
+                            <li>انخفاض التكلفة في الإنشاء والصيانة</li>
+                            <li>عدم الحاجة لنظم تشغيل وبرامج خاصة لإدارة هذه الشبكة</li>
+                            <li>عدم الحاجة إلى مواصفات خاصة للأجهزة</li>
+                            <li>سهولة إنشاء وصيانة هذا النوع من الشبكات</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="internet" class="chapter">
+                    <h2><i class="fas fa-globe"></i> شبكة الإنترنت</h2>
+                    <p>شبكة الإنترنت (Wide Area Network - WAN) هي شبكة حاسبات عمالقة تتكون من مجموعة من الشبكات والحاسبات التي تضم كل منها كميات هائلة من المعلومات. ويطلق على الإنترنت اسم شبكة الشبكات كما يطلق عليها أيضا طريق المعلومات السريع.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/شبكة-الإنترنت-العالمية.jpg" alt="شبكة الإنترنت العالمية">
+                        <figcaption>شبكة الإنترنت العالمية</figcaption>
+                    </div>
+                    
+                    <h3>طرق الاتصال بالإنترنت</h3>
+                    <p>لتوصيل الحاسب بالإنترنت لابد من ربطه بشكل أو آخر بموجه متصل بالإنترنت عن طريق الشركة المزودة لخدمة (ISP). من أشهر طرق الاتصال بالإنترنت:</p>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-phone"></i> الاتصال الهاتفي (Dial-UP Connection)</h4>
+                        <p>أحد أقدم طرق الاتصال بالإنترنت باستخدام خط الهاتف العادي.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-network-wired"></i> خط المشترك الرقمي (DSL)</h4>
+                        <p>يستخدم الترددات العالية لنقل البيانات الرقمية بينما تترك الترددات المنخفضة (المسموعة) لإتمام الاتصالات الهاتفية العادية وبذلك يمكن استخدام الهاتف أثناء الاتصال بالإنترنت.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-fiber"></i> الخطوط المؤجرة (Leased Lines)</h4>
+                        <p>هي خطوط مخصصة تستخدمها الشركات والمؤسسات الكبيرة والجامعات لتوصيل شبكاتها الخاصة (LAN) بالإنترنت.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-wifi"></i> الإنترنت اللاسلكي (WiFi)</h4>
+                        <p>هي عائلة من تقنيات الراديو التي تستخدم عادة للشبكات المحلية اللاسلكية.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-mobile-alt"></i> الإنترنت عبر شبكة المحمول (3G/4G)</h4>
+                        <p>في هذا النوع يتم الاتصال بالإنترنت عبر أبراج شبكة المحمول وفق خطط أسعار محددة من قبل شركة المحمول.</p>
+                    </div>
+                </section>
+                
+                <section id="protocols" class="chapter">
+                    <h2><i class="fas fa-exchange-alt"></i> بروتوكولات الشبكات</h2>
+                    <p>لتبسيط اتصال الأجهزة ببعضها مهما كان طريقة صنعها أو حجمها أو نظم تشغيلها، تم عمل بروتوكولات قياسية (Standard Protocols).</p>
+                    
+                    <h3>نموذج TCP/IP</h3>
+                    <p>نموذج TCP/IP (Transmission Control Protocol/Internet Protocol) هو نموذج قياسي يقسم الوظائف المطلوبة لتوصيل الأجهزة ببعضها إلى أربع طبقات:</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/OSIنموذج-.webp" alt="نموذج TCP/IP">
+                        <figcaption>نموذج TCP/IP وعلاقته بنموذج OSI</figcaption>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-layer-group"></i> طبقة التطبيق (Application Layer)</h4>
+                        <p>تقوم التطبيقات في هذه الطبقة بتوليد بيانات المستخدم لإرسالها إلى تطبيقات أخرى عبر الشبكة نحو جهاز آخر.</p>
+                        <p>من البروتوكولات المشهورة في هذه الطبقة:</p>
+                        <ul>
+                            <li>HTTP - بروتوكول نقل النص التشعبي</li>
+                            <li>FTP - بروتوكول نقل الملفات</li>
+                            <li>SMTP - بروتوكول نقل البريد البسيط</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-truck-loading"></i> طبقة النقل (Transport Layer)</h4>
+                        <p>أهم وظيفة لهذه الطبقة هو نقل البيانات بجانب وظائف أخرى اختيارية مثل التأكد من الوصول إلى الطرف الآخر دون أخطاء وبالترتيب الصحيح.</p>
+                        <p>من البروتوكولات المشهورة في هذه الطبقة:</p>
+                        <ul>
+                            <li>TCP - بروتوكول التحكم بالنقل (يعتمد على الدقة)</li>
+                            <li>UDP - بروتوكول حزم بيانات المستخدم (يعتمد على السرعة)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-globe"></i> طبقة الإنترنت (Internet Layer)</h4>
+                        <p>تهتم بشكل أساسي بنقل حزم البيانات (Data Packets) بين أطراف الشبكة، وتشمل تعريفاً لعناوين الأجهزة وآليات توجيه الرزم بين الأجهزة.</p>
+                        <p>من البروتوكولات المشهورة في هذه الطبقة:</p>
+                        <ul>
+                            <li>IP - بروتوكول الإنترنت</li>
+                            <li>ICMP - بروتوكول رسائل التحكم بالإنترنت</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-ethernet"></i> طبقة الربط (Network Access Layer)</h4>
+                        <p>تحدد هذه الطبقة طرق الاتصال الفيزيائية مع الشبكة المحلية (مثال عن طريق كابلات أو إشارات لاسلكية).</p>
+                        <p>من البروتوكولات المشهورة في هذه الطبقة:</p>
+                        <ul>
+                            <li>Ethernet - بروتوكول الإيثرنت للشبكات المحلية</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>البروتوكولات الهامة في نموذج الإنترنت</h3>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-globe"></i> HTTP</h4>
+                        <p>بروتوكول نقل النص التشعبي (Hypertext Transfer Protocol) هو نظام نقل معلومات الإنترنت عبر الشبكة العنكبوتية (الويب)، وهو الطريقة الرئيسة والأكثر انتشارا لنقل البيانات في الويب.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-dharmachakra"></i> DHCP</h4>
+                        <p>بروتوكول التهيئة الآلية للمضيفين (Dynamic Host Configuration Protocol) يقوم بتزويد أجهزة الحاسب الموجودة بالشبكة بعناوين الشبكة تلقائيا، والتي تشمل عناوين بروتوكول الإنترنت IP.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-signature"></i> DNS</h4>
+                        <p>نظام أسماء النطاقات (Domain Name System) يقوم بتحويل أسماء المواقع إلى عنوان IP الخاص بها حيث يقوم بترجمة أسماء النطاقات التي يسهل تذكرها إلى عنوان IP، اللازم للوصول للحاسب المقصود.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-file-export"></i> FTP</h4>
+                        <p>بروتوكول نقل الملفات (File Transfer Protocol) هو نظام يستعمل لتبادل الملفات على أي شبكة ويعتمد FTP على خادم التحميل الذي يستمع على الشبكة لطلبات الاتصال من الأجهزة الأخرى.</p>
+                    </div>
+                    
+                    <div class="protocol-card">
+                        <h4><i class="fas fa-envelope"></i> IMAP</h4>
+                        <p>بروتوكول الوصول إلى رسائل الإنترنت (Internet Message Access Protocol) هو واحد أكثر البروتوكولات انتشارا على الإنترنت لاسترجاع المعلومات من البريد الإلكتروني.</p>
+                    </div>
+                </section>
+                
+                <section id="iot" class="chapter">
+                    <h2><i class="fas fa-lightbulb"></i> إنترنت الأشياء (IoT)</h2>
+                    <p>تشمل "الأشياء" أي جهاز الكتروني يمكن تعريفه على شبكة الإنترنت من خلال تخصيص عنوان له. حيث أصبح من الممكن اليوم ربط الأشياء التي نستخدمها في حياتنا اليومية مثل السيارات، الغسالة، الثلاجة، التلفزيون، الثلاجة، المستشعرات.</p>
+                    
+                    <div class="image-container">
+                        <img src="imgs/إنترنت-الأشياء (IoT).png" alt="إنترنت الأشياء">
+                        <figcaption>إنترنت الأشياء (IoT)</figcaption>
+                    </div>
+                    
+                    <h3>استخدامات إنترنت الأشياء</h3>
+                    
+                    <div class="iot-cards">
+                        <div class="iot-card">
+                            <h4><i class="fas fa-heartbeat"></i> الرعاية الصحية</h4>
+                            <p>منصات برمجية متكاملة لتسهيل عملية جمع البيانات الطبية لإرسالها إلى الأطباء المتابعين للحالة أو المستشفيات المعنية لتحليلها وتقديم تشخيص أو خدمة المتابعة الطبية دون الحاجة من المريض لترك المنزل.</p>
+                        </div>
+                        
+                        <div class="iot-card">
+                            <h4><i class="fas fa-home"></i> المنزل الذكي</h4>
+                            <p>تطوير منازل قادرة على القيام بالعديد من المهام الذكية بالاعتماد على أجهزة الاستشعار، مثل البيوت التي تضيء فيها الغرفة فقط إن دخلتها أو نطقت بكلمة معينة.</p>
+                        </div>
+                        
+                        <div class="iot-card">
+                            <h4><i class="fas fa-watch"></i> الأجهزة القابلة للارتداء</h4>
+                            <p>مثل ساعات أبل وساعات سامسونج الذكية، التي أصبحت قادرة على تنفيذ بعض المهام بشكل آلي دون تدخل الإنسان.</p>
+                        </div>
+                        
+                        <div class="iot-card">
+                            <h4><i class="fas fa-city"></i> المدن الذكية</h4>
+                            <p>تساعد تكنولوجيا إنترنت الأشياء في تطوير الشبكات الكهربائية والمائية وكذلك شبكات تنظيم المرور في المدن الذكية بحيث تكون قادرة على التبليغ عن الأضرار تلقائيا وتشغيلها تحت أعلى كفاءة.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <a href="../../index.html" id="fixedBackBtn" title="العودة للصفحة الرئيسية" style="position: fixed; bottom: 20px; left: 20px; z-index: 99; border: none; outline: none; background-color: #ffc107; color: #1c2a4d; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; text-decoration: none;">
+  ←
+</a>
+    <script>
+        // Create network animation
+        function createNetworkAnimation() {
+            const container = document.getElementById('speedAnimation');
+            container.innerHTML = '';
+            
+            // Create nodes
+            const node1 = document.createElement('div');
+            node1.className = 'network-node';
+            node1.style.top = '50px';
+            node1.style.left = '50px';
+            node1.innerHTML = '<i class="fas fa-laptop"></i>';
+            container.appendChild(node1);
+            
+            const node2 = document.createElement('div');
+            node2.className = 'network-node';
+            node2.style.top = '50px';
+            node2.style.right = '50px';
+            node2.innerHTML = '<i class="fas fa-server"></i>';
+            container.appendChild(node2);
+            
+            const node3 = document.createElement('div');
+            node3.className = 'network-node';
+            node3.style.bottom = '50px';
+            node3.style.left = '50px';
+            node3.innerHTML = '<i class="fas fa-mobile-alt"></i>';
+            container.appendChild(node3);
+            
+            const node4 = document.createElement('div');
+            node4.className = 'network-node';
+            node4.style.bottom = '50px';
+            node4.style.right = '50px';
+            node4.innerHTML = '<i class="fas fa-tablet-alt"></i>';
+            container.appendChild(node4);
+            
+            const node5 = document.createElement('div');
+            node5.className = 'network-node';
+            node5.style.top = '50%';
+            node5.style.left = '50%';
+            node5.style.transform = 'translate(-50%, -50%)';
+            node5.innerHTML = '<i class="fas fa-wifi"></i>';
+            container.appendChild(node5);
+            
+            // Create lines
+            function createLine(from, to) {
+                const line = document.createElement('div');
+                line.className = 'network-line';
+                
+                const fromRect = from.getBoundingClientRect();
+                const toRect = to.getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
+                
+                const fromX = fromRect.left + fromRect.width/2 - containerRect.left;
+                const fromY = fromRect.top + fromRect.height/2 - containerRect.top;
+                const toX = toRect.left + toRect.width/2 - containerRect.left;
+                const toY = toRect.top + toRect.height/2 - containerRect.top;
+                
+                const length = Math.sqrt(Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2));
+                const angle = Math.atan2(toY - fromY, toX - fromX) * 180 / Math.PI;
+                
+                line.style.width = length + 'px';
+                line.style.height = '2px';
+                line.style.left = fromX + 'px';
+                line.style.top = fromY + 'px';
+                line.style.transformOrigin = '0 0';
+                line.style.transform = 'rotate(' + angle + 'deg)';
+                
+                container.appendChild(line);
+            }
+            
+            createLine(node1, node5);
+            createLine(node2, node5);
+            createLine(node3, node5);
+            createLine(node4, node5);
+            
+            // Animate data transfer
+            function animateTransfer(from, to) {
+                const packet = document.createElement('div');
+                packet.className = 'network-node';
+                packet.style.width = '15px';
+                packet.style.height = '15px';
+                packet.style.backgroundColor = 'var(--secondary-color)';
+                packet.style.position = 'absolute';
+                packet.style.zIndex = '10';
+                packet.style.top = from.offsetTop + from.offsetHeight/2 - 7.5 + 'px';
+                packet.style.left = from.offsetLeft + from.offsetWidth/2 - 7.5 + 'px';
+                packet.style.transition = 'all 1s linear';
+                container.appendChild(packet);
+                
+                setTimeout(() => {
+                    packet.style.top = to.offsetTop + to.offsetHeight/2 - 7.5 + 'px';
+                    packet.style.left = to.offsetLeft + to.offsetWidth/2 - 7.5 + 'px';
+                }, 100);
+                
+                setTimeout(() => {
+                    packet.remove();
+                }, 1100);
+            }
+            
+            // Random transfers
+            const nodes = [node1, node2, node3, node4, node5];
+            setInterval(() => {
+                const from = nodes[Math.floor(Math.random() * nodes.length)];
+                const to = nodes[Math.floor(Math.random() * nodes.length)];
+                if (from !== to) {
+                    animateTransfer(from, to);
+                }
+            }, 800);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active link in sidebar
+                document.querySelectorAll('.sidebar a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            createNetworkAnimation();
+            
+            // Animate chapters when they come into view
+            const chapters = document.querySelectorAll('.chapter');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            chapters.forEach(chapter => {
+                chapter.style.opacity = '0';
+                chapter.style.transform = 'translateY(20px)';
+                chapter.style.transition = 'opacity 0.5s, transform 0.5s';
+                observer.observe(chapter);
+            });
+        });
+        // تأثيرات عند التحويم (اختياري)
+  const backBtn = document.getElementById('backButton');
+  
+  backBtn.addEventListener('mouseover', function() {
+    this.style.backgroundColor = '#ffc107';
+    this.style.color = '#1c2a4d';
+    this.style.transform = 'scale(1.1)';
+  });
+  
+  backBtn.addEventListener('mouseout', function() {
+    this.style.backgroundColor = '#1c2a4d';
+    this.style.color = '#ffc107';
+    this.style.transform = 'scale(1)';
+  });
+    </script>
+</body>
+</html>
